@@ -1,0 +1,70 @@
+﻿{
+	"__Type": "CharacterDatabase, Assembly-CSharp",
+	
+	"characterList": 
+		[
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 1,
+				
+				"name": "Land Soldier",
+				
+				"description": "A melee character that has 1 movement",
+				
+				"attack": 3,
+				
+				"movement": 1,
+				
+				"life": 3,
+				
+				"elementType": "VOID",
+				
+				"spawnCost": 2,
+				
+				"characterPrefab": "character_1"
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 2,
+				
+				"name": "Land Archer",
+				
+				"description": "",
+				
+				"attack": 1,
+				
+				"movement": 2,
+				
+				"life": 2,
+				
+				"elementType": "VOID",
+				
+				"spawnCost": 3,
+				
+				"characterPrefab": "character_2"
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 3,
+				
+				"name": "Land Witch",
+				
+				"description": "",
+				
+				"attack": 3,
+				
+				"movement": 2,
+				
+				"life": 3,
+				
+				"elementType": "VOID",
+				
+				"spawnCost": 5,
+				
+				"characterPrefab": "character_3"
+			}
+		]
+}

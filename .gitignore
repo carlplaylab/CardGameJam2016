@@ -1,0 +1,12 @@
+Library/
+obj/
+Temp/
+*.csproj
+*.sln
+*.userprefs
+*.suo
+*.DotSettings
+*.unityproj
+Physics2DSettings.asset
+Assets/Editor/mod_pbxproj.pyc
+Assets/Editor/mod_pbxproj.pyc.meta

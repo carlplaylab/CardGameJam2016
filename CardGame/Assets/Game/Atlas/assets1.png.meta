@@ -1,0 +1,1410 @@
+fileFormatVersion: 2
+guid: ef18375481f7642b8afbfdd9db713cfe
+timeCreated: 1456468749
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: icon_water
+    21300002: icon_land
+    21300004: icon_air
+    21300006: cell_main
+    21300008: cell_glow
+    21300010: cell_empty
+    21300012: cell_void
+    21300014: cell_water
+    21300016: cell_land
+    21300018: cell_air
+    21300020: fx_star
+    21300022: fx_sparkle
+    21300024: fx_water
+    21300026: fx_tear
+    21300028: fx_woodcrate
+    21300030: fx_woodbarrel
+    21300032: fx_woodstick
+    21300034: fx_yellowcircle
+    21300036: fx_woodpiece
+    21300038: fx_stone1
+    21300040: fx_stone2
+    21300042: fx_metal
+    21300044: fx_slime1
+    21300046: fx_woodplank
+    21300048: fx_slime2
+    21300050: fx_smokecircle
+    21300052: fx_smokecircle2
+    21300054: ui_woodplank
+    21300056: ui_woodplankcracked
+    21300058: ui_woodpiece
+    21300060: ui_black
+    21300062: ui_barfiller
+    21300064: ui_button
+    21300066: ui_frame
+    21300068: button_rock
+    21300070: button_water
+    21300072: button_air
+    21300074: cell_greenhighlight
+    21300076: cell_redhighlight
+    21300078: char_air_soldier
+    21300080: char_air_witch
+    21300082: char_air_range
+    21300084: char_water_soldier
+    21300086: char_water_witch
+    21300088: char_water_range
+    21300090: char_land_soldier
+    21300092: char_land_witch
+    21300094: char_land_range
+    21300096: icon_attack
+    21300098: icon_life
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: icon_water
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 1874
+        width: 137
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.5, y: 73.5}
+        - {x: -49.5, y: 15.5}
+        - {x: -49.5, y: -70.5}
+        - {x: 26.5, y: -70.5}
+        - {x: 49.5, y: -44.5}
+        - {x: 49.5, y: -0.5}
+        - {x: 3.5, y: 73.5}
+    - name: icon_land
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 1666
+        width: 164
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: 67}
+        - {x: -66, y: 67}
+        - {x: -75, y: 34}
+        - {x: -75, y: -22}
+        - {x: -68, y: -57}
+        - {x: -61, y: -59}
+        - {x: 65, y: -59}
+        - {x: 75, y: -47}
+        - {x: 75, y: 21}
+        - {x: 62, y: 66}
+    - name: icon_air
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1446
+        width: 187
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41.5, y: 82}
+        - {x: -61.5, y: 78}
+        - {x: -84.5, y: 21}
+        - {x: -84.5, y: -59}
+        - {x: -78.5, y: -80}
+        - {x: 18.5, y: -80}
+        - {x: 72.5, y: -72}
+        - {x: 87.5, y: -43}
+        - {x: 87.5, y: 14}
+        - {x: 39.5, y: 82}
+    - name: cell_main
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 1814
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: cell_glow
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 1729
+        width: 280
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -126, y: 118}
+        - {x: -126, y: -126}
+        - {x: 111, y: -126}
+        - {x: 118, y: -117}
+        - {x: 118, y: 118}
+      - - {x: -104, y: 96}
+        - {x: 96, y: 96}
+        - {x: 96, y: -104}
+        - {x: -104, y: -104}
+    - name: cell_empty
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 1814
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: cell_void
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 1814
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: cell_water
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1814
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: cell_land
+      rect:
+        serializedVersion: 2
+        x: 1323
+        y: 1599
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: cell_air
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 1599
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: fx_star
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 276
+        width: 72
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: 32.5}
+        - {x: -35, y: 10.5}
+        - {x: -35, y: -7.5}
+        - {x: -7, y: -32.5}
+        - {x: 10, y: -32.5}
+        - {x: 36, y: -6.5}
+        - {x: 36, y: 22.5}
+        - {x: 11, y: 32.5}
+    - name: fx_sparkle
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 210
+        width: 77
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 31}
+        - {x: -35.5, y: -28}
+        - {x: -33.5, y: -31}
+        - {x: 23.5, y: -31}
+        - {x: 34.5, y: -30}
+        - {x: 34.5, y: 8}
+        - {x: 26.5, y: 31}
+    - name: fx_water
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 295
+        width: 43
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3.5, y: 12}
+        - {x: -13.5, y: 10}
+        - {x: -13.5, y: -11}
+        - {x: -6.5, y: -17}
+        - {x: 15.5, y: -17}
+        - {x: 16.5, y: -11}
+        - {x: 16.5, y: 9}
+        - {x: 11.5, y: 12}
+    - name: fx_tear
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 73
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: -14}
+        - {x: -14, y: -18}
+        - {x: 13, y: -18}
+        - {x: 13, y: 7}
+        - {x: 7, y: 19}
+        - {x: -8, y: 19}
+        - {x: -17, y: 5}
+    - name: fx_woodcrate
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 290
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 19.5}
+        - {x: -21, y: -0.5}
+        - {x: -18, y: -23.5}
+        - {x: 23, y: -23.5}
+        - {x: 24, y: -19.5}
+        - {x: 24, y: 16.5}
+        - {x: 13, y: 19.5}
+    - name: fx_woodbarrel
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 230
+        width: 59
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 21.5, y: 21}
+        - {x: 15.5, y: 23}
+        - {x: -2.5, y: 23}
+        - {x: -28.5, y: 13}
+        - {x: -28.5, y: -8}
+        - {x: -24.5, y: -24}
+        - {x: 2.5, y: -24}
+        - {x: 14.5, y: -21}
+        - {x: 20.5, y: -11}
+        - {x: 25.5, y: 5}
+        - {x: 25.5, y: 19}
+    - name: fx_woodstick
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 233
+        width: 64
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 20}
+        - {x: -18, y: 20}
+        - {x: -32, y: 16}
+        - {x: -32, y: -10}
+        - {x: -17, y: -23}
+        - {x: 0, y: -23}
+        - {x: 9, y: -20}
+        - {x: 22, y: -9}
+        - {x: 22, y: 2}
+        - {x: 21, y: 12}
+    - name: fx_yellowcircle
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 159
+        width: 59
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.5, y: 24.5}
+        - {x: -22.5, y: 15.5}
+        - {x: -22.5, y: -17.5}
+        - {x: -16.5, y: -23.5}
+        - {x: 18.5, y: -23.5}
+        - {x: 26.5, y: -15.5}
+        - {x: 26.5, y: 12.5}
+        - {x: 22.5, y: 24.5}
+    - name: fx_woodpiece
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 177
+        width: 50
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 22.5}
+        - {x: -22, y: 13.5}
+        - {x: -22, y: -14.5}
+        - {x: -14, y: -21.5}
+        - {x: 20, y: -21.5}
+        - {x: 24, y: -10.5}
+        - {x: 24, y: 19.5}
+        - {x: 18, y: 22.5}
+    - name: fx_stone1
+      rect:
+        serializedVersion: 2
+        x: 1146
+        y: 187
+        width: 57
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 21.5}
+        - {x: -28.5, y: 14.5}
+        - {x: -28.5, y: 2.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 6.5, y: -19.5}
+        - {x: 14.5, y: -11.5}
+        - {x: 14.5, y: 13.5}
+        - {x: -3.5, y: 21.5}
+    - name: fx_stone2
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 139
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 18, y: 23}
+        - {x: -16, y: 23}
+        - {x: -23, y: 19}
+        - {x: -23, y: -20}
+        - {x: -21, y: -23}
+        - {x: 6, y: -23}
+        - {x: 20, y: -15}
+        - {x: 20, y: 21}
+    - name: fx_metal
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 120
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4.5, y: 23.5}
+        - {x: -0.5, y: 23.5}
+        - {x: -22.5, y: 7.5}
+        - {x: -22.5, y: -10.5}
+        - {x: -8.5, y: -22.5}
+        - {x: 13.5, y: -22.5}
+        - {x: 22.5, y: -14.5}
+        - {x: 22.5, y: 5.5}
+        - {x: 17.5, y: 17.5}
+    - name: fx_slime1
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 101
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 21}
+        - {x: -15, y: 11}
+        - {x: -15, y: -12}
+        - {x: -8, y: -21}
+        - {x: -1, y: -24}
+        - {x: 17, y: -24}
+        - {x: 19, y: -17}
+        - {x: 19, y: 21}
+    - name: fx_woodplank
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 25
+        width: 43
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18.5, y: 19.5}
+        - {x: -21.5, y: 11.5}
+        - {x: -21.5, y: -4.5}
+        - {x: -15.5, y: -12.5}
+        - {x: -11.5, y: -17.5}
+        - {x: 1.5, y: -19.5}
+        - {x: 16.5, y: -19.5}
+        - {x: 16.5, y: 19.5}
+    - name: fx_slime2
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 68
+        width: 49
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: -16}
+        - {x: 6.5, y: -16}
+        - {x: 24.5, y: -2}
+        - {x: 24.5, y: 16}
+        - {x: -6.5, y: 16}
+        - {x: -20.5, y: 11}
+    - name: fx_smokecircle
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 65
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15.5, y: 27}
+        - {x: -17.5, y: 23}
+        - {x: -25.5, y: 10}
+        - {x: -25.5, y: -23}
+        - {x: -15.5, y: -26}
+        - {x: 20.5, y: -26}
+        - {x: 26.5, y: -21}
+        - {x: 26.5, y: 27}
+    - name: fx_smokecircle2
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 0
+        width: 65
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 32}
+        - {x: -32.5, y: 22}
+        - {x: -32.5, y: -10}
+        - {x: -27.5, y: -30}
+        - {x: 29.5, y: -30}
+        - {x: 32.5, y: -18}
+        - {x: 32.5, y: 29}
+        - {x: 28.5, y: 32}
+    - name: ui_woodplank
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 400
+        width: 273
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -133.5, y: 22}
+        - {x: -133.5, y: -23}
+        - {x: 133.5, y: -23}
+        - {x: 133.5, y: 22}
+    - name: ui_woodplankcracked
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 343
+        width: 276
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -136, y: 20}
+        - {x: -136, y: -23}
+        - {x: -97, y: -24}
+        - {x: 132, y: -24}
+        - {x: 136, y: -23}
+        - {x: 136, y: 16}
+        - {x: 134, y: 20}
+    - name: ui_woodpiece
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 256
+        width: 79
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.5, y: 24}
+        - {x: -37.5, y: 23}
+        - {x: -39.5, y: 21}
+        - {x: -39.5, y: -24}
+        - {x: -37.5, y: -25}
+        - {x: 33.5, y: -25}
+        - {x: 33.5, y: 21}
+        - {x: 31.5, y: 24}
+    - name: ui_black
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 119
+        width: 122
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: 60}
+        - {x: -60, y: -62}
+        - {x: 61, y: -62}
+        - {x: 61, y: 62}
+        - {x: -58, y: 62}
+    - name: ui_barfiller
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 89
+        width: 164
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -82, y: -16.5}
+        - {x: 58, y: -16.5}
+        - {x: 58, y: 1.5}
+        - {x: 56, y: 3.5}
+        - {x: -82, y: 3.5}
+      - - {x: -82, y: 16.5}
+        - {x: -82, y: 7.5}
+        - {x: 20, y: 7.5}
+        - {x: 22, y: 9.5}
+        - {x: 22, y: 16.5}
+    - name: ui_button
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 45
+        width: 176
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -88, y: 21.5}
+        - {x: -88, y: -21.5}
+        - {x: 60, y: -21.5}
+        - {x: 60, y: 2.5}
+        - {x: 57, y: 21.5}
+    - name: ui_frame
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 2
+        width: 188
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -94, y: 22}
+        - {x: -94, y: -3}
+        - {x: 53, y: -22}
+        - {x: 69, y: -22}
+        - {x: 69, y: 7}
+        - {x: 63, y: 22}
+    - name: button_rock
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 1635
+        width: 207
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 101.5, y: 65.5}
+        - {x: 95.5, y: 86.5}
+        - {x: 73.5, y: 99.5}
+        - {x: 36.5, y: 100.5}
+        - {x: -56.5, y: 100.5}
+        - {x: -73.5, y: 99.5}
+        - {x: -95.5, y: 81.5}
+        - {x: -100.5, y: 69.5}
+        - {x: -102.5, y: -23.5}
+        - {x: -102.5, y: -69.5}
+        - {x: -95.5, y: -85.5}
+        - {x: -75.5, y: -100.5}
+        - {x: 64.5, y: -100.5}
+        - {x: 81.5, y: -99.5}
+        - {x: 101.5, y: -69.5}
+    - name: button_water
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 1427
+        width: 211
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100.5, y: 79}
+        - {x: 86.5, y: 93}
+        - {x: 74.5, y: 98}
+        - {x: -88.5, y: 98}
+        - {x: -103.5, y: 68}
+        - {x: -103.5, y: -66}
+        - {x: -95.5, y: -86}
+        - {x: -87.5, y: -91}
+        - {x: -74.5, y: -98}
+        - {x: 73.5, y: -98}
+        - {x: 95.5, y: -81}
+        - {x: 101.5, y: -54}
+        - {x: 101.5, y: 62}
+    - name: button_air
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1427
+        width: 208
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 103, y: -21}
+        - {x: 103, y: 69}
+        - {x: 95, y: 85}
+        - {x: 87, y: 95}
+        - {x: 70, y: 100}
+        - {x: -67, y: 100}
+        - {x: -87, y: 93}
+        - {x: -101, y: 70}
+        - {x: -102, y: 3}
+        - {x: -102, y: -67}
+        - {x: -100, y: -76}
+        - {x: -77, y: -100}
+        - {x: 40, y: -100}
+        - {x: 73, y: -99}
+        - {x: 96, y: -79}
+        - {x: 101, y: -67}
+    - name: cell_greenhighlight
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 1599
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: cell_redhighlight
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 1384
+        width: 214
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 107}
+        - {x: -107, y: 105}
+        - {x: -107, y: -105}
+        - {x: -105, y: -107}
+        - {x: 105, y: -107}
+        - {x: 107, y: -105}
+        - {x: 107, y: 105}
+        - {x: 105, y: 107}
+    - name: char_air_soldier
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 889
+        width: 426
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 43, y: 25}
+        - {x: 29, y: 40}
+        - {x: 39, y: 34}
+        - {x: 146, y: 10}
+        - {x: 213, y: 111}
+        - {x: 213, y: 132}
+        - {x: 212, y: 137}
+        - {x: 178, y: 176}
+        - {x: 157, y: 192}
+        - {x: 32, y: 192}
+        - {x: -108, y: 187}
+        - {x: -111, y: 184}
+        - {x: -112, y: 179}
+        - {x: -111, y: 178}
+        - {x: -111, y: 176}
+        - {x: -112, y: 180}
+        - {x: -112, y: 185}
+        - {x: -125, y: 192}
+        - {x: -158, y: 192}
+        - {x: -168, y: 182}
+        - {x: -162, y: 173}
+        - {x: -145, y: 151}
+        - {x: -146, y: 148}
+        - {x: -154, y: 146}
+        - {x: -155, y: 147}
+        - {x: -159, y: 148}
+        - {x: -167, y: 142}
+        - {x: -167, y: 123}
+        - {x: -160, y: 114}
+        - {x: -164, y: 108}
+        - {x: -163, y: 108}
+        - {x: -164, y: 110}
+        - {x: -167, y: 123}
+        - {x: -181, y: 134}
+        - {x: -199, y: 135}
+        - {x: -210, y: 107}
+        - {x: -210, y: 79}
+        - {x: -62, y: -135}
+        - {x: -24, y: -187}
+        - {x: -18, y: -192}
+        - {x: 2, y: -192}
+        - {x: 10, y: -184}
+        - {x: 8, y: -167}
+        - {x: 38, y: -53}
+    - name: char_air_witch
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 907
+        width: 249
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 27.5, y: -165}
+        - {x: 15.5, y: -181}
+        - {x: 15.5, y: -187}
+        - {x: 23.5, y: -187}
+        - {x: 35.5, y: -170}
+        - {x: 35.5, y: -165}
+      - - {x: -17.5, y: -167}
+        - {x: -19.5, y: -173}
+        - {x: -19.5, y: -177}
+        - {x: -16.5, y: -179}
+        - {x: -9.5, y: -180}
+        - {x: -1.5, y: -180}
+        - {x: 7.5, y: -174}
+        - {x: 10.5, y: -171}
+        - {x: 10.5, y: -167}
+      - - {x: -54.5, y: -135}
+        - {x: -67.5, y: -135}
+        - {x: -74.5, y: -141}
+        - {x: -74.5, y: -161}
+        - {x: -65.5, y: -172}
+        - {x: -24.5, y: -172}
+        - {x: -18.5, y: -165}
+        - {x: -18.5, y: -155}
+        - {x: -30.5, y: -151}
+      - - {x: 75.5, y: -121}
+        - {x: 73.5, y: -117}
+        - {x: 74.5, y: -118}
+        - {x: 76.5, y: -123}
+        - {x: 76.5, y: -128}
+        - {x: 82.5, y: -133}
+        - {x: 90.5, y: -131}
+        - {x: 103.5, y: -100}
+        - {x: 110.5, y: -55}
+        - {x: 74.5, y: -31}
+        - {x: 53.5, y: -24}
+        - {x: 49.5, y: -25}
+        - {x: 54.5, y: -33}
+        - {x: 47.5, y: -27}
+        - {x: 49.5, y: -24}
+        - {x: 47.5, y: -20}
+        - {x: 78.5, y: 24}
+        - {x: 123.5, y: 110}
+        - {x: 123.5, y: 165}
+        - {x: 120.5, y: 167}
+        - {x: 111.5, y: 166}
+        - {x: 79.5, y: 146}
+        - {x: 70.5, y: 132}
+        - {x: 61.5, y: 51}
+        - {x: 40.5, y: 67}
+        - {x: 57.5, y: 75}
+        - {x: 64.5, y: 79}
+        - {x: 61.5, y: 85}
+        - {x: 31.5, y: 179}
+        - {x: 12.5, y: 185}
+        - {x: -111.5, y: 185}
+        - {x: -111.5, y: 164}
+        - {x: -99.5, y: 119}
+        - {x: -75.5, y: 62}
+        - {x: -111.5, y: -60}
+        - {x: -111.5, y: -97}
+        - {x: -94.5, y: -113}
+        - {x: -89.5, y: -112}
+        - {x: -87.5, y: -110}
+        - {x: -86.5, y: -102}
+        - {x: -86.5, y: -98}
+        - {x: -86.5, y: -102}
+        - {x: -82.5, y: -107}
+        - {x: -80.5, y: -107}
+        - {x: -88.5, y: -117}
+        - {x: -87.5, y: -125}
+        - {x: -85.5, y: -127}
+        - {x: -106.5, y: -137}
+        - {x: -57.5, y: -170}
+        - {x: 80.5, y: -170}
+        - {x: 84.5, y: -169}
+        - {x: 79.5, y: -136}
+        - {x: 73.5, y: -127}
+        - {x: 75.5, y: -124}
+      - - {x: -38.5, y: -142}
+        - {x: -40.5, y: -143}
+        - {x: -40.5, y: -152}
+        - {x: -38.5, y: -154}
+        - {x: -25.5, y: -151}
+        - {x: -23.5, y: -148}
+        - {x: -23.5, y: -142}
+      - - {x: 26.5, y: -146}
+        - {x: 28.5, y: -148}
+        - {x: 31.5, y: -147}
+        - {x: 31.5, y: -144}
+        - {x: 29.5, y: -142}
+        - {x: 26.5, y: -143}
+      - - {x: -90.5, y: -134}
+        - {x: -92.5, y: -139}
+        - {x: -90.5, y: -141}
+        - {x: -88.5, y: -141}
+        - {x: -85.5, y: -138}
+        - {x: -85.5, y: -137}
+        - {x: -88.5, y: -134}
+      - - {x: 100.5, y: -96}
+        - {x: 103.5, y: -96}
+        - {x: 105.5, y: -94}
+        - {x: 104.5, y: -91}
+        - {x: 97.5, y: -88}
+        - {x: 94.5, y: -88}
+        - {x: 92.5, y: -89}
+        - {x: 92.5, y: -94}
+        - {x: 97.5, y: -105}
+        - {x: 101.5, y: -109}
+        - {x: 103.5, y: -109}
+        - {x: 105.5, y: -107}
+        - {x: 105.5, y: -104}
+        - {x: 102.5, y: -97}
+      - - {x: 102.5, y: -60}
+        - {x: 104.5, y: -62}
+        - {x: 107.5, y: -61}
+        - {x: 107.5, y: -58}
+        - {x: 105.5, y: -56}
+        - {x: 102.5, y: -57}
+      - - {x: -124.5, y: 177}
+        - {x: -121.5, y: 178}
+        - {x: -121.5, y: 181}
+        - {x: -123.5, y: 183}
+        - {x: -124.5, y: 183}
+    - name: char_air_range
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 542
+        width: 218
+        height: 335
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26, y: 147.5}
+        - {x: -7, y: 147.5}
+        - {x: -6, y: 126.5}
+        - {x: -78, y: 145.5}
+        - {x: -104, y: 131.5}
+        - {x: -69, y: 76.5}
+        - {x: -106, y: 65.5}
+        - {x: -106, y: 3.5}
+        - {x: -86, y: -64.5}
+        - {x: -47, y: -123.5}
+        - {x: -21, y: -162.5}
+        - {x: -17, y: -166.5}
+        - {x: 55, y: -166.5}
+        - {x: 80, y: -19.5}
+        - {x: 104, y: 9.5}
+        - {x: 104, y: 120.5}
+    - name: char_water_soldier
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 928
+        width: 383
+        height: 344
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 188.5, y: -119}
+        - {x: 188.5, y: 154}
+        - {x: 159.5, y: 154}
+        - {x: 155.5, y: 139}
+        - {x: 170.5, y: 72}
+        - {x: 171.5, y: 69}
+        - {x: 167.5, y: 58}
+        - {x: 155.5, y: 127}
+        - {x: 52.5, y: 154}
+        - {x: -46.5, y: 154}
+        - {x: -92.5, y: 98}
+        - {x: -106.5, y: 37}
+        - {x: -95.5, y: -16}
+        - {x: -161.5, y: -10}
+        - {x: -164.5, y: -13}
+        - {x: -136.5, y: 135}
+        - {x: -137.5, y: 140}
+        - {x: -139.5, y: 142}
+        - {x: -136.5, y: 142}
+        - {x: -133.5, y: 149}
+        - {x: -138.5, y: 154}
+        - {x: -177.5, y: 154}
+        - {x: -190.5, y: 145}
+        - {x: -190.5, y: -86}
+        - {x: -187.5, y: -102}
+        - {x: -149.5, y: -144}
+        - {x: -115.5, y: -163}
+        - {x: -100.5, y: -157}
+        - {x: -102.5, y: -154}
+        - {x: -88.5, y: -115}
+        - {x: -90.5, y: -172}
+        - {x: 137.5, y: -172}
+        - {x: 137.5, y: -171}
+        - {x: 186.5, y: -127}
+      - - {x: -71.5, y: -75}
+        - {x: -77.5, y: -75}
+        - {x: -78.5, y: -78}
+        - {x: -78.5, y: -81}
+        - {x: -68.5, y: -92}
+        - {x: -58.5, y: -93}
+        - {x: -52.5, y: -93}
+        - {x: -50.5, y: -90}
+        - {x: -51.5, y: -83}
+        - {x: -57.5, y: -80}
+      - - {x: 103.5, y: -47}
+        - {x: 96.5, y: -57}
+        - {x: 96.5, y: -66}
+        - {x: 102.5, y: -66}
+        - {x: 108.5, y: -61}
+        - {x: 112.5, y: -53}
+        - {x: 112.5, y: -47}
+      - - {x: -149.5, y: -2}
+        - {x: -148.5, y: -5}
+        - {x: -146.5, y: -6}
+        - {x: -139.5, y: -6}
+        - {x: -137.5, y: -5}
+        - {x: -137.5, y: -2}
+        - {x: -139.5, y: 1}
+        - {x: -140.5, y: 2}
+        - {x: -148.5, y: 2}
+        - {x: -149.5, y: 1}
+      - - {x: -57.5, y: 7}
+        - {x: -59.5, y: 5}
+        - {x: -59.5, y: 3}
+        - {x: -57.5, y: 1}
+        - {x: -55.5, y: 1}
+        - {x: -53.5, y: 3}
+        - {x: -53.5, y: 4}
+        - {x: -56.5, y: 7}
+      - - {x: -150.5, y: 15}
+        - {x: -150.5, y: 12}
+        - {x: -148.5, y: 10}
+        - {x: -145.5, y: 11}
+        - {x: -144.5, y: 15}
+        - {x: -146.5, y: 17}
+        - {x: -148.5, y: 17}
+      - - {x: -78.5, y: 22}
+        - {x: -86.5, y: 22}
+        - {x: -89.5, y: 20}
+        - {x: -89.5, y: 16}
+        - {x: -88.5, y: 14}
+        - {x: -85.5, y: 14}
+        - {x: -80.5, y: 16}
+        - {x: -77.5, y: 19}
+        - {x: -77.5, y: 21}
+      - - {x: -150.5, y: 26}
+        - {x: -150.5, y: 24}
+        - {x: -148.5, y: 22}
+        - {x: -147.5, y: 22}
+        - {x: -144.5, y: 25}
+        - {x: -145.5, y: 28}
+        - {x: -148.5, y: 28}
+      - - {x: -149.5, y: 46}
+        - {x: -149.5, y: 39}
+        - {x: -144.5, y: 39}
+        - {x: -143.5, y: 40}
+        - {x: -143.5, y: 45}
+        - {x: -144.5, y: 46}
+      - - {x: -190.5, y: 154}
+        - {x: -190.5, y: 146}
+        - {x: -184.5, y: 146}
+        - {x: -184.5, y: 154}
+    - name: char_water_witch
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 925
+        width: 317
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 155.5, y: 87.5}
+        - {x: 148.5, y: 101.5}
+        - {x: 121.5, y: 131.5}
+        - {x: 27.5, y: 156.5}
+        - {x: -30.5, y: 156.5}
+        - {x: -70.5, y: 133.5}
+        - {x: -89.5, y: 76.5}
+        - {x: -78.5, y: 15.5}
+        - {x: -157.5, y: 4.5}
+        - {x: -157.5, y: -56.5}
+        - {x: -129.5, y: -107.5}
+        - {x: 5.5, y: -48.5}
+        - {x: -45.5, y: -171.5}
+        - {x: -41.5, y: -172.5}
+        - {x: 50.5, y: -172.5}
+        - {x: 42.5, y: -135.5}
+        - {x: 143.5, y: -48.5}
+        - {x: 155.5, y: -8.5}
+    - name: char_water_range
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 245
+        width: 300
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 141}
+        - {x: -89, y: 141}
+        - {x: -108, y: 132}
+        - {x: -131, y: 115}
+        - {x: -124, y: 93}
+        - {x: -106, y: 94}
+        - {x: -90, y: 102}
+        - {x: -90, y: 104}
+        - {x: -67, y: 117}
+        - {x: -63, y: 114}
+        - {x: -86, y: 106}
+        - {x: -91, y: 95}
+        - {x: -148, y: 76}
+        - {x: -149, y: 74}
+        - {x: -149, y: -38}
+        - {x: -126, y: -49}
+        - {x: -134, y: -87}
+        - {x: -134, y: -92}
+        - {x: -131, y: -94}
+        - {x: -112, y: -85}
+        - {x: -85, y: -57}
+        - {x: -101, y: -119}
+        - {x: -101, y: -129}
+        - {x: -89, y: -141}
+        - {x: 106, y: -141}
+        - {x: 150, y: -138}
+        - {x: 150, y: 93}
+        - {x: 131, y: 115}
+      - - {x: 135, y: 141}
+        - {x: 136, y: 138}
+        - {x: 149, y: 137}
+        - {x: 150, y: 137}
+        - {x: 150, y: 141}
+    - name: char_land_soldier
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 544
+        width: 390
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 66, y: 170.5}
+        - {x: 70, y: 162.5}
+        - {x: 59, y: 161.5}
+        - {x: 57, y: 159.5}
+        - {x: 57, y: 157.5}
+        - {x: 55, y: 159.5}
+        - {x: 61, y: 162.5}
+        - {x: 61, y: 170.5}
+        - {x: 8, y: 170.5}
+        - {x: -94, y: 44.5}
+        - {x: -193, y: -74.5}
+        - {x: -193, y: -132.5}
+        - {x: -15, y: -74.5}
+        - {x: -21, y: -168.5}
+        - {x: 40, y: -171.5}
+        - {x: 145, y: -171.5}
+        - {x: 192, y: -116.5}
+        - {x: 192, y: 33.5}
+        - {x: 113, y: 170.5}
+    - name: char_land_witch
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 525
+        width: 252
+        height: 358
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 69, y: -11}
+        - {x: 75, y: -41}
+        - {x: 81, y: -51}
+        - {x: 87, y: -58}
+        - {x: 97, y: -59}
+        - {x: 120, y: -53}
+        - {x: 120, y: 174}
+        - {x: -92, y: 174}
+        - {x: -122, y: 163}
+        - {x: -122, y: -161}
+        - {x: -77, y: -179}
+        - {x: -73, y: -179}
+        - {x: -41, y: -140}
+        - {x: -40, y: -134}
+        - {x: -40, y: -126}
+        - {x: -41, y: -122}
+        - {x: -38, y: -119}
+        - {x: -38, y: -92}
+        - {x: -40, y: -81}
+        - {x: -39, y: -83}
+        - {x: -38, y: -84}
+        - {x: -38, y: -95}
+        - {x: -37, y: -117}
+        - {x: -39, y: -121}
+        - {x: -40, y: -132}
+        - {x: -40, y: -143}
+        - {x: -41, y: -143}
+        - {x: -44, y: -161}
+        - {x: -35, y: -177}
+        - {x: -25, y: -179}
+        - {x: 59, y: -179}
+        - {x: 97, y: -152}
+        - {x: 105, y: -101}
+        - {x: 77, y: -51}
+    - name: char_land_range
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 227
+        width: 218
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 109, y: 15}
+        - {x: 109, y: 103}
+        - {x: 48, y: 130}
+        - {x: -12, y: 152}
+        - {x: -102, y: 152}
+        - {x: -106, y: 130}
+        - {x: -106, y: -57}
+        - {x: -59, y: -52}
+        - {x: -56, y: -144}
+        - {x: -49, y: -160}
+        - {x: -25, y: -160}
+        - {x: 11, y: -157}
+        - {x: 21, y: -156}
+        - {x: 106, y: -28}
+    - name: icon_attack
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1280
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 26, y: 64}
+        - {x: -35, y: 64}
+        - {x: -66, y: 51}
+        - {x: -66, y: 2}
+        - {x: -29, y: -43}
+        - {x: 2, y: -36}
+        - {x: 5, y: -24}
+        - {x: 6, y: -18}
+        - {x: 13, y: -66}
+        - {x: 17, y: -68}
+        - {x: 46, y: -68}
+        - {x: 63, y: -44}
+        - {x: 63, y: 21}
+        - {x: 60, y: 45}
+    - name: icon_life
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1281
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 51, y: 67}
+        - {x: -45, y: 67}
+        - {x: -64, y: 50}
+        - {x: -64, y: -24}
+        - {x: -27, y: -69}
+        - {x: 5, y: -69}
+        - {x: 23, y: -61}
+        - {x: 67, y: -20}
+        - {x: 67, y: 18}
+        - {x: 59, y: 59}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
