@@ -92,7 +92,7 @@ public class CharacterDatabase
 
 			newData.PostLoadProcessing();
 
-			//Debug.Log("Data loaded");
+			Debug.Log("Data loaded");
 
 			return newData;
 		}
@@ -107,7 +107,7 @@ public class CharacterDatabase
 
 		#if UNITY_EDITOR
 
-		//Debug.Log("SavePath: " + RESOURCE);
+		Debug.Log("SavePath: " + RESOURCE);
 
 		JsonWriterSettings settings = new JsonWriterSettings();
 		settings.PrettyPrint = true;

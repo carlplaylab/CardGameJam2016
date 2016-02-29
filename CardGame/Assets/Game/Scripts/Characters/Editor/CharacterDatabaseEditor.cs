@@ -24,7 +24,7 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 	private CharacterData selectedData = null;
 	private string[] elements;
 
-	private void Initialize ()
+	public void Initialize ()
 	{
 		if(initialized)
 			return;
@@ -39,10 +39,6 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		CharacterDatabase charDatabse = CharacterDatabase.Instance;
 	}
 
-	void OnEnable ()
-	{
-		Initialize ();
-	}
 
 	void OnDestroy ()
 	{
@@ -68,7 +64,7 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 
 	protected override bool CreateData ()
 	{
-		Initialize();
+		//Initialize();
 		return true;
 	}
 

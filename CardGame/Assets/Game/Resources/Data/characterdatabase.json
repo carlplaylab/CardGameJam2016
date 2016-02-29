@@ -16,7 +16,7 @@
 				
 				"movement": 1,
 				
-				"life": 3,
+				"life": 5,
 				
 				"elementType": "VOID",
 				
@@ -65,6 +65,69 @@
 				"spawnCost": 5,
 				
 				"characterPrefab": "character_3"
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 4,
+				
+				"name": "Water Solider",
+				
+				"description": "",
+				
+				"attack": 5,
+				
+				"movement": 1,
+				
+				"life": 5,
+				
+				"elementType": "WATER",
+				
+				"spawnCost": 6,
+				
+				"characterPrefab": "character_4"
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 5,
+				
+				"name": "Water Archer",
+				
+				"description": "",
+				
+				"attack": 3,
+				
+				"movement": 3,
+				
+				"life": 3,
+				
+				"elementType": "WATER",
+				
+				"spawnCost": 4,
+				
+				"characterPrefab": "character_5"
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 6,
+				
+				"name": "Water Witch",
+				
+				"description": "",
+				
+				"attack": 3,
+				
+				"movement": 3,
+				
+				"life": 3,
+				
+				"elementType": "WATER",
+				
+				"spawnCost": 3,
+				
+				"characterPrefab": "character_6"
 			}
 		]
 }

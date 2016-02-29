@@ -8,14 +8,15 @@ public class BoardObject : MonoBehaviour
 	public enum BoardObjectState
 	{
 		IDLE = 0,
-		FOCUSED = 1
+		FOCUSED = 1,
+		INACTIVE = 2
 	}
 
 	public int cellId = 0;
 	public ElementType type;
 	public BoardObjectState state;
 	public BoardObjectData data;
-
+	public BoardObjectType objectType;
 
 
 	public virtual void Initialize (BoardObjectData objectData = null)
@@ -89,5 +90,10 @@ public class BoardObject : MonoBehaviour
 			return true;
 		}
 		return false;
+	}
+
+	public virtual bool IsCharacter ()
+	{
+		return objectType == BoardObjectType.CHARACTER;
 	}
 }
