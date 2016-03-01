@@ -7,14 +7,17 @@ public class GameCharacter : BoardObject
 	private CharacterData characterData;
 	private CharacterStats characterStats;
 	private CharacterInfoDisplay infoDisplay;
+	private Animator animator;
 
 	private int teamNumber;
 	private int characterIndex;
+	private bool allowInteraction;
 
 
 	void Awake ()
 	{
 		infoDisplay = this.GetComponentInChildren<CharacterInfoDisplay>();
+		animator = this.GetComponentInChildren<Animator>();
 	}
 		
 
@@ -34,6 +37,23 @@ public class GameCharacter : BoardObject
 		}
 	}
 
+
+	public bool Interaction
+	{
+		get { return allowInteraction; }
+		set 
+		{
+			allowInteraction = value;
+			if(allowInteraction)
+			{
+				animator.Play("character_body_idle");
+			}
+			else
+			{
+				animator.Play("idle");
+			}
+		}
+	}
 
 	public void SetTeam(int team)
 	{

@@ -91,4 +91,12 @@ public class CharacterHandler : MonoBehaviour
 		return null;
 	}
 
+
+	public void SetTeam (int focusedTeam)
+	{
+		for(int i=0; i < characterList.Count; i++)
+		{
+			characterList[i].Interaction = (characterList[i].Team == focusedTeam) ;
+		}
+	}
 }
