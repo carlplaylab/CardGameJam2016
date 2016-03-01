@@ -72,7 +72,8 @@ public class CellHandler : MonoBehaviour
 		{
 			if(targetCell.GetDistanceFromCell(cells[i]) <= range)
 			{
-				cells[i].highlighter.Show(true);
+				bool useGreen = cells[i].IsVacant() || targetCell == cells[i];
+				cells[i].highlighter.Show(useGreen);
 			}
 		}
 	}

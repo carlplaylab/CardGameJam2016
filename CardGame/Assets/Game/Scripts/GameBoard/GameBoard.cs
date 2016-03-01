@@ -4,12 +4,19 @@ using System.Collections;
 public class GameBoard : MonoBehaviour 
 {
 
-	[SerializeField] private int cellAreaId;
-	[SerializeField] private BoardObject boardObject;
+	[SerializeField] public int cellAreaId;
 
 	private CellHandler cellHandler = null;
 	private BoardObject selectedObject = null;
 
+	private int currentTeam = 1;
+
+
+	public int CurrentTeam
+	{
+		get { return currentTeam; }
+		set { currentTeam = Mathf.Clamp(value, 1,2); }
+	}
 
 
 	void Awake ()
@@ -19,10 +26,10 @@ public class GameBoard : MonoBehaviour
 
 	void Start ()
 	{
+		
 		LoadCells();
 		LoadCharacters();
 
-		cellHandler.AssignObjectOn(boardObject, 0, 0);
 		selectedObject = null;
 	}
 
@@ -40,9 +47,6 @@ public class GameBoard : MonoBehaviour
 
 		cellHandler = cellAreaObj.GetComponent<CellHandler>();
 		cellHandler.InitializeForGame();
-
-		if(boardObject != null)
-			boardObject.Initialize();
 	}
 
 
@@ -82,7 +86,9 @@ public class GameBoard : MonoBehaviour
 		}
 		else
 		{
-			ReleaseObject(targetCell);
+			bool actionFinished = ReleaseObject(targetCell);
+			if(actionFinished)
+				ToggleTeam();
 		}
 	}
 
@@ -94,15 +100,25 @@ public class GameBoard : MonoBehaviour
 			return;
 		}
 
-		if(targetCell.ResidingObject == null || !targetCell.ResidingObject.IsMoveable())
+		if(targetCell.IsVacant() || !targetCell.ResidingObject.IsMoveable())
 		{
 			return;
+		}
+
+		if(targetCell.ResidingObject.IsCharacter())
+		{
+			GameCharacter character = (GameCharacter)targetCell.ResidingObject;
+			if(character.Team != CurrentTeam)
+			{
+				return;
+			}
 		}
 
 		selectedObject = targetCell.ResidingObject;
 		selectedObject.OnFocus(true);
 		cellHandler.HighlightAround(targetCell, selectedObject.data.movementSpace);
 	}
+
 
 	public bool ReleaseObject(Cell targetCell)
 	{
@@ -114,40 +130,39 @@ public class GameBoard : MonoBehaviour
 		cellHandler.RemoveHighlights();
 		selectedObject.OnFocus(false);
 
-		bool transferSuccess = false;
+		bool releaseSuccess = false;
 		if(targetCell.IsVacant())
 		{
 			
 			Cell previousCell = cellHandler.GetCell( selectedObject.cellId );
-			transferSuccess = selectedObject.TransferCells(targetCell, previousCell);
+			releaseSuccess = selectedObject.TransferCells(targetCell, previousCell);
+			selectedObject = null;
+			return releaseSuccess;
 		}
 		else
 		{
-			ProcessEncounter(targetCell);
+			releaseSuccess = ProcessEncounter(targetCell);
 			selectedObject = null;
-			return false;
+			return releaseSuccess;
 		}
-
-		selectedObject = null;
-		return transferSuccess;
 	}
 
 
-	public void ProcessEncounter (Cell targetCell)
+	public bool ProcessEncounter (Cell targetCell)
 	{
 		if(targetCell == null || targetCell.IsVacant() || selectedObject == null)
-			return;
+			return false;
 
 		Cell previousCell = cellHandler.GetCell( selectedObject.cellId );
 		if(!selectedObject.AllowMovementOnCell(targetCell, previousCell))
-			return;
+			return false;
 
 		if(!selectedObject.IsCharacter() || !targetCell.ResidingObject.IsCharacter())
-			return;
+			return false;
 
 		GameCharacter selectedChar = (GameCharacter)selectedObject;
 		if(!selectedChar.CheckIfEnemy(targetCell.ResidingObject))
-			return;
+			return false;
 
 		GameCharacter targetChar = (GameCharacter)targetCell.ResidingObject;
 		bool targetDies = targetChar.ReceiveAttack( selectedChar.AttackStrength );
@@ -165,6 +180,18 @@ public class GameBoard : MonoBehaviour
 			selectedObject = null;
 			previousCell.ResidingObject = null;
 		}
+
+		return true;
+	}
+
+
+	public void ToggleTeam ()
+	{
+		currentTeam++;
+		if(CurrentTeam > 2)
+			currentTeam = 1;
+
+		CharacterHandler.Instance.SetTeam( CurrentTeam );
 	}
 
 }
