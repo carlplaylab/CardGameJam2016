@@ -1,15 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameSettings : MonoBehaviour {
+public class GameSettings : MonoBehaviour 
+{
 
-	// Use this for initialization
-	void Start () {
-	
+	public const string PREFS_CELL_ID_KEY = "selected_cell_id";
+
+	[SerializeField] bool testMode = true;
+	[SerializeField] int cellAreaId = 1;
+
+
+	public bool TestMode
+	{
+		get { return testMode; }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+
+	public int CellAreaID
+	{
+		get 
+		{ 
+			int cellId = cellAreaId;
+			if(!TestMode)
+			{
+				cellId = PlayerPrefs.GetInt(PREFS_CELL_ID_KEY, 1);
+			}
+			return cellId;
+		}
 	}
+
 }

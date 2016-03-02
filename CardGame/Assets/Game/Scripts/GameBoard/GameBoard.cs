@@ -4,7 +4,7 @@ using System.Collections;
 public class GameBoard : MonoBehaviour 
 {
 
-	[SerializeField] public int cellAreaId;
+	private GameInput input = null;
 
 	private CellHandler cellHandler = null;
 	private BoardObject selectedObject = null;
@@ -21,60 +21,27 @@ public class GameBoard : MonoBehaviour
 
 	void Awake ()
 	{
+		input = GetComponent<GameInput>();
 	}
 
 
 	void Start ()
 	{
-		
-		LoadCells();
-		LoadCharacters();
-
 		selectedObject = null;
 	}
 
 
-	private void LoadCells ()
+	public bool InputEnable
 	{
-		Object resObj = Resources.Load("Prefabs/GameBoards/cellArea_" + cellAreaId);
-		if(resObj == null)
-			return;
-
-		GameObject cellAreaObj = GameObject.Instantiate(resObj) as GameObject;
-		cellAreaObj.transform.SetParent(this.transform);
-		cellAreaObj.transform.localPosition = Vector3.zero;
-		cellAreaObj.name = "cellHandler";
-
-		cellHandler = cellAreaObj.GetComponent<CellHandler>();
-		cellHandler.InitializeForGame();
+		get { return input.Active; }
+		set { input.Active = value; }
 	}
 
 
-	private void LoadCharacters ()
+	public CellHandler BoardCells
 	{
-		for(int i=1; i <= 6; i ++)
-		{
-			int row = 2;
-			int col = i %3;
-			int team = 1;
-
-			if(i > 3)
-			{
-				team = 2;
-				row = 5;
-			}
-			
-			
-			Cell freeCell = cellHandler.GetCellAt(row, col);
-			if(freeCell != null)
-			{
-				GameCharacter newChar = CharacterHandler.Instance.CreateCharacterOnCell(i, freeCell);
-				newChar.SetTeam(team);
-			}
-			else{
-				Debug.Log("null cell");
-			}
-		}
+		get { return cellHandler; }
+		set { cellHandler = value; }
 	}
 
 

@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GBStateOponentsTurn : MonoBehaviour {
+public class GBStateOponentsTurn : GBState 
+{
 
-	// Use this for initialization
-	void Start () {
-	
+	public override BoardState GetState()
+	{
+		return BoardState.OPONENTS_TURN;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public override void Start (GameBoard board)
+	{
+	}
+
+	public override void Update (GameBoard board)
+	{
+	}
+
+	public override void End (GameBoard board)
+	{
 	}
 }
