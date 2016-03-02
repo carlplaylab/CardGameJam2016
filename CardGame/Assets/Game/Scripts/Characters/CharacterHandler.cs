@@ -22,7 +22,6 @@ public class CharacterHandler : MonoBehaviour
 	void Awake ()
 	{
 		instance = this;
-		Initialize();
 	}
 
 	void OnDestroy ()
@@ -31,7 +30,7 @@ public class CharacterHandler : MonoBehaviour
 	}
 
 
-	private void Initialize ()
+	public void Initialize ()
 	{
 		if(initialize)
 			return;

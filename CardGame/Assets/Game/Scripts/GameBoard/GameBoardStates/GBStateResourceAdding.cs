@@ -1,15 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GBStateResourceAdding : MonoBehaviour {
+public class GBStateResourceAdding : GBState 
+{
+	private bool started = false;
 
-	// Use this for initialization
-	void Start () {
-	
+
+	public override BoardState GetState()
+	{
+		return BoardState.RESOURCE_ADDING;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public override void Start (GameBoard board)
+	{
+		started = true;
 	}
+
+	public override void Update (GameBoard board)
+	{
+		if(started)
+		{
+			GameBoardManager.Instance.SetState(BoardState.PLAYER_TURN);
+			started = false;
+		}
+	}
+
+	public override void End (GameBoard board)
+	{
+	}
+
+
 }

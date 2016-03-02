@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GBStatePlaying : MonoBehaviour {
+public class GBStatePlaying : GBState 
+{
 
-	// Use this for initialization
-	void Start () {
-	
+	public override BoardState GetState()
+	{
+		return BoardState.PLAYER_TURN;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public override void Start (GameBoard board)
+	{
+		board.InputEnable = true;
+		Debug.Log("input enabled");
+	}
+
+	public override void Update (GameBoard board)
+	{
+	}
+
+	public override void End (GameBoard board)
+	{
+		board.InputEnable = false;
 	}
 }
