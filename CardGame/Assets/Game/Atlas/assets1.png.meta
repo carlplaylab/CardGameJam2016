@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ef18375481f7642b8afbfdd9db713cfe
-timeCreated: 1456880555
+timeCreated: 1456913569
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -54,6 +54,8 @@ TextureImporter:
     21300094: char_land_range
     21300096: icon_attack
     21300098: icon_life
+    21300100: button_wood
+    21300102: button_metal
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -1403,6 +1405,55 @@ TextureImporter:
         - {x: 67, y: -20}
         - {x: 67, y: 18}
         - {x: 59, y: 59}
+    - name: button_wood
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1841
+        width: 201
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100.5, y: 68}
+        - {x: 95.5, y: 84}
+        - {x: 74.5, y: 99}
+        - {x: -75.5, y: 99}
+        - {x: -96.5, y: 83}
+        - {x: -100.5, y: 73}
+        - {x: -100.5, y: -77}
+        - {x: -95.5, y: -86}
+        - {x: -76.5, y: -99}
+        - {x: 72.5, y: -99}
+        - {x: 92.5, y: -82}
+        - {x: 98.5, y: -67}
+        - {x: 100.5, y: -50}
+    - name: button_metal
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1633
+        width: 200
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 75}
+        - {x: 92, y: 99}
+        - {x: -75, y: 99}
+        - {x: -79, y: 98}
+        - {x: -94, y: 86}
+        - {x: -100, y: 67}
+        - {x: -100, y: -68}
+        - {x: -97, y: -80}
+        - {x: -75, y: -99}
+        - {x: -43, y: -99}
+        - {x: -15, y: -97}
+        - {x: 64, y: -96}
+        - {x: 74, y: -98}
+        - {x: 100, y: -73}
     outline: []
   spritePackingTag: 
   userData: 
