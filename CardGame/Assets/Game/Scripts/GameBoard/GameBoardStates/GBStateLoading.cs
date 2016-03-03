@@ -45,16 +45,21 @@ public class GBStateLoading : GBState
 			// Insert loading of character reference objects
 			CharacterHandler.Instance.Initialize();
 		}
-		else if(loadingCount == 3)
+		else if(loadingCount == 4)
+		{
+			// Setup UI
+			IngameUIManager.Instance.Initialize();
+		}
+		else if(loadingCount == 5)
 		{
 			// Insert creation of characters in team 1
 			LoadCharacters(board);
 		}
-		else if(loadingCount == 4)
+		else if(loadingCount == 6)
 		{
 			// Insert creation of characters in team 2
 		}
-		else if(loadingCount == 5)
+		else if(loadingCount == 7)
 		{
 			// End loading
 			GameBoardManager.Instance.SetState(BoardState.RESOURCE_ADDING);

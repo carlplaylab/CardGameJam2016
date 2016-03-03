@@ -10,14 +10,22 @@ public class CardView : UIView
 	void Awake ()
 	{
 		EventBroadcaster.Instance.AddObserver(EventNames.UI_SHOW_CHARACTER_CARD, ShowCard);
+		EventBroadcaster.Instance.AddObserver(EventNames.UI_HIDE_CHARACTER_CARD, Hide);
 	}
 
 
 	void OnDestroy ()
 	{
 		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_SHOW_CHARACTER_CARD);
+		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_HIDE_CHARACTER_CARD);
 	}
 
+
+	public override void PostLoadProcess ()
+	{
+		this.gameObject.SetActive(false);
+		SetState(UIViewState.HIDDEN);
+	}
 
 
 	void Update ()
@@ -50,5 +58,6 @@ public class CardView : UIView
 
 		Show();
 	}
+
 
 }

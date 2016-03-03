@@ -67,4 +67,49 @@ public class IngameSpriteCenter
 		spriteList = null;
 		instance = null;
 	}
+
+
+	// SPECIAL FUNCTIONS
+	public Sprite GetIconSprite(ElementType eType)
+	{
+		string sprName = "cell_void";
+		switch(eType)
+		{
+		case ElementType.AIR: 
+			sprName = "icon_air";
+			break;
+		case ElementType.LAND: 
+			sprName = "icon_land";
+			break;
+		case ElementType.WATER: 
+			sprName = "icon_water";
+			break;
+		default:
+			break;
+		}
+
+		return GetSprite(sprName);
+	}
+
+
+	public Sprite GetButtonSprite(ElementType eType)
+	{
+		string sprName = "button_metal";
+		switch(eType)
+		{
+		case ElementType.AIR: 
+			sprName = "button_air";
+			break;
+		case ElementType.LAND: 
+			sprName = "button_wood";
+			break;
+		case ElementType.WATER: 
+			sprName = "button_water";
+			break;
+		default:
+			break;
+		}
+
+		return GetSprite(sprName);
+	}
 }

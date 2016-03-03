@@ -45,4 +45,17 @@ public class UIView : MonoBehaviour
 	{
 		viewState = newState;
 	}
+
+	public virtual void PostLoadProcess ()
+	{
+	}
+
+
+	public bool CheckTouchInRectangle()
+	{
+		RectTransform rect = GetComponent<RectTransform>();
+		Vector2 screenPt = (Vector2)Input.mousePosition;
+		return RectTransformUtility.RectangleContainsScreenPoint(rect, screenPt, IngameUIManager.Instance.UiCamera);
+	}
+
 }

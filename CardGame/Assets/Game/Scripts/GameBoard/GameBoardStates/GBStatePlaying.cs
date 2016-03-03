@@ -23,7 +23,7 @@ public class GBStatePlaying : GBState
 		{
 			Parameters charParams = new Parameters();
 			charParams.PutExtra("character", charId);
-			EventBroadcaster.Instance.PostEvent(EventNames.UI_SHOW_CHARACTER_CARD, charParams);
+			EventBroadcaster.Instance.PostEvent(EventNames.UI_ADD_CHARACTER_CARD, charParams);
 			charId ++;
 			if(charId >= CharacterDatabase.Instance.Count())
 				charId = 1;
