@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
 
 public class GameBoard : MonoBehaviour 
 {
@@ -8,15 +10,9 @@ public class GameBoard : MonoBehaviour
 
 	private CellHandler cellHandler = null;
 	private BoardObject selectedObject = null;
-
 	private int currentTeam = 1;
 
-
-	public int CurrentTeam
-	{
-		get { return currentTeam; }
-		set { currentTeam = Mathf.Clamp(value, 1,2); }
-	}
+	public Action onPlayerMoveEnded = null;
 
 
 	void Awake ()
@@ -54,8 +50,10 @@ public class GameBoard : MonoBehaviour
 		else
 		{
 			bool actionFinished = ReleaseObject(targetCell);
-			if(actionFinished)
-				ToggleTeam();
+			if(actionFinished && onPlayerMoveEnded != null)
+			{
+				onPlayerMoveEnded();
+			}
 		}
 	}
 
@@ -75,7 +73,7 @@ public class GameBoard : MonoBehaviour
 		if(targetCell.ResidingObject.IsCharacter())
 		{
 			GameCharacter character = (GameCharacter)targetCell.ResidingObject;
-			if(character.Team != CurrentTeam)
+			if(character.Team != currentTeam)
 			{
 				return;
 			}
@@ -152,13 +150,10 @@ public class GameBoard : MonoBehaviour
 	}
 
 
-	public void ToggleTeam ()
+	public void SetTeam (int newTeam)
 	{
-		currentTeam++;
-		if(CurrentTeam > 2)
-			currentTeam = 1;
-
-		CharacterHandler.Instance.SetTeam( CurrentTeam );
+		currentTeam = newTeam;
+		CharacterHandler.Instance.SetTeam( newTeam );
 	}
 
 }

@@ -19,6 +19,7 @@ public class GameBoardManager : MonoBehaviour
 	private GBState currentState;
 	private bool initialized = false;
 
+	private int currentTeam = 1;
 
 
 	public GameSettings Settings
@@ -26,13 +27,15 @@ public class GameBoardManager : MonoBehaviour
 		get { return gameSettings; }
 	}
 
+	public int CurrentTeam
+	{
+		get { return currentTeam; }
+	}
+
 
 	void Awake ()
 	{
 		instance = this;
-
-		gameSettings = GetComponentInChildren<GameSettings>();
-		gameBoard = GetComponentInChildren<GameBoard>();
 	}
 
 
@@ -42,10 +45,22 @@ public class GameBoardManager : MonoBehaviour
 	}
 
 
+	void OnDestroy ()
+	{
+		CharacterDatabase.Instance.Destroy();
+		IngameDataCenter.Instance.Destroy();
+		IngameSpriteCenter.Instance.Destroy();
+	}
+
 	private void Initialize ()
 	{
 		if(initialized)
 			return;
+
+		gameSettings = GetComponentInChildren<GameSettings>();
+
+		gameBoard = GetComponentInChildren<GameBoard>();
+		gameBoard.onPlayerMoveEnded = OnPlayerTurnEnd;
 
 		gameStates = new Dictionary<BoardState, GBState>();
 		GBStateLoading loadState = new GBStateLoading();
@@ -88,4 +103,17 @@ public class GameBoardManager : MonoBehaviour
 		if(currentState != null)
 			currentState.Update(gameBoard);
 	}
+
+
+	public void OnPlayerTurnEnd ()
+	{
+		currentTeam++;
+		if(currentTeam > 2)
+		{
+			currentTeam = 1;
+		}
+
+		gameBoard.SetTeam(CurrentTeam);
+	}
+
 }
