@@ -17,6 +17,8 @@ public class CharacterData
 	[SerializeField] public int spawnCost;
 
 	[SerializeField] public string characterPrefab;
+	[SerializeField] public string atlas;
+	[SerializeField] public string cardSprite;
 
 	public CharacterData ()
 	{
@@ -24,6 +26,8 @@ public class CharacterData
 		name = "";
 		description = "";
 		characterPrefab = "";
+		atlas = "atlas1";
+		cardSprite = "char_";
 	}
 }
 

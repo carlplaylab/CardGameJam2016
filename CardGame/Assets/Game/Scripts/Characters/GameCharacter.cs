@@ -26,6 +26,11 @@ public class GameCharacter : BoardObject
 		get { return teamNumber; }
 	}
 
+	public int Index
+	{
+		get { return characterIndex; }
+	}
+
 
 	public int AttackStrength
 	{

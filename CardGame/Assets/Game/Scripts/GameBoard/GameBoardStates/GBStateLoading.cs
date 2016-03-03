@@ -8,7 +8,7 @@ public class GBStateLoading : GBState
 
 
 
-	public virtual BoardState GetState()
+	public override BoardState GetState()
 	{
 		return BoardState.LOADING;
 	}
@@ -23,13 +23,19 @@ public class GBStateLoading : GBState
 
 	public override void Update (GameBoard board)
 	{
+		
 		if(loadingCount == 0)
 		{
+			IngameSpriteCenter.Instance.AddAtlas("assets1");
+			
 			// Insert loading of cells
 			LoadCells(board);
 		}
 		else if(loadingCount == 1)
 		{
+			// Setting up player data
+			IngameDataCenter.Initialize();
+
 			// Insert loading of character data
 			int dataChars = CharacterDatabase.Instance.Count();
 			Debug.Log("all characters : " + dataChars);
@@ -59,6 +65,10 @@ public class GBStateLoading : GBState
 
 	public override void End (GameBoard board)
 	{
+		IngameDataCenter.Instance.Player1.ResourceData.AddResource(ElementType.LAND, 10);
+		IngameDataCenter.Instance.Player2.ResourceData.AddResource(ElementType.LAND, 10);
+
+		IngameDataCenter.Instance.Player1.ResourceData.UpdateUI();
 	}
 
 

@@ -37,6 +37,7 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 
 		// making sure it loads
 		CharacterDatabase charDatabse = CharacterDatabase.Instance;
+		Debug.Log("character database, loaded chars : " + charDatabse.Count());
 	}
 
 
@@ -134,6 +135,8 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		data.description = EditorGUILayout.TextArea(data.description, GUILayout.Height(40f));
 		EditorGUILayout.EndHorizontal();
 		data.characterPrefab = EditorGUILayout.TextField("Prefab", data.characterPrefab);
+		data.atlas = EditorGUILayout.TextField("Atlas", data.atlas);
+		data.cardSprite = EditorGUILayout.TextField("Card Sprite", data.cardSprite);
 
 		GUILayout.Space(10f);
 		GUILayout.Label("Stats: ");

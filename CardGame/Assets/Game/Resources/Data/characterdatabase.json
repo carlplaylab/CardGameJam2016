@@ -18,11 +18,15 @@
 				
 				"life": 5,
 				
-				"elementType": "VOID",
+				"elementType": "LAND",
 				
 				"spawnCost": 2,
 				
-				"characterPrefab": "character_1"
+				"characterPrefab": "character_1",
+				
+				"atlas": "assets1",
+				
+				"cardSprite": "char_land_soldier"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -31,7 +35,7 @@
 				
 				"name": "Land Archer",
 				
-				"description": "",
+				"description": "water archer",
 				
 				"attack": 1,
 				
@@ -39,11 +43,15 @@
 				
 				"life": 2,
 				
-				"elementType": "VOID",
+				"elementType": "LAND",
 				
 				"spawnCost": 3,
 				
-				"characterPrefab": "character_2"
+				"characterPrefab": "character_2",
+				
+				"atlas": "assets1",
+				
+				"cardSprite": "char_land_range"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -52,7 +60,7 @@
 				
 				"name": "Land Witch",
 				
-				"description": "",
+				"description": "water witch",
 				
 				"attack": 3,
 				
@@ -60,11 +68,15 @@
 				
 				"life": 3,
 				
-				"elementType": "VOID",
+				"elementType": "LAND",
 				
 				"spawnCost": 5,
 				
-				"characterPrefab": "character_3"
+				"characterPrefab": "character_3",
+				
+				"atlas": "assets1",
+				
+				"cardSprite": "char_land_witch"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -73,7 +85,7 @@
 				
 				"name": "Water Solider",
 				
-				"description": "",
+				"description": "char_water_soldier",
 				
 				"attack": 5,
 				
@@ -85,7 +97,11 @@
 				
 				"spawnCost": 6,
 				
-				"characterPrefab": "character_4"
+				"characterPrefab": "character_4",
+				
+				"atlas": "assets1",
+				
+				"cardSprite": "char_water_soldier"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -94,7 +110,7 @@
 				
 				"name": "Water Archer",
 				
-				"description": "",
+				"description": "char_water_soldier",
 				
 				"attack": 3,
 				
@@ -106,7 +122,11 @@
 				
 				"spawnCost": 4,
 				
-				"characterPrefab": "character_5"
+				"characterPrefab": "character_5",
+				
+				"atlas": "assets1",
+				
+				"cardSprite": "char_water_range"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -115,7 +135,7 @@
 				
 				"name": "Water Witch",
 				
-				"description": "",
+				"description": "char_water_soldier",
 				
 				"attack": 3,
 				
@@ -127,7 +147,11 @@
 				
 				"spawnCost": 3,
 				
-				"characterPrefab": "character_6"
+				"characterPrefab": "character_6",
+				
+				"atlas": "atlas1",
+				
+				"cardSprite": "char_water_witch"
 			}
 		]
 }

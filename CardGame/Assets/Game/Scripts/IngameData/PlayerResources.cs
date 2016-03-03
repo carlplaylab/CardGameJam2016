@@ -53,13 +53,37 @@ public class PlayerResources
 		get { return GetResource(ElementType.LAND); }
 	}
 
+
 	public int AirResources
 	{
 		get { return GetResource(ElementType.AIR); }
 	}
 
+
 	public int WaterResources
 	{
 		get { return GetResource(ElementType.WATER); }
 	}
+
+
+	public void UpdateUI()
+	{
+		Parameters elemParams = new Parameters();
+		elemParams.PutExtra("air", AirResources);
+		elemParams.PutExtra("land", LandResources);
+		elemParams.PutExtra("water", WaterResources);
+		EventBroadcaster.Instance.PostEvent(EventNames.UI_RESOURCE_COUNTERS_UPDATE, elemParams);
+	}
+
+
+	public string GetStats ()
+	{
+		string stats = "Elements: ";
+		foreach(ElementType etype in resourceCounter.Keys)
+		{
+			stats += etype.ToString() + " " + resourceCounter[etype] + ", ";
+		}
+		return stats;
+	}
+
 }
