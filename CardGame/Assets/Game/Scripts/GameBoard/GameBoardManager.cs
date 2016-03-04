@@ -116,4 +116,15 @@ public class GameBoardManager : MonoBehaviour
 		gameBoard.SetTeam(CurrentTeam);
 	}
 
+
+	public void StartDragCardOnBoard( int charID )
+	{
+		currentState.StartDragCardOnBoard(gameBoard, charID);
+	}
+
+	public void EndDragCardOnBoard( int charID )
+	{
+		currentState.EndDragCardOnBoard(gameBoard, charID);
+	}
+
 }

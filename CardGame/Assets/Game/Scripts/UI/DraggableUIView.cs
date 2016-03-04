@@ -12,8 +12,7 @@ public class DraggableUIView : UIView
 
 	private bool isFocused = false;
 	private bool isDragged = false;
-	private Vector3 preDragPosition;
-	private RectTransform rect;
+	protected Vector3 preDragPosition;
 
 
 	public bool IsFocused
