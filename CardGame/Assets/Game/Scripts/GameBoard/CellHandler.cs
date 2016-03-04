@@ -6,8 +6,19 @@ public class CellHandler : MonoBehaviour
 {
 
 	private List<Cell> cells;
-	private List<List<Cell>> cellMatrix;
+	private List<List<Cell>> cellMatrix; // row, col
+	private int maxCols = 0;
+	private int maxRows = 0;
 
+	public int Rows
+	{
+		get{ return maxRows; }
+	}
+
+	public int Cols
+	{
+		get{ return maxCols; }
+	}
 
 	public void InitializeForGame ()
 	{
@@ -40,6 +51,10 @@ public class CellHandler : MonoBehaviour
 			List<Cell> rowCells = cellMatrix[cells[i].row];
 			rowCells[cells[i].col] = cells[i];
 		}
+
+
+		maxCols = maxCol;
+		maxRows = maxRow;
 	}
 
 	public void SetCells(List<Cell> newCells)
@@ -74,6 +89,26 @@ public class CellHandler : MonoBehaviour
 			{
 				bool useGreen = cells[i].IsVacant() || targetCell == cells[i];
 				cells[i].highlighter.Show(useGreen);
+			}
+		}
+	}
+
+	public void HiglightArea(Rect cellRect)
+	{
+		int minCol = (int)cellRect.xMin;
+		int minrow = (int)cellRect.yMin;
+		int maxCol = (int)cellRect.xMax;
+		int maxRow = (int)cellRect.yMax;
+
+		for(int i=0; i < cells.Count; i++)
+		{
+			int row = cells[i].row;
+			int col = cells[i].col;
+
+			if(minrow <= row && row <= maxRow && 
+				minCol <= col && col <= maxCol)
+			{
+				cells[i].highlighter.Show( cells[i].IsVacant() );
 			}
 		}
 	}

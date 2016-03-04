@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class CardSelectionView : UIView 
 {
 	private const int CARD_LIMIT = 5;
@@ -11,7 +12,8 @@ public class CardSelectionView : UIView
 	[SerializeField] private Vector3 startPos;
 
 	private List<SelectableCardView> cardViewList;
-	private int selectedCard = -1;
+	private SelectableCardView selectedCard;
+	private bool mouseDown = false;
 
 
 	void Awake ()
@@ -31,6 +33,23 @@ public class CardSelectionView : UIView
 		if(Input.GetMouseButtonDown(0))
 		{
 			ReleaseSelectedCard();
+		}
+		else if(Input.GetMouseButtonUp(0))
+		{
+			mouseDown = false;
+		}
+
+		if(mouseDown && selectedCard != null)
+		{
+			bool inUI = CheckTouchInRectangle();
+			bool statusChanged = selectedCard.SetUIStatus( inUI );
+			if(statusChanged)
+			{
+				if(inUI)
+					GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+				else
+					GameBoardManager.Instance.StartDragCardOnBoard(selectedCard.CharacterID);
+			}
 		}
 	}
 
@@ -78,17 +97,31 @@ public class CardSelectionView : UIView
 	public void OnCardSelected(SelectableCardView card)
 	{
 		ShowCard(card.CharacterID);
-		selectedCard = card.id;
+		selectedCard = card;
 	}
 
 
 	public void OnCardDrag(SelectableCardView card)
 	{
-		if(selectedCard >= 0)
+		if(selectedCard != null)
 		{
 			EventBroadcaster.Instance.PostEvent(EventNames.UI_HIDE_CHARACTER_CARD);
+			if(selectedCard != card)
+			{
+				ReleaseSelectedCard();
+			}
 		}
-		selectedCard = card.id;
+		selectedCard = card;
+		mouseDown = (selectedCard != null);
+	}
+
+
+	public void OnCardDragEnd(SelectableCardView card)
+	{
+		if(selectedCard != null)
+		{
+			GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+		}
 	}
 
 
@@ -113,19 +146,15 @@ public class CardSelectionView : UIView
 
 	private void ReleaseSelectedCard()
 	{
-		if(selectedCard < 0)
+		if(selectedCard == null)
 			return;
 		
-		SelectableCardView card = GetCard(selectedCard);
-		if(card == null)
-			return;
-		
-		bool inCard = card.CheckTouchInRectangle();
+		bool inCard = selectedCard.CheckTouchInRectangle();
 		if(inCard)
 			return;
 
-		card.SetFocused(false);
-		card.OnFocusEffect();
-		selectedCard = -1;
+		selectedCard.SetFocused(false);
+		selectedCard.OnFocusEffect();
+		selectedCard = null;
 	}
 }

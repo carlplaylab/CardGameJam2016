@@ -32,5 +32,15 @@ public class GBState
 	{
 	}
 
+	#region CharacterFunctions
 
+	public virtual void StartDragCardOnBoard (GameBoard board, int charID)
+	{
+	}
+
+	public virtual void EndDragCardOnBoard (GameBoard board, int charID)
+	{
+	}
+
+	#endregion
 }

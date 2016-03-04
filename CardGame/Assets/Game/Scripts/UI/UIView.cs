@@ -13,6 +13,7 @@ public enum UIViewState
 public class UIView : MonoBehaviour 
 {
 	protected UIViewState viewState;
+	protected RectTransform rect;
 
 
 	public UIViewState ViewState
@@ -53,7 +54,9 @@ public class UIView : MonoBehaviour
 
 	public bool CheckTouchInRectangle()
 	{
-		RectTransform rect = GetComponent<RectTransform>();
+		if(rect == null)
+			rect = GetComponent<RectTransform>();
+		
 		Vector2 screenPt = (Vector2)Input.mousePosition;
 		return RectTransformUtility.RectangleContainsScreenPoint(rect, screenPt, IngameUIManager.Instance.UiCamera);
 	}

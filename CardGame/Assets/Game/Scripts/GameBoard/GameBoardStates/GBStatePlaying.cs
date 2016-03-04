@@ -34,4 +34,35 @@ public class GBStatePlaying : GBState
 	{
 		board.InputEnable = false;
 	}
+
+
+	#region CharacterFunctions
+
+	public override void StartDragCardOnBoard (GameBoard board, int charID)
+	{
+		CharacterData data = CharacterDatabase.Instance.GetData(charId);
+		if(data == null)
+			return;
+		
+		int focusedRow = 0;
+		if(GameBoardManager.Instance.CurrentTeam == 2)
+			focusedRow = board.BoardCells.Rows;
+
+		int maxRow = Mathf.Min(focusedRow + 1, board.BoardCells.Rows);
+		int minRow = Mathf.Max(focusedRow - 1, 0);
+
+		int maxCol = board.BoardCells.Cols;
+		int minCol = 0;
+
+		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
+
+		board.BoardCells.HiglightArea(targetRect);
+	}
+
+	public override void EndDragCardOnBoard (GameBoard board, int charID)
+	{
+		board.BoardCells.RemoveHighlights();
+	}
+
+	#endregion
 }
