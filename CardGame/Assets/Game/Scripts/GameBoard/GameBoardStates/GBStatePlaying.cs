@@ -55,13 +55,14 @@ public class GBStatePlaying : GBState
 		int minCol = 0;
 
 		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
-
 		board.BoardCells.HiglightArea(targetRect);
 	}
 
 	public override void EndDragCardOnBoard (GameBoard board, int charID)
 	{
 		board.BoardCells.RemoveHighlights();
+
+
 	}
 
 	#endregion

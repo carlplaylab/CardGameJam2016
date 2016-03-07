@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameCharacter : BoardObject 
 {
+	[SerializeField] private SpriteRenderer characterSprite; 
+	[SerializeField] private SpriteRenderer baseSprite; 
 
 	private CharacterData characterData;
 	private CharacterStats characterStats;
@@ -72,6 +74,14 @@ public class GameCharacter : BoardObject
 		characterStats = new CharacterStats(data);
 		teamNumber = team;
 		characterIndex = charIndex;
+
+		Sprite csprite = IngameSpriteCenter.Instance.GetSprite(data.ingameSprite);
+		if(csprite != null)
+			characterSprite.sprite = csprite;
+
+		Sprite bsprite = IngameSpriteCenter.Instance.GetBaseSprite(data.elementType);
+		if(bsprite != null)
+			baseSprite.sprite = bsprite;
 
 		Initialize();
 		UpdateStats();

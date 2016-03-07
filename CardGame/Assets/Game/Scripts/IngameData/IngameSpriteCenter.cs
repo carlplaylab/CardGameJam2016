@@ -112,4 +112,25 @@ public class IngameSpriteCenter
 
 		return GetSprite(sprName);
 	}
+
+	public Sprite GetBaseSprite(ElementType eType)
+	{
+		string sprName = "button_metal";
+		switch(eType)
+		{
+		case ElementType.AIR: 
+			sprName = "button_air";
+			break;
+		case ElementType.LAND: 
+			sprName = "button_wood";
+			break;
+		case ElementType.WATER: 
+			sprName = "button_water";
+			break;
+		default:
+			break;
+		}
+
+		return GetSprite(sprName);
+	}
 }

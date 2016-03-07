@@ -19,6 +19,7 @@ public class CharacterData
 	[SerializeField] public string characterPrefab;
 	[SerializeField] public string atlas;
 	[SerializeField] public string cardSprite;
+	[SerializeField] public string ingameSprite;
 
 	public CharacterData ()
 	{
@@ -28,6 +29,7 @@ public class CharacterData
 		characterPrefab = "";
 		atlas = "atlas1";
 		cardSprite = "char_";
+		ingameSprite = "char_";
 	}
 }
 
