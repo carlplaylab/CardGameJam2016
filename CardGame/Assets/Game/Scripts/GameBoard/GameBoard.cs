@@ -156,4 +156,16 @@ public class GameBoard : MonoBehaviour
 		CharacterHandler.Instance.SetTeam( newTeam );
 	}
 
+	// instantly checks cell using gameInput
+	public Cell GetHoveredCell ()
+	{
+		GameObject go = input.GetHoveredOjbect();
+		if(go != null)
+		{
+			Cell cell = go.GetComponent<Cell>();
+			return cell;
+		}
+		return null;
+	}
+
 }

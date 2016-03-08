@@ -22,6 +22,8 @@ public class IngameDataCenter
 		PlayerIngameData player2 = new PlayerIngameData(2);
 		dataList.Add(player1);
 		dataList.Add(player2);
+
+		player1.ResourceData.AddResource(ElementType.LAND, 10);
 	}
 
 

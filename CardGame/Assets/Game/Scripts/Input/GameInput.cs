@@ -264,6 +264,11 @@ public class GameInput : MonoBehaviour
 			// previously pressed object is released
 			Notify(currentTouch.pressed, ON_PRESS, false);
 
+			if(currentTouch.dragged == null && currentTouch.pressed == null)
+			{
+				Notify(hoveredObject, ON_PRESS, false);
+			}
+
 			if( Mathf.Abs(currentTouch.totalDelta.sqrMagnitude) < CLICK_SENSITIVITY && 
 				currentTouch.pressed == hoveredObject )
 			{
@@ -296,6 +301,13 @@ public class GameInput : MonoBehaviour
 
 		currentTouch.dragStarted = (hoveredObject != null);
 		currentTouch.current = hoveredObject;
+	}
+
+
+	public GameObject GetHoveredOjbect ()
+	{
+		Raycast(Input.mousePosition, gameLayerMask, true);
+		return hoveredObject;
 	}
 
 }

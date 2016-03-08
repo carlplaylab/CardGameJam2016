@@ -75,6 +75,7 @@ public class GameCharacter : BoardObject
 		teamNumber = team;
 		characterIndex = charIndex;
 
+		Debug.Log("Sprite : " + data.ingameSprite);
 		Sprite csprite = IngameSpriteCenter.Instance.GetSprite(data.ingameSprite);
 		if(csprite != null)
 			characterSprite.sprite = csprite;

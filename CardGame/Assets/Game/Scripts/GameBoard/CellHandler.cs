@@ -146,4 +146,26 @@ public class CellHandler : MonoBehaviour
 
 	}
 
+
+	// Unlike GetHoveredCell() of GameBoard, this just checks cells status, not using GameInput
+	public virtual Cell GetHoveredCell ()
+	{
+		for(int i=0; i < cells.Count; i++)
+		{
+			if(cells[i].CheckHovered())
+				return cells[i];
+		}
+		return null;
+	}
+
+
+	public virtual void HighlightHoveredCell()
+	{
+		Cell hoveredCell = GetHoveredCell();
+		if(hoveredCell != null)
+		{
+			hoveredCell.highlighter.Show( hoveredCell.IsVacant() );
+		}
+	}
+
 }
