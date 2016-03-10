@@ -4,16 +4,15 @@ using System.Collections;
 
 public class Cell : GameTouchElement 
 {
-	[SerializeField] private SpriteRenderer background;
 	[SerializeField] private SpriteRenderer foreground;
 
 	public int id;
 	public int row;
 	public int col;
 	public ElementType type;
-	public CellHighlight highlighter;
 
 	private BoardObject resider;
+	private CellHighlight highlighter;
 
 	public int rowDifference = 0;
 	public int colDifference = 0;
@@ -88,6 +87,30 @@ public class Cell : GameTouchElement
 	}
 
 
+	public bool IsWalkable ()
+	{
+		return (type != ElementType.VOID);
+	}
 
 
+	public void Show ()
+	{
+		if(IsWalkable())
+			foreground.gameObject.SetActive(true);
+	}
+
+
+	public void Hide ()
+	{
+		foreground.gameObject.SetActive(false);
+	}
+
+
+	public void HighlightCell(bool show, bool useGreen = true)
+	{
+		if(show && IsWalkable())
+			highlighter.Show(useGreen);
+		else
+			highlighter.Hide();
+	}
 }

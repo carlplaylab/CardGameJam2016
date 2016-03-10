@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 87de841096ca340e081bb367675bd3de
+timeCreated: 1457567768
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: background_1
+    21300002: background_2
+    21300004: base
+    21300006: base_air
+    21300008: base_land
+    21300010: base_water
+    21300012: cell_green
+    21300014: cell_land
+    21300016: cell_red
+    21300018: cell_water
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: background_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 910
+        width: 640
+        height: 1136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -320, y: 568}
+        - {x: -320, y: -568}
+        - {x: 320, y: -568}
+        - {x: 320, y: 568}
+    - name: background_2
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 910
+        width: 640
+        height: 1136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -320, y: 568}
+        - {x: -320, y: -568}
+        - {x: 320, y: -568}
+        - {x: 320, y: 568}
+    - name: base
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 708
+        width: 236
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 90, y: 79}
+        - {x: 42, y: 100}
+        - {x: -39, y: 100}
+        - {x: -80, y: 82}
+        - {x: -108, y: 55}
+        - {x: -118, y: 31}
+        - {x: -118, y: -27}
+        - {x: -117, y: -33}
+        - {x: -106, y: -57}
+        - {x: -59, y: -95}
+        - {x: -44, y: -100}
+        - {x: 39, y: -100}
+        - {x: 50, y: -99}
+        - {x: 83, y: -85}
+        - {x: 118, y: -38}
+        - {x: 118, y: 32}
+    - name: base_air
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 544
+        width: 200
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -43, y: 81}
+        - {x: -85, y: 70}
+        - {x: -100, y: 33}
+        - {x: -100, y: -33}
+        - {x: -82, y: -69}
+        - {x: -43, y: -81}
+        - {x: 56, y: -81}
+        - {x: 100, y: -49}
+        - {x: 100, y: 46}
+        - {x: 56, y: 81}
+    - name: base_land
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 380
+        width: 200
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 46, y: 81}
+        - {x: -47, y: 81}
+        - {x: -87, y: 71}
+        - {x: -100, y: 37}
+        - {x: -100, y: -37}
+        - {x: -60, y: -81}
+        - {x: 44, y: -81}
+        - {x: 100, y: -47}
+        - {x: 100, y: 38}
+        - {x: 96, y: 48}
+    - name: base_water
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 216
+        width: 200
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 54, y: 81}
+        - {x: -52, y: 81}
+        - {x: -92, y: 46}
+        - {x: -100, y: 32}
+        - {x: -100, y: -52}
+        - {x: -43, y: -81}
+        - {x: 37, y: -81}
+        - {x: 67, y: -76}
+        - {x: 100, y: -40}
+        - {x: 100, y: 32}
+        - {x: 95, y: 53}
+    - name: cell_green
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 270
+        width: 213
+        height: 208
+      alignment: 9
+      pivot: {x: 0.5023474, y: 0.48557693}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 102, y: 100}
+        - {x: 101, y: 102}
+        - {x: 99, y: 102}
+        - {x: 97, y: 105}
+        - {x: 92, y: 107}
+        - {x: -92, y: 107}
+        - {x: -99, y: 104}
+        - {x: -104, y: 98}
+        - {x: -106, y: 96}
+        - {x: -107, y: 93}
+        - {x: -107, y: -87}
+        - {x: 106, y: -87}
+        - {x: 106, y: 94}
+        - {x: 105, y: 97}
+    - name: cell_land
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 695
+        width: 213
+        height: 213
+      alignment: 9
+      pivot: {x: 0.5023474, y: 0.4976526}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 106, y: 94}
+        - {x: 105, y: 97}
+        - {x: 101, y: 102}
+        - {x: 97, y: 105}
+        - {x: 92, y: 107}
+        - {x: -92, y: 107}
+        - {x: -99, y: 104}
+        - {x: -104, y: 98}
+        - {x: -106, y: 96}
+        - {x: -107, y: 93}
+        - {x: -107, y: -96}
+        - {x: -97, y: -105}
+        - {x: -95, y: -106}
+        - {x: 94, y: -106}
+        - {x: 97, y: -105}
+        - {x: 105, y: -97}
+        - {x: 106, y: -94}
+    - name: cell_red
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 61
+        width: 213
+        height: 207
+      alignment: 9
+      pivot: {x: 0.5023474, y: 0.4830918}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 102, y: 100}
+        - {x: 101, y: 102}
+        - {x: 99, y: 102}
+        - {x: 97, y: 105}
+        - {x: 92, y: 107}
+        - {x: -92, y: 107}
+        - {x: -99, y: 104}
+        - {x: -104, y: 98}
+        - {x: -106, y: 96}
+        - {x: -107, y: 93}
+        - {x: -107, y: -84}
+        - {x: 106, y: -84}
+        - {x: 106, y: 94}
+        - {x: 105, y: 97}
+    - name: cell_water
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 480
+        width: 213
+        height: 213
+      alignment: 9
+      pivot: {x: 0.5023474, y: 0.4976526}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 106, y: 94}
+        - {x: 105, y: 97}
+        - {x: 101, y: 102}
+        - {x: 97, y: 105}
+        - {x: 92, y: 107}
+        - {x: -92, y: 107}
+        - {x: -99, y: 104}
+        - {x: -104, y: 98}
+        - {x: -106, y: 96}
+        - {x: -107, y: 93}
+        - {x: -107, y: -96}
+        - {x: -97, y: -105}
+        - {x: -95, y: -106}
+        - {x: 94, y: -106}
+        - {x: 97, y: -105}
+        - {x: 105, y: -97}
+        - {x: 106, y: -94}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

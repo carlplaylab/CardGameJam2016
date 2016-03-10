@@ -5,7 +5,7 @@ using System.Collections;
 
 public class GameTouchElement : MonoBehaviour 
 {
-	protected bool ALLOW_LOG = true;	// for testing
+	protected bool ALLOW_LOG = false;	// for testing
 	protected bool hovered = false;
 	
 	public virtual void OnClick () 

@@ -45,12 +45,12 @@ public class GBStatePlaying : GBState
 			Cell newHoveredCell = board.BoardCells.GetHoveredCell();
 			if(hoveredCell != null)
 			{
-				hoveredCell.highlighter.Hide();
+				hoveredCell.HighlightCell(false);
 			}
 			if(hoveredCell != newHoveredCell && newHoveredCell != null)
 			{
 				hoveredCell = newHoveredCell;
-				hoveredCell.highlighter.Show(hoveredCell.IsVacant());
+				hoveredCell.HighlightCell(true, hoveredCell.IsVacant());
 			}
 
 			newHoveredCell = newHoveredCell;
@@ -87,7 +87,7 @@ public class GBStatePlaying : GBState
 
 	    hoveredCell = board.GetHoveredCell();	// instantly checks cell using gameInput
 		if(hoveredCell != null)
-			hoveredCell.highlighter.Show( hoveredCell.IsVacant() );
+			hoveredCell.HighlightCell(true, hoveredCell.IsVacant() );
 
 		playState = PlayState.CARD_DRAG;
 
@@ -101,13 +101,9 @@ public class GBStatePlaying : GBState
 		Cell newHoveredCell = board.GetHoveredCell(); // instantly checks cell using gameInput
 		if(hoveredCell != null)
 		{
-			if(newHoveredCell == null)
+			if(newHoveredCell == null || newHoveredCell != hoveredCell)
 			{
-				hoveredCell.highlighter.Hide();
-			}
-			else if(newHoveredCell != hoveredCell)
-			{
-				hoveredCell.highlighter.Hide();
+				hoveredCell.HighlightCell(false);
 			}
 		}
 

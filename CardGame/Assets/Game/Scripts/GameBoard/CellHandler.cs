@@ -55,6 +55,8 @@ public class CellHandler : MonoBehaviour
 
 		maxCols = maxCol;
 		maxRows = maxRow;
+
+		SetCellsVisible(false);
 	}
 
 	public void SetCells(List<Cell> newCells)
@@ -73,12 +75,31 @@ public class CellHandler : MonoBehaviour
 		}
 	}
 
+	public void SetCellsVisible(bool visible)
+	{
+		if(visible)
+		{
+			for(int i=0; i < cells.Count; i++)
+			{
+				cells[i].Show();
+			}
+		}
+		else
+		{
+			for(int i=0; i < cells.Count; i++)
+			{
+				cells[i].Hide();
+			}
+		}
+	}
+
 	public void RemoveHighlights ()
 	{
 		for(int i=0; i < cells.Count; i++)
 		{
-			cells[i].highlighter.Hide();
+			cells[i].HighlightCell(false);
 		}
+		SetCellsVisible(false);
 	}
 
 	public void HighlightAround(Cell targetCell, int range)
@@ -88,9 +109,10 @@ public class CellHandler : MonoBehaviour
 			if(targetCell.GetDistanceFromCell(cells[i]) <= range)
 			{
 				bool useGreen = cells[i].IsVacant() || targetCell == cells[i];
-				cells[i].highlighter.Show(useGreen);
+				cells[i].HighlightCell(true, useGreen);
 			}
 		}
+		SetCellsVisible(true);
 	}
 
 	public void HiglightArea(Rect cellRect)
@@ -108,9 +130,11 @@ public class CellHandler : MonoBehaviour
 			if(minrow <= row && row <= maxRow && 
 				minCol <= col && col <= maxCol)
 			{
-				cells[i].highlighter.Show( cells[i].IsVacant() );
+				cells[i].HighlightCell(true, cells[i].IsVacant() );
 			}
 		}
+
+		SetCellsVisible(true);
 	}
 
 	public Cell GetCell(int id)
@@ -164,7 +188,7 @@ public class CellHandler : MonoBehaviour
 		Cell hoveredCell = GetHoveredCell();
 		if(hoveredCell != null)
 		{
-			hoveredCell.highlighter.Show( hoveredCell.IsVacant() );
+			hoveredCell.HighlightCell(true, hoveredCell.IsVacant() );
 		}
 	}
 
