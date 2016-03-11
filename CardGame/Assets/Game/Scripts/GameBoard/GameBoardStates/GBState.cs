@@ -38,8 +38,9 @@ public class GBState
 	{
 	}
 
-	public virtual void EndDragCardOnBoard (GameBoard board, int charID)
+	public virtual bool EndDragCardOnBoard (GameBoard board, int charID)
 	{
+		return false;
 	}
 
 	#endregion

@@ -112,4 +112,25 @@ public class IngameSpriteCenter
 
 		return GetSprite(sprName);
 	}
+
+	public Sprite GetBaseSprite(ElementType eType)
+	{
+		string sprName = "base_land";
+		switch(eType)
+		{
+		case ElementType.AIR: 
+			sprName = "base_air";
+			break;
+		case ElementType.LAND: 
+			sprName = "base_land";
+			break;
+		case ElementType.WATER: 
+			sprName = "base_water";
+			break;
+		default:
+			break;
+		}
+
+		return GetSprite(sprName);
+	}
 }

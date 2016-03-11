@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 
 public class GameBoard : MonoBehaviour 
 {
 
-	private GameInput input = null;
+	[SerializeField] private CharacterTeam[] teams;
 
+	private GameInput input = null;
 	private CellHandler cellHandler = null;
 	private BoardObject selectedObject = null;
 	private int currentTeam = 1;
@@ -18,6 +20,10 @@ public class GameBoard : MonoBehaviour
 	void Awake ()
 	{
 		input = GetComponent<GameInput>();
+
+		teams = new CharacterTeam[2];
+		teams[0] = new CharacterTeam(1);
+		teams[1] = new CharacterTeam(2) ;
 	}
 
 
@@ -38,6 +44,23 @@ public class GameBoard : MonoBehaviour
 	{
 		get { return cellHandler; }
 		set { cellHandler = value; }
+	}
+
+
+	public CharacterTeam GetTeam(int teamNumber)
+	{
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, teams.Length-1);
+		return teams[teamIdx];
+	}
+
+	public CharacterTeam GetOpposingTeam()
+	{
+		return GetTeam( (currentTeam+1)%(teams.Length) );
+	}
+
+	public CharacterTeam GetCurrentTeam()
+	{
+		return GetTeam( currentTeam );
 	}
 
 
@@ -96,7 +119,13 @@ public class GameBoard : MonoBehaviour
 		selectedObject.OnFocus(false);
 
 		bool releaseSuccess = false;
-		if(targetCell.IsVacant())
+
+		if(!targetCell.IsWalkable())
+		{
+			selectedObject = null;
+			return releaseSuccess;
+		}
+		else if(targetCell.IsVacant())
 		{
 			
 			Cell previousCell = cellHandler.GetCell( selectedObject.cellId );
@@ -135,13 +164,14 @@ public class GameBoard : MonoBehaviour
 
 		if(targetDies)
 		{
-			targetChar.TriggerDie();
+			GetOpposingTeam().KillGameCharacter(targetChar);
+
 			targetCell.ResidingObject = null;
 		}
 
 		if(selectedDies)
 		{
-			selectedChar.TriggerDie();
+			GetCurrentTeam().KillGameCharacter(selectedChar);
 			selectedObject = null;
 			previousCell.ResidingObject = null;
 		}
@@ -154,6 +184,18 @@ public class GameBoard : MonoBehaviour
 	{
 		currentTeam = newTeam;
 		CharacterHandler.Instance.SetTeam( newTeam );
+	}
+
+	// instantly checks cell using gameInput
+	public Cell GetHoveredCell ()
+	{
+		GameObject go = input.GetHoveredOjbect();
+		if(go != null)
+		{
+			Cell cell = go.GetComponent<Cell>();
+			return cell;
+		}
+		return null;
 	}
 
 }

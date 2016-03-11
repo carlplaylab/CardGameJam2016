@@ -137,6 +137,7 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		data.characterPrefab = EditorGUILayout.TextField("Prefab", data.characterPrefab);
 		data.atlas = EditorGUILayout.TextField("Atlas", data.atlas);
 		data.cardSprite = EditorGUILayout.TextField("Card Sprite", data.cardSprite);
+		data.ingameSprite = EditorGUILayout.TextField("Ingame Sprite", data.ingameSprite);
 
 		GUILayout.Space(10f);
 		GUILayout.Label("Stats: ");

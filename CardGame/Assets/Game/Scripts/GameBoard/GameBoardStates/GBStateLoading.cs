@@ -27,6 +27,7 @@ public class GBStateLoading : GBState
 		if(loadingCount == 0)
 		{
 			IngameSpriteCenter.Instance.AddAtlas("assets1");
+			IngameSpriteCenter.Instance.AddAtlas("main_assets");
 			
 			// Insert loading of cells
 			LoadCells(board);
@@ -38,7 +39,7 @@ public class GBStateLoading : GBState
 
 			// Insert loading of character data
 			int dataChars = CharacterDatabase.Instance.Count();
-			Debug.Log("all characters : " + dataChars);
+			//Debug.Log("all characters : " + dataChars);
 		}
 		else if(loadingCount == 2)
 		{

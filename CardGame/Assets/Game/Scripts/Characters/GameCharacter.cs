@@ -3,6 +3,10 @@ using System.Collections;
 
 public class GameCharacter : BoardObject 
 {
+	[SerializeField] private SpriteRenderer characterSprite; 
+	[SerializeField] private SpriteRenderer baseSprite; 
+	[SerializeField] private SpriteRenderer baseSupportSprite; 
+	[SerializeField] private GameObject mainBody; 
 
 	private CharacterData characterData;
 	private CharacterStats characterStats;
@@ -10,6 +14,7 @@ public class GameCharacter : BoardObject
 	private Animator animator;
 
 	private int teamNumber;
+	private int teamIndex;
 	private int characterIndex;
 	private bool allowInteraction;
 
@@ -26,12 +31,16 @@ public class GameCharacter : BoardObject
 		get { return teamNumber; }
 	}
 
-	public int Index
+	public int Index	// on overall character list
 	{
 		get { return characterIndex; }
 	}
 
-
+	public int TeamIndex	// on overall character list
+	{
+		get { return teamIndex; }
+	}
+		
 	public int AttackStrength
 	{
 		get { 
@@ -60,18 +69,48 @@ public class GameCharacter : BoardObject
 		}
 	}
 
+	public override void OnFocus (bool focus)
+	{
+		if(focus)
+		{
+			mainBody.transform.localScale = new Vector3(1.25f, 1.25f, 1f);
+		}
+		else
+		{
+			mainBody.transform.localScale = Vector3.one;
+		}
+	}
+
+	public void AddedToTeam(int team, int idx)
+	{
+		SetTeam(team);
+		teamIndex = idx;
+	}
+
 	public void SetTeam(int team)
 	{
 		teamNumber = team;
+		Color baseColor = CharacterHandler.Instance.GetTeamColor(team);
+		baseSupportSprite.color = baseColor;
 	}
 
 
-	public void SetupCharacter(CharacterData data, int charIndex, int team = 1)
+	public void SetupCharacter(CharacterData data, int charIndex,int team = 1)
 	{
 		characterData = data;
 		characterStats = new CharacterStats(data);
-		teamNumber = team;
 		characterIndex = charIndex;
+
+		//Debug.Log("Sprite : " + data.ingameSprite);
+		Sprite csprite = IngameSpriteCenter.Instance.GetSprite(data.ingameSprite);
+		if(csprite != null)
+			characterSprite.sprite = csprite;
+
+		Sprite bsprite = IngameSpriteCenter.Instance.GetBaseSprite(data.elementType);
+		if(bsprite != null)
+			baseSprite.sprite = bsprite;
+
+		SetTeam(team);
 
 		Initialize();
 		UpdateStats();
@@ -114,7 +153,9 @@ public class GameCharacter : BoardObject
 
 	public void TriggerDie ()
 	{
-		this.gameObject.SetActive(false);
+		animator.Play("idle");
+
+		infoDisplay.Hide();
 
 		cellId = -1;
 		state = BoardObjectState.INACTIVE;

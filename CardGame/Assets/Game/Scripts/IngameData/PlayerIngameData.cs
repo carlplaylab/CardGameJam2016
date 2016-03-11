@@ -38,4 +38,12 @@ public class PlayerIngameData
 		int currentRes = ResourceData.GetResource(resType);
 		return currentRes >= neededAmount;
 	}
+
+	public void SpendResource(ElementType resType, int neededAmount)
+	{
+		ResourceData.SpendResource(resType, neededAmount);
+		ResourceData.UpdateUI();
+	}
+
+
 }

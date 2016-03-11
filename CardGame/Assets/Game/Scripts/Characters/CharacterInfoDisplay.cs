@@ -20,4 +20,14 @@ public class CharacterInfoDisplay : MonoBehaviour
 		lifeText.text = stats.life.ToString();
 	}
 
+
+	public void Show ()
+	{
+		this.gameObject.SetActive(true);
+	}
+
+	public void Hide ()
+	{
+		this.gameObject.SetActive(false);
+	}
 }

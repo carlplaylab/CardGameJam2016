@@ -26,7 +26,9 @@
 				
 				"atlas": "assets1",
 				
-				"cardSprite": "char_land_soldier"
+				"cardSprite": "char_land_soldier",
+				
+				"ingameSprite": "char_land_soldier"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -51,7 +53,9 @@
 				
 				"atlas": "assets1",
 				
-				"cardSprite": "char_land_range"
+				"cardSprite": "char_land_range",
+				
+				"ingameSprite": "char_land_range"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -76,7 +80,9 @@
 				
 				"atlas": "assets1",
 				
-				"cardSprite": "char_land_witch"
+				"cardSprite": "char_land_witch",
+				
+				"ingameSprite": "char_land_witch"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -101,7 +107,9 @@
 				
 				"atlas": "assets1",
 				
-				"cardSprite": "char_water_soldier"
+				"cardSprite": "char_water_soldier",
+				
+				"ingameSprite": "char_water_soldier"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -126,7 +134,9 @@
 				
 				"atlas": "assets1",
 				
-				"cardSprite": "char_water_range"
+				"cardSprite": "char_water_range",
+				
+				"ingameSprite": "char_water_range"
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -151,7 +161,9 @@
 				
 				"atlas": "atlas1",
 				
-				"cardSprite": "char_water_witch"
+				"cardSprite": "char_water_witch",
+				
+				"ingameSprite": "char_water_witch"
 			}
 		]
 }

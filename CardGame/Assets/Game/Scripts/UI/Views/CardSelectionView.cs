@@ -46,9 +46,15 @@ public class CardSelectionView : UIView
 			if(statusChanged)
 			{
 				if(inUI)
-					GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+				{
+					bool converted = GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+					if(converted)
+						RemoveCard(selectedCard);
+				}
 				else
+				{
 					GameBoardManager.Instance.StartDragCardOnBoard(selectedCard.CharacterID);
+				}
 			}
 		}
 	}
@@ -120,10 +126,11 @@ public class CardSelectionView : UIView
 	{
 		if(selectedCard != null)
 		{
-			GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+			bool converted = GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+			if(converted)
+				RemoveCard(selectedCard);
 		}
 	}
-
 
 	public void ShowCard(int characterID)
 	{
@@ -157,4 +164,21 @@ public class CardSelectionView : UIView
 		selectedCard.OnFocusEffect();
 		selectedCard = null;
 	}
+
+
+
+
+	private void RemoveCard(SelectableCardView card)
+	{
+		cardViewList.Remove(card);
+		if(selectedCard == card)
+		{
+			ReleaseSelectedCard();
+		}
+
+		card.gameObject.SetActive(false);
+		UnityEngine.GameObject.Destroy(card.gameObject);
+
+	}
+
 }

@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+public enum PlayState
+{
+	IDLE = 0,
+	CARD_DRAG = 1
+}
+
 public class GBStatePlaying : GBState 
 {
 
 	int charId = 1;
+	Cell hoveredCell;
+	PlayState playState;
+
 
 	public override BoardState GetState()
 	{
@@ -14,7 +24,8 @@ public class GBStatePlaying : GBState
 	public override void Start (GameBoard board)
 	{
 		board.InputEnable = true;
-		Debug.Log("input enabled");
+		hoveredCell = null;
+		playState = PlayState.IDLE;
 	}
 
 	public override void Update (GameBoard board)
@@ -28,11 +39,28 @@ public class GBStatePlaying : GBState
 			if(charId >= CharacterDatabase.Instance.Count())
 				charId = 1;
 		}
+
+		if(playState == PlayState.CARD_DRAG)
+		{
+			Cell newHoveredCell = board.BoardCells.GetHoveredCell();
+			if(hoveredCell != null)
+			{
+				hoveredCell.HighlightCell(false);
+			}
+			if(hoveredCell != newHoveredCell && newHoveredCell != null)
+			{
+				hoveredCell = newHoveredCell;
+				hoveredCell.HighlightCell(true, hoveredCell.IsVacant());
+			}
+
+			newHoveredCell = newHoveredCell;
+		}
 	}
 
 	public override void End (GameBoard board)
 	{
 		board.InputEnable = false;
+		hoveredCell = null;
 	}
 
 
@@ -55,13 +83,60 @@ public class GBStatePlaying : GBState
 		int minCol = 0;
 
 		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
-
 		board.BoardCells.HiglightArea(targetRect);
+
+	    hoveredCell = board.GetHoveredCell();	// instantly checks cell using gameInput
+		if(hoveredCell != null)
+			hoveredCell.HighlightCell(true, hoveredCell.IsVacant() );
+
+		playState = PlayState.CARD_DRAG;
+
 	}
 
-	public override void EndDragCardOnBoard (GameBoard board, int charID)
+	public override bool EndDragCardOnBoard (GameBoard board, int cardCharacterID)
 	{
+		bool cardConvertSuccess = false;
 		board.BoardCells.RemoveHighlights();
+		playState = PlayState.IDLE;
+
+		Cell newHoveredCell = board.GetHoveredCell(); // instantly checks cell using gameInput
+		if(hoveredCell != null)
+		{
+			if(newHoveredCell == null || newHoveredCell != hoveredCell)
+			{
+				hoveredCell.HighlightCell(false);
+			}
+		}
+
+		CharacterData charData = CharacterDatabase.Instance.GetData(cardCharacterID);
+		if(cardCharacterID != charData.id)
+		{
+			Debug.LogWarning("WRONG DATA charId " + cardCharacterID  + " charData.id " + charData.id );
+		}
+		hoveredCell = newHoveredCell;
+		PlayerIngameData playerData = IngameDataCenter.Instance.GetPlayerData(GameBoardManager.Instance.CurrentTeam);
+		bool canAfford = playerData.HasEnoughResource(charData.elementType, charData.spawnCost);
+		if(!canAfford)
+		{
+			Debug.Log("Cant afford character");
+		}
+
+		if(hoveredCell != null && 
+			charData != null &&
+			playerData != null &&
+			hoveredCell.IsVacant() && 
+			canAfford )
+		{
+			GameCharacter newCharacater = CharacterHandler.Instance.CreateCharacterOnCell(cardCharacterID, hoveredCell);
+			if(newCharacater != null)
+			{
+				playerData.SpendResource(charData.elementType, charData.spawnCost);
+				cardConvertSuccess = true;
+			}
+		}
+		hoveredCell = null;
+
+		return cardConvertSuccess;
 	}
 
 	#endregion

@@ -121,10 +121,11 @@ public class GameBoardManager : MonoBehaviour
 	{
 		currentState.StartDragCardOnBoard(gameBoard, charID);
 	}
-
-	public void EndDragCardOnBoard( int charID )
+		
+	public bool EndDragCardOnBoard( int charID )
 	{
-		currentState.EndDragCardOnBoard(gameBoard, charID);
+		// return true if card was converted to character
+		return currentState.EndDragCardOnBoard(gameBoard, charID);
 	}
 
 }

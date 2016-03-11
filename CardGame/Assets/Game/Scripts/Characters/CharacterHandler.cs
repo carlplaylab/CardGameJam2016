@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 public class CharacterHandler : MonoBehaviour 
 {
+
+	[SerializeField] private GameObject baseCharacterObj;
 	[SerializeField] private int[] characterIds;
+	[SerializeField] private Color[] teamColors;
 
 
 	private static CharacterHandler instance;
@@ -14,7 +17,6 @@ public class CharacterHandler : MonoBehaviour
 	}
 
 	private bool initialize = false;
-	private Dictionary<int, GameObject> refCharacterOjbects;
 
 	private List<GameCharacter> characterList;
 
@@ -29,7 +31,6 @@ public class CharacterHandler : MonoBehaviour
 		instance = null;
 	}
 
-
 	public void Initialize ()
 	{
 		if(initialize)
@@ -37,29 +38,23 @@ public class CharacterHandler : MonoBehaviour
 
 		initialize = true;
 
-		refCharacterOjbects = new Dictionary<int, GameObject>();
 		characterList = new List<GameCharacter>();
-
-		for(int i = 0; i < characterIds.Length; i++)
-		{
-			int charId = characterIds[i];
-			CharacterData cdata = CharacterDatabase.Instance.GetData(charId);
-			if(cdata == null)
-				continue;
-			
-			GameObject cObj = Resources.Load("Prefabs/Characters/" + cdata.characterPrefab) as GameObject;
-			refCharacterOjbects.Add( charId, cObj );
-		}
 	}
-
 
 	private GameCharacter CreateCharacter(int characterID)
 	{
+		/*
 		if(refCharacterOjbects == null || !refCharacterOjbects.ContainsKey(characterID))
 			return null;
+		*/
+		if(baseCharacterObj == null)
+		{
+			Debug.LogError("No reference character set");
+			return null;
+		}
 
-		GameObject refObject = refCharacterOjbects[characterID];
-		GameObject newObject = GameObject.Instantiate(refObject) as GameObject;
+		//GameObject refObject = refCharacterOjbects[characterID];
+		GameObject newObject = GameObject.Instantiate(baseCharacterObj) as GameObject;
 		GameCharacter newCharacter = newObject.GetComponent<GameCharacter>();
 
 		CharacterData cdata = CharacterDatabase.Instance.GetData(characterID);
@@ -73,7 +68,6 @@ public class CharacterHandler : MonoBehaviour
 
 		return newCharacter;
 	}
-
 
 	public GameCharacter CreateCharacterOnCell(int charId, Cell targetCell)
 	{
@@ -90,6 +84,11 @@ public class CharacterHandler : MonoBehaviour
 		return null;
 	}
 
+	public Color GetTeamColor(int team)
+	{
+		int teamIdx = Mathf.Clamp(team-1, 0, teamColors.Length-1);
+		return teamColors[teamIdx];
+	}
 
 	public void SetTeam (int focusedTeam)
 	{
