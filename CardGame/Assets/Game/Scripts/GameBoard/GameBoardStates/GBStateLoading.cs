@@ -27,6 +27,7 @@ public class GBStateLoading : GBState
 		if(loadingCount == 0)
 		{
 			IngameSpriteCenter.Instance.AddAtlas("assets1");
+			IngameSpriteCenter.Instance.AddAtlas("main_assets");
 			
 			// Insert loading of cells
 			LoadCells(board);

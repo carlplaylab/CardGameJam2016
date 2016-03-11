@@ -93,8 +93,9 @@ public class GBStatePlaying : GBState
 
 	}
 
-	public override void EndDragCardOnBoard (GameBoard board, int cardCharacterID)
+	public override bool EndDragCardOnBoard (GameBoard board, int cardCharacterID)
 	{
+		bool cardConvertSuccess = false;
 		board.BoardCells.RemoveHighlights();
 		playState = PlayState.IDLE;
 
@@ -108,7 +109,7 @@ public class GBStatePlaying : GBState
 		}
 
 		CharacterData charData = CharacterDatabase.Instance.GetData(cardCharacterID);
-		if(charId != charData.id)
+		if(cardCharacterID != charData.id)
 		{
 			Debug.LogWarning("WRONG DATA charId " + cardCharacterID  + " charData.id " + charData.id );
 		}
@@ -130,10 +131,12 @@ public class GBStatePlaying : GBState
 			if(newCharacater != null)
 			{
 				playerData.SpendResource(charData.elementType, charData.spawnCost);
+				cardConvertSuccess = true;
 			}
 		}
 		hoveredCell = null;
 
+		return cardConvertSuccess;
 	}
 
 	#endregion

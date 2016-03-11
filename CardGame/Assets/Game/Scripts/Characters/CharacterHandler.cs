@@ -7,6 +7,7 @@ public class CharacterHandler : MonoBehaviour
 
 	[SerializeField] private GameObject baseCharacterObj;
 	[SerializeField] private int[] characterIds;
+	[SerializeField] private Color[] teamColors;
 
 
 	private static CharacterHandler instance;
@@ -30,7 +31,6 @@ public class CharacterHandler : MonoBehaviour
 		instance = null;
 	}
 
-
 	public void Initialize ()
 	{
 		if(initialize)
@@ -40,7 +40,6 @@ public class CharacterHandler : MonoBehaviour
 
 		characterList = new List<GameCharacter>();
 	}
-
 
 	private GameCharacter CreateCharacter(int characterID)
 	{
@@ -70,7 +69,6 @@ public class CharacterHandler : MonoBehaviour
 		return newCharacter;
 	}
 
-
 	public GameCharacter CreateCharacterOnCell(int charId, Cell targetCell)
 	{
 		if(!targetCell.IsVacant())
@@ -86,6 +84,11 @@ public class CharacterHandler : MonoBehaviour
 		return null;
 	}
 
+	public Color GetTeamColor(int team)
+	{
+		int teamIdx = Mathf.Clamp(team-1, 0, teamColors.Length-1);
+		return teamColors[teamIdx];
+	}
 
 	public void SetTeam (int focusedTeam)
 	{

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: ef18375481f7642b8afbfdd9db713cfe
-timeCreated: 1457002120
-licenseType: Free
+timeCreated: 1457611757
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: icon_water
@@ -11,8 +11,8 @@ TextureImporter:
     21300008: cell_glow
     21300010: cell_empty
     21300012: cell_void
-    21300014: cell_water
-    21300016: cell_land
+    21300014: cell_water2
+    21300016: cell_land2
     21300018: cell_air
     21300020: fx_star
     21300022: fx_sparkle
@@ -239,7 +239,7 @@ TextureImporter:
         - {x: 107, y: -105}
         - {x: 107, y: 105}
         - {x: 105, y: 107}
-    - name: cell_water
+    - name: cell_water2
       rect:
         serializedVersion: 2
         x: 1323
@@ -258,25 +258,25 @@ TextureImporter:
         - {x: 107, y: -105}
         - {x: 107, y: 105}
         - {x: 105, y: 107}
-    - name: cell_land
+    - name: cell_land2
       rect:
         serializedVersion: 2
         x: 1323
         y: 1599
         width: 214
         height: 214
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.49999943, y: 0.49999943}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -105, y: 107}
-        - {x: -107, y: 105}
-        - {x: -107, y: -105}
-        - {x: -105, y: -107}
-        - {x: 105, y: -107}
-        - {x: 107, y: -105}
-        - {x: 107, y: 105}
-        - {x: 105, y: 107}
+      - - {x: -104.99988, y: 107.00012}
+        - {x: -106.99988, y: 105.00012}
+        - {x: -106.99988, y: -104.99988}
+        - {x: -104.99988, y: -106.99988}
+        - {x: 105.00012, y: -106.99988}
+        - {x: 107.00012, y: -104.99988}
+        - {x: 107.00012, y: 105.00012}
+        - {x: 105.00012, y: 107.00012}
     - name: cell_air
       rect:
         serializedVersion: 2

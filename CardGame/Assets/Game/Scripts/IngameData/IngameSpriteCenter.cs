@@ -115,17 +115,17 @@ public class IngameSpriteCenter
 
 	public Sprite GetBaseSprite(ElementType eType)
 	{
-		string sprName = "button_metal";
+		string sprName = "base_land";
 		switch(eType)
 		{
 		case ElementType.AIR: 
-			sprName = "button_air";
+			sprName = "base_air";
 			break;
 		case ElementType.LAND: 
-			sprName = "button_wood";
+			sprName = "base_land";
 			break;
 		case ElementType.WATER: 
-			sprName = "button_water";
+			sprName = "base_water";
 			break;
 		default:
 			break;
