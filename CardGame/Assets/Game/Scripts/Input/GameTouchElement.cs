@@ -43,4 +43,11 @@ public class GameTouchElement : MonoBehaviour
 		return hovered;
 	}
 
+
+	public virtual void SetColliderActive(bool colliderActive)
+	{
+		Collider2D col2d = this.GetComponent<Collider2D>();
+		if(col2d != null)
+			col2d.isTrigger = !colliderActive;
+	}
 }

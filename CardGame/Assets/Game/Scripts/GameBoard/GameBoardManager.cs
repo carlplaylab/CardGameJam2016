@@ -15,6 +15,7 @@ public class GameBoardManager : MonoBehaviour
 
 	private GameSettings gameSettings;
 	private GameBoard gameBoard;
+	private ElementSource elementUI;
 	private Dictionary<BoardState, GBState> gameStates;
 	private GBState currentState;
 	private bool initialized = false;
@@ -30,6 +31,18 @@ public class GameBoardManager : MonoBehaviour
 	public int CurrentTeam
 	{
 		get { return currentTeam; }
+	}
+
+
+	public ElementSource ElementUI
+	{
+		get { return elementUI; }
+	}
+
+
+	public GameBoard  Board
+	{
+		get { return gameBoard; }
 	}
 
 
@@ -62,6 +75,9 @@ public class GameBoardManager : MonoBehaviour
 		gameBoard = GetComponentInChildren<GameBoard>();
 		gameBoard.onPlayerMoveEnded = OnPlayerTurnEnd;
 
+		elementUI = GetComponentInChildren<ElementSource>();
+		elementUI.SetVisible(false);
+
 		gameStates = new Dictionary<BoardState, GBState>();
 		GBStateLoading loadState = new GBStateLoading();
 		GBStateResourceAdding resourceState = new GBStateResourceAdding();
@@ -92,6 +108,8 @@ public class GameBoardManager : MonoBehaviour
 			return;
 		}
 
+		Debug.Log("SetState : " + newState);
+
 		currentState.End(gameBoard);
 		currentState = gameStates[newState];
 		currentState.Start(gameBoard);
@@ -114,6 +132,14 @@ public class GameBoardManager : MonoBehaviour
 		}
 
 		gameBoard.SetTeam(CurrentTeam);
+		if(currentTeam == 1)
+		{
+			SetState(BoardState.PLAYER_TURN);
+		}
+		else 
+		{
+			SetState(BoardState.OPONENTS_TURN);
+		}
 	}
 
 

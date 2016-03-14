@@ -93,6 +93,14 @@ public class CellHandler : MonoBehaviour
 		}
 	}
 
+	public void SetCellsColliderActive(bool activeCollider)
+	{
+		for(int i=0; i < cells.Count; i++)
+		{
+			cells[i].SetColliderActive(activeCollider);
+		}
+	}
+
 	public void RemoveHighlights ()
 	{
 		for(int i=0; i < cells.Count; i++)
