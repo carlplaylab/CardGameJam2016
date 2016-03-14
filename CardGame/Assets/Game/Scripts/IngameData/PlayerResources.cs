@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [SerializeField]
 public class PlayerResources
 {
-	public const int MAX_RESOURCES = 10;
+	public const int MAX_RESOURCES = 1000;
 
 	private Dictionary<ElementType, int> resourceCounter;
 

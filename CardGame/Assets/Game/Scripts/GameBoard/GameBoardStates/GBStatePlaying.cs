@@ -4,8 +4,9 @@ using System.Collections;
 
 public enum PlayState
 {
-	IDLE = 0,
-	CARD_DRAG = 1
+	ELEMENT_TAKING = 0,
+	IDLE = 1,
+	CARD_DRAG = 2
 }
 
 public class GBStatePlaying : GBState 
@@ -25,7 +26,11 @@ public class GBStatePlaying : GBState
 	{
 		board.InputEnable = true;
 		hoveredCell = null;
-		playState = PlayState.IDLE;
+		playState = PlayState.ELEMENT_TAKING;
+
+		board.BoardCells.SetCellsColliderActive(false);
+		GameBoardManager.Instance.ElementUI.Show();
+		GameBoardManager.Instance.ElementUI.onElementsTaken = ElementsTaken;
 	}
 
 	public override void Update (GameBoard board)
@@ -140,4 +145,18 @@ public class GBStatePlaying : GBState
 	}
 
 	#endregion
+
+
+	public void ElementsTaken ()
+	{
+		ElementType[] elements = GameBoardManager.Instance.ElementUI.GetElements();
+		PlayerIngameData playerData = IngameDataCenter.Instance.GetPlayerData(GameBoardManager.Instance.CurrentTeam);
+		for(int i=0; i < elements.Length; i++)
+		{
+			playerData.ResourceData.AddResource(elements[i], 1);
+		}
+		playerData.ResourceData.UpdateUI();
+		GameBoardManager.Instance.Board.BoardCells.SetCellsColliderActive(true);
+	}
+		
 }
