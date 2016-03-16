@@ -19,12 +19,14 @@ public class CardSelectionView : UIView
 	void Awake ()
 	{
 		EventBroadcaster.Instance.AddObserver(EventNames.UI_ADD_CHARACTER_CARD, AddCard);
+		EventBroadcaster.Instance.AddObserver(EventNames.UI_ADD_CARD_TO_DECK, AddCardToDeck);
 	}
 
 
 	void OnDestroy ()
 	{
 		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_ADD_CHARACTER_CARD);
+		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_ADD_CARD_TO_DECK);
 	}
 
 
@@ -97,6 +99,26 @@ public class CardSelectionView : UIView
 		cardXform.anchoredPosition3D = pos;
 
 		cardViewList.Add(cardView);
+	}
+
+	public void AddCardToDeck(Parameters cardParams)
+	{
+		int cardId = cardParams.GetIntExtra("card",-1);
+		Debug.Log("AddCardToDeck : " + cardId);
+
+		if(cardId == -1)
+			return;
+
+		CardData cdata = CardDatabase.Instance.GetData(cardId);
+		if(cdata == null)
+			return;
+
+		if(cdata.cardType == CardType.CHARACTER)
+		{
+			CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.characterId);
+			AddCard(chardata);
+		}
+
 	}
 
 

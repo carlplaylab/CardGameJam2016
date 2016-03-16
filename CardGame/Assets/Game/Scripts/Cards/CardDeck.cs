@@ -7,6 +7,7 @@ public class CardDeck
 {
 
 	[SerializeField] private List<int> allCards;
+	[SerializeField] private List<int> spawnCards;
 	[SerializeField] private List<int> availableCards;
 
 
@@ -21,6 +22,7 @@ public class CardDeck
 
 		allCards = new List<int>(deckCards);
 		availableCards = new List<int>(deckCards);
+		spawnCards = new List<int>();
 	}
 
 
@@ -37,7 +39,7 @@ public class CardDeck
 		int cardIdx = UnityEngine.Random.Range(0, availableCards.Count-1);
 		int card = availableCards[cardIdx];
 		availableCards.RemoveAt(cardIdx);
-
+		spawnCards.Add(card);
 		return card;
 	}
 

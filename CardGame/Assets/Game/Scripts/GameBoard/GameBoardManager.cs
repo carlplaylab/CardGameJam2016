@@ -108,7 +108,7 @@ public class GameBoardManager : MonoBehaviour
 			return;
 		}
 
-		Debug.Log("SetState : " + newState);
+		//Debug.Log("SetState : " + newState);
 
 		currentState.End(gameBoard);
 		currentState = gameStates[newState];

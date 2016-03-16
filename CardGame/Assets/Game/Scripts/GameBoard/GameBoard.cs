@@ -7,8 +7,7 @@ using System;
 public class GameBoard : MonoBehaviour 
 {
 
-	[SerializeField] private CharacterTeam[] teams;
-	[SerializeField] private CardDeck[] teamDeck;
+	[SerializeField] private BoardPlayer[] players;
 
 	private GameInput input = null;
 	private CellHandler cellHandler = null;
@@ -21,16 +20,15 @@ public class GameBoard : MonoBehaviour
 	void Awake ()
 	{
 		input = GetComponent<GameInput>();
+	}
 
-		teams = new CharacterTeam[2];
-		teamDeck = new CardDeck[2];
 
-		for(int i=0; i < 2; i++)
+	public void Setup ()
+	{
+		int level = GameBoardManager.Instance.Settings.Level;
+		for(int i=0; i < players.Length; i++)
 		{
-			teams[i] = new CharacterTeam(i+1) ;
-
-			teamDeck[i] = new CardDeck();
-			teamDeck[i].SetupDeck(GameBoardManager.Instance.Settings.Level, i+1);
+			players[i].Setup(i+1, level);
 		}
 	}
 
@@ -57,13 +55,13 @@ public class GameBoard : MonoBehaviour
 
 	public CharacterTeam GetTeam(int teamNumber)
 	{
-		int teamIdx = Mathf.Clamp(teamNumber-1, 0, teams.Length-1);
-		return teams[teamIdx];
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
+		return players[teamIdx].Team;
 	}
 
 	public CharacterTeam GetOpposingTeam()
 	{
-		return GetTeam( (currentTeam+1)%(teams.Length) );
+		return GetTeam( (currentTeam+1)%(players.Length) );
 	}
 
 	public CharacterTeam GetCurrentTeam()
@@ -73,8 +71,8 @@ public class GameBoard : MonoBehaviour
 
 	public CardDeck GetDeck(int teamNumber)
 	{
-		int teamIdx = Mathf.Clamp(teamNumber-1, 0, teams.Length-1);
-		return teamDeck[teamIdx];
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
+		return players[teamIdx].Deck;
 	}
 
 	public void CellClicked(Cell targetCell)
@@ -197,6 +195,11 @@ public class GameBoard : MonoBehaviour
 	{
 		currentTeam = newTeam;
 		CharacterHandler.Instance.SetTeam( newTeam );
+
+		for(int i=0; i < players.Length; i++)
+		{
+			players[i].SetTurn(newTeam);
+		}
 	}
 
 	// instantly checks cell using gameInput
