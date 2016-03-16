@@ -1,0 +1,64 @@
+﻿{
+	"__Type": "CardDatabase, Assembly-CSharp",
+	
+	"cardList": 
+		[
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 1,
+				
+				"name": "WraithKing",
+				
+				"description": "its a new WraithKing card!",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "LAND",
+				
+				"cost": 1,
+				
+				"cardSprite": "",
+				
+				"characterId": 1
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 2,
+				
+				"name": "Drow",
+				
+				"description": "its a new  Drow card!",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "LAND",
+				
+				"cost": 1,
+				
+				"cardSprite": "",
+				
+				"characterId": 1
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 3,
+				
+				"name": "Warlock",
+				
+				"description": "its a new Warlock card!",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "LAND",
+				
+				"cost": 1,
+				
+				"cardSprite": "",
+				
+				"characterId": 1
+			}
+		]
+}

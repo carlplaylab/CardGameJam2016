@@ -39,7 +39,9 @@ public class GBStateLoading : GBState
 
 			// Insert loading of character data
 			int dataChars = CharacterDatabase.Instance.Count();
-			//Debug.Log("all characters : " + dataChars);
+			int cards = CardDatabase.Instance.Count();
+
+			Debug.Log("all characters : " + dataChars + ", all cards: " + cards);
 		}
 		else if(loadingCount == 2)
 		{

@@ -12,6 +12,7 @@ public class CharacterTeam
 
 	private int team;
 
+
 	public int Team
 	{
 		get { return team; }

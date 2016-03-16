@@ -3,27 +3,32 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
-public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterData>  
-{
-	
 
-	[MenuItem("Card Game Tools/Character Database %e")]
-	public static void GetWindow()
+public class CardEditor : AbstractListDataEditorWindow<CardData>  
+{
+
+	[MenuItem ("MyMenu/Do Something with a Shortcut Key %w")]
+	static void DoSomethingWithAShortcutKey () 
 	{
-		CharacterDatabaseEditor charEditor = EditorWindow.GetWindow<CharacterDatabaseEditor>("Character Database", true);
-		charEditor.minSize = new Vector2(1024f, 400f);
+		GetWindow();
 	}
 
+	[MenuItem("Card Game Tools/Card Editor %w")]
+	public static void GetWindow()
+	{
+		CardEditor cardEditor = EditorWindow.GetWindow<CardEditor>("Card Database", true);
+		cardEditor.minSize = new Vector2(1024f, 400f);
+	}
 
 	private bool initialized = false;
-	private CharacterData selectedData = null;
+	private CardData selectedData = null;
 	private string[] elements;
 
 	public void Initialize ()
 	{
 		if(initialized)
 			return;
-		
+
 		elements = new string[4];
 		for(int i=0; i < 4; i++)
 		{
@@ -31,16 +36,15 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		}
 
 		// making sure it loads
-		CharacterDatabase charDatabse = CharacterDatabase.Instance;
-		Debug.Log("character database, loaded chars : " + charDatabse.Count());
+		CardDatabase cardDatabase = CardDatabase.Instance;
+		Debug.Log("card database, loaded cards : " + cardDatabase.Count());
 	}
-
 
 	void OnDestroy ()
 	{
 		initialized = false;
-		if(CharacterDatabase.Instance != null)
-			CharacterDatabase.Instance.Destroy();
+		if(CardDatabase.Instance != null)
+			CardDatabase.Instance.Destroy();
 	}
 
 
@@ -66,22 +70,22 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 
 	protected override void AddData ()
 	{
-		CharacterData newData = CharacterDatabase.Instance.AddData ();
+		CardData newData = CardDatabase.Instance.AddData ();
 
 		this.SelectData (newData);
 	}
 
-	protected override void RemoveData (CharacterData data)
+	protected override void RemoveData (CardData data)
 	{
 		if(data == null)
 			return;
 		int dataId = data.id;
-		CharacterDatabase.Instance.RemoveData (dataId);
+		CardDatabase.Instance.RemoveData (dataId);
 	}
 
 	protected override IEnumerable GetDataList ()
 	{
-		CharacterData[] currentData = CharacterDatabase.Instance.characterList;
+		CardData[] currentData = CardDatabase.Instance.cardList;
 		for (int i=0; i < currentData.Length; i++) {
 			yield return currentData[i];
 		}
@@ -89,10 +93,10 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 
 	protected override int GetDataCount ()
 	{
-		return CharacterDatabase.Instance.Count();
+		return CardDatabase.Instance.Count();
 	}
 
-	protected override string GetItemName (CharacterData data)
+	protected override string GetItemName (CardData data)
 	{
 		return data.name;
 	}
@@ -100,26 +104,26 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 	protected override bool LoadFile ()
 	{
 		Initialize();
-		OnSelectedChange( CharacterDatabase.Instance.GetData(0) );
+		OnSelectedChange( CardDatabase.Instance.GetData(0) );
 		return true;
 	}
 
 	protected override void SaveFile ()
 	{
-		CharacterDatabase.Instance.SaveData();
+		CardDatabase.Instance.SaveData();
 	}
 
-	protected override void OnSelectedChange(CharacterData data){
+	protected override void OnSelectedChange(CardData data){
 		selectedData = data;
 		//force removed focus on selection change so same field won't be selected on change
 		GUI.FocusControl ("");
 
 	}
 
-	protected override void OnGUIDataEdit (CharacterData data)
+	protected override void OnGUIDataEdit (CardData data)
 	{
 		EditorGUILayout.BeginHorizontal(EditorStyles.toolbar);
-		GUILayout.Label("Character: " + data.id + ", " + data.name);
+		GUILayout.Label("Card: " + data.id + ", " + data.name);
 		EditorGUILayout.EndHorizontal();
 
 		GUILayout.Space(10f);
@@ -129,18 +133,12 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		GUILayout.Label("Description", GUILayout.Width(100f));
 		data.description = EditorGUILayout.TextArea(data.description, GUILayout.Height(40f));
 		EditorGUILayout.EndHorizontal();
-		data.characterPrefab = EditorGUILayout.TextField("Prefab", data.characterPrefab);
-		data.atlas = EditorGUILayout.TextField("Atlas", data.atlas);
 		data.cardSprite = EditorGUILayout.TextField("Card Sprite", data.cardSprite);
-		data.ingameSprite = EditorGUILayout.TextField("Ingame Sprite", data.ingameSprite);
 
 		GUILayout.Space(10f);
 		GUILayout.Label("Stats: ");
 		data.elementType = (ElementType)EditorGUILayout.Popup((int)data.elementType,elements);
-		data.spawnCost = EditorGUILayout.IntField("Spawn Cost", data.spawnCost);
-		data.movement = EditorGUILayout.IntField("Movement", data.movement);
-		data.attack = EditorGUILayout.IntField("Attack", data.attack);
-		data.life = EditorGUILayout.IntField("Life", data.life);
+		data.cost = EditorGUILayout.IntField("Cost", data.cost);
 
 	}
 
@@ -152,7 +150,7 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		if(selectedData != null)
 		{
 			int itemId = selectedData.id;
-			if(CharacterDatabase.Instance.Count() < itemId)
+			if(CardDatabase.Instance.Count() < itemId)
 			{
 				itemId = 0;
 			}
@@ -167,7 +165,7 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 			int itemId = selectedData.id ;
 			if(itemId <= 0)
 			{
-				itemId = CharacterDatabase.Instance.Count()-1;
+				itemId = CardDatabase.Instance.Count()-1;
 			}
 			SelectItemID(itemId);
 		}
@@ -175,9 +173,9 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 
 	private void SelectItemID(int itemId)
 	{
-		if(CharacterDatabase.Instance != null)
+		if(CardDatabase.Instance != null)
 		{
-			CharacterData cData = CharacterDatabase.Instance.GetData(itemId);
+			CardData cData = CardDatabase.Instance.GetData(itemId);
 			if(cData != null)
 			{
 				this.SelectData (cData);
@@ -188,5 +186,6 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 			}
 		}
 	}
+
 
 }

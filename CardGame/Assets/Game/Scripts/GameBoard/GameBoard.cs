@@ -8,6 +8,7 @@ public class GameBoard : MonoBehaviour
 {
 
 	[SerializeField] private CharacterTeam[] teams;
+	[SerializeField] private CardDeck[] teamDeck;
 
 	private GameInput input = null;
 	private CellHandler cellHandler = null;
@@ -22,8 +23,15 @@ public class GameBoard : MonoBehaviour
 		input = GetComponent<GameInput>();
 
 		teams = new CharacterTeam[2];
-		teams[0] = new CharacterTeam(1);
-		teams[1] = new CharacterTeam(2) ;
+		teamDeck = new CardDeck[2];
+
+		for(int i=0; i < 2; i++)
+		{
+			teams[i] = new CharacterTeam(i+1) ;
+
+			teamDeck[i] = new CardDeck();
+			teamDeck[i].SetupDeck(GameBoardManager.Instance.Settings.Level, i+1);
+		}
 	}
 
 
@@ -63,6 +71,11 @@ public class GameBoard : MonoBehaviour
 		return GetTeam( currentTeam );
 	}
 
+	public CardDeck GetDeck(int teamNumber)
+	{
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, teams.Length-1);
+		return teamDeck[teamIdx];
+	}
 
 	public void CellClicked(Cell targetCell)
 	{

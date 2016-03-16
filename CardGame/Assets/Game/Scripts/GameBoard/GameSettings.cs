@@ -8,6 +8,7 @@ public class GameSettings : MonoBehaviour
 
 	[SerializeField] bool testMode = true;
 	[SerializeField] int cellAreaId = 1;
+	[SerializeField] int level = 1;
 
 
 	public bool TestMode
@@ -27,6 +28,11 @@ public class GameSettings : MonoBehaviour
 			}
 			return cellId;
 		}
+	}
+
+	public int Level
+	{
+		get { return level; }
 	}
 
 }
