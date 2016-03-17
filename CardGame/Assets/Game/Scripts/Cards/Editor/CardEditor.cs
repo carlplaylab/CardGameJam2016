@@ -23,6 +23,7 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 	private bool initialized = false;
 	private CardData selectedData = null;
 	private string[] elements;
+	private string[] cardtypes;
 
 	public void Initialize ()
 	{
@@ -34,6 +35,10 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 		{
 			elements[i] = ((ElementType)i).ToString();
 		}
+
+		cardtypes = new string[2];
+		cardtypes[0] = ((CardType)0).ToString();
+		cardtypes[1] = ((CardType)1).ToString();
 
 		// making sure it loads
 		CardDatabase cardDatabase = CardDatabase.Instance;
@@ -140,6 +145,13 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 		data.elementType = (ElementType)EditorGUILayout.Popup((int)data.elementType,elements);
 		data.cost = EditorGUILayout.IntField("Cost", data.cost);
 
+		GUILayout.Space(10f);
+		GUILayout.Label("Details: ");
+		data.cardType = (CardType)EditorGUILayout.Popup((int)data.cardType,cardtypes);
+		if(data.cardType == CardType.CHARACTER)
+		{
+			data.characterId = EditorGUILayout.IntField("Character id", data.characterId);
+		}
 	}
 
 	#endregion

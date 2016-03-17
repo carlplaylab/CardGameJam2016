@@ -55,6 +55,7 @@ public class BoardPlayer : MonoBehaviour
 			int newCardId = Deck.GetCard();
 			if(newCardId >= 0 && TeamId == 1)
 			{
+				Debug.Log("newCardId " + newCardId);
 				// Note a new card was added into the player's deck
 				Parameters cardparams = new Parameters();
 				cardparams.PutExtra("card", newCardId);

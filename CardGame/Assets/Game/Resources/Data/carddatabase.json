@@ -39,7 +39,7 @@
 				
 				"cardSprite": "",
 				
-				"characterId": 1
+				"characterId": 2
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
@@ -58,7 +58,64 @@
 				
 				"cardSprite": "",
 				
-				"characterId": 1
+				"characterId": 3
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 4,
+				
+				"name": "Water melee",
+				
+				"description": "its a new card!",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "WATER",
+				
+				"cost": 1,
+				
+				"cardSprite": "",
+				
+				"characterId": 4
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 5,
+				
+				"name": "Water Range",
+				
+				"description": "its a new card!",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "WATER",
+				
+				"cost": 1,
+				
+				"cardSprite": "",
+				
+				"characterId": 5
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 6,
+				
+				"name": "Water magic",
+				
+				"description": "its a new card!",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "WATER",
+				
+				"cost": 1,
+				
+				"cardSprite": "",
+				
+				"characterId": 6
 			}
 		]
 }
