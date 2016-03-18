@@ -92,7 +92,7 @@ public class CharacterDatabase
 
 			newData.PostLoadProcessing();
 
-			Debug.Log("Data loaded");
+			Debug.Log("Character Database Data loaded");
 
 			return newData;
 		}

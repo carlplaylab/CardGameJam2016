@@ -75,6 +75,12 @@ public class GameBoard : MonoBehaviour
 		return players[teamIdx].Deck;
 	}
 
+	public BoardPlayer GetPlayer(int teamNumber)
+	{
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
+		return players[teamIdx];
+	}
+
 	public void CellClicked(Cell targetCell)
 	{
 		if(selectedObject == null)
@@ -129,8 +135,11 @@ public class GameBoard : MonoBehaviour
 		cellHandler.RemoveHighlights();
 		selectedObject.OnFocus(false);
 
-		bool releaseSuccess = false;
+		bool releaseSuccess = DropObjectOnCell(selectedObject, targetCell);
+		selectedObject = null;
+		return releaseSuccess;
 
+		/*
 		if(!targetCell.IsWalkable())
 		{
 			selectedObject = null;
@@ -150,22 +159,48 @@ public class GameBoard : MonoBehaviour
 			selectedObject = null;
 			return releaseSuccess;
 		}
+		*/
 	}
 
 
-	public bool ProcessEncounter (Cell targetCell)
+	public bool DropObjectOnCell(BoardObject bobj, Cell targetCell)
 	{
-		if(targetCell == null || targetCell.IsVacant() || selectedObject == null)
+		bool releaseSuccess = false;
+		if(!targetCell.IsWalkable())
+		{
+			return releaseSuccess;
+		}
+		else if(targetCell.IsVacant())
+		{
+
+			Cell previousCell = cellHandler.GetCell( bobj.cellId );
+			releaseSuccess = bobj.TransferCells(targetCell, previousCell);
+			Debug.Log("TransferCells");
+			return releaseSuccess;
+		}
+		else
+		{
+			releaseSuccess = ProcessEncounter(bobj, targetCell);
+			return releaseSuccess;
+		}
+	}
+
+
+	public bool ProcessEncounter (BoardObject selObj, Cell targetCell)
+	{
+		Debug.Log("ProcessEncounter");
+
+		if(targetCell == null || targetCell.IsVacant() || selObj == null)
 			return false;
 
-		Cell previousCell = cellHandler.GetCell( selectedObject.cellId );
-		if(!selectedObject.AllowMovementOnCell(targetCell, previousCell))
+		Cell previousCell = cellHandler.GetCell( selObj.cellId );
+		if(!selObj.AllowMovementOnCell(targetCell, previousCell))
 			return false;
 
-		if(!selectedObject.IsCharacter() || !targetCell.ResidingObject.IsCharacter())
+		if(!selObj.IsCharacter() || !targetCell.ResidingObject.IsCharacter())
 			return false;
 
-		GameCharacter selectedChar = (GameCharacter)selectedObject;
+		GameCharacter selectedChar = (GameCharacter)selObj;
 		if(!selectedChar.CheckIfEnemy(targetCell.ResidingObject))
 			return false;
 
@@ -183,7 +218,6 @@ public class GameBoard : MonoBehaviour
 		if(selectedDies)
 		{
 			GetCurrentTeam().KillGameCharacter(selectedChar);
-			selectedObject = null;
 			previousCell.ResidingObject = null;
 		}
 

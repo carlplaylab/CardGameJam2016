@@ -10,6 +10,7 @@ public class SelectableCardView : DraggableUIView
 	[SerializeField] private Text costText;
 	[SerializeField] private GameObject[] bgObjects;
 
+	public int CardId = 1;
 	public int CharacterID = 2;
 	public int id = 0;
 
@@ -56,8 +57,9 @@ public class SelectableCardView : DraggableUIView
 
 	#endregion
 
-	public void SetDetails (int id, CharacterData charData)
+	public void SetDetails (int id, CharacterData charData, int cardId)
 	{
+		CardId = cardId;
 		CharacterID = charData.id;
 		this.id = id;
 

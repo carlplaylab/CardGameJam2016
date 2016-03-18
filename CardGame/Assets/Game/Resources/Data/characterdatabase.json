@@ -20,7 +20,7 @@
 				
 				"elementType": "LAND",
 				
-				"spawnCost": 2,
+				"spawnCost": 6,
 				
 				"characterPrefab": "character_1",
 				
@@ -47,7 +47,7 @@
 				
 				"elementType": "LAND",
 				
-				"spawnCost": 3,
+				"spawnCost": 8,
 				
 				"characterPrefab": "character_2",
 				
@@ -74,7 +74,7 @@
 				
 				"elementType": "LAND",
 				
-				"spawnCost": 5,
+				"spawnCost": 10,
 				
 				"characterPrefab": "character_3",
 				
@@ -101,7 +101,7 @@
 				
 				"elementType": "WATER",
 				
-				"spawnCost": 6,
+				"spawnCost": 7,
 				
 				"characterPrefab": "character_4",
 				
@@ -128,7 +128,7 @@
 				
 				"elementType": "WATER",
 				
-				"spawnCost": 4,
+				"spawnCost": 10,
 				
 				"characterPrefab": "character_5",
 				
@@ -155,7 +155,7 @@
 				
 				"elementType": "WATER",
 				
-				"spawnCost": 3,
+				"spawnCost": 12,
 				
 				"characterPrefab": "character_6",
 				

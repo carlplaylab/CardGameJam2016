@@ -18,8 +18,8 @@ public class GameBoardManager : MonoBehaviour
 	private ElementSource elementUI;
 	private Dictionary<BoardState, GBState> gameStates;
 	private GBState currentState;
-	private bool initialized = false;
 
+	private bool initialized = false;
 	private int currentTeam = 1;
 
 
@@ -140,18 +140,28 @@ public class GameBoardManager : MonoBehaviour
 		{
 			SetState(BoardState.OPONENTS_TURN);
 		}
+
+		Parameters playerTurnParams = new Parameters();
+		playerTurnParams.PutExtra("currentteam", currentTeam);
+		EventBroadcaster.Instance.PostEvent(EventNames.PLAYER_TURN_TOGGLED, playerTurnParams);
 	}
 
 
-	public void StartDragCardOnBoard( int charID )
+	public void StartDragCardOnBoard( int cardId )
 	{
-		currentState.StartDragCardOnBoard(gameBoard, charID);
+		currentState.StartDragCardOnBoard(gameBoard, cardId);
 	}
 		
-	public bool EndDragCardOnBoard( int charID )
+	public bool EndDragCardOnBoard( int cardId )
 	{
 		// return true if card was converted to character
-		return currentState.EndDragCardOnBoard(gameBoard, charID);
+		bool characterAdded = currentState.EndDragCardOnBoard(gameBoard, cardId);
+		if(characterAdded)
+		{
+			Invoke( "OnPlayerTurnEnd", 0.05f);
+			return true;
+		}
+		return false;
 	}
 
 }

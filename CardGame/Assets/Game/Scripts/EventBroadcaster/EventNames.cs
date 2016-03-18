@@ -14,4 +14,6 @@ public class EventNames {
 	public static string UI_ADD_CHARACTER_CARD = "UI_ADD_CHARACTER_CARD";
 	public static string UI_ADD_CARD_TO_DECK = "UI_ADD_CARD_TO_DECK";
 
+	public static string PLAYER_TURN_TOGGLED = "PLAYER_TURN_TOGGLED";
+
 }

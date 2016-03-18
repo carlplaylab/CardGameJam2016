@@ -91,7 +91,7 @@ public class CardDatabase
 
 			newData.PostLoadProcessing();
 
-			Debug.Log("Data loaded");
+			Debug.Log("Card Database Data loaded");
 
 			return newData;
 		}

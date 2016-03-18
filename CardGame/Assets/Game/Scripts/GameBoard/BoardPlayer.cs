@@ -10,7 +10,7 @@ public class BoardPlayer : MonoBehaviour
 	[SerializeField] private CardDeck cardDeck;
 
 	private bool turnActive = false;
-
+	private OpponentAI brain;
 
 
 	public int TeamId
@@ -33,9 +33,9 @@ public class BoardPlayer : MonoBehaviour
 		get { return cardDeck; }
 	}
 
-	public PlayerResources Resources
+	public PlayerIngameData IngameData
 	{
-		get { return IngameDataCenter.Instance.GetPlayerData(TeamId).ResourceData; }
+		get { return IngameDataCenter.Instance.GetPlayerData(TeamId); }
 	}
 
 	public void Setup(int teamNumber, int level)
@@ -44,6 +44,33 @@ public class BoardPlayer : MonoBehaviour
 		characterTeam = new CharacterTeam(teamNumber);
 		cardDeck = new CardDeck();
 		cardDeck.SetupDeck(level, teamNumber);
+
+		brain = GetComponent<OpponentAI>();
+		if(brain != null)
+			brain.Setup();
+	}
+
+	public void SetInitialCards(int cardAmount)
+	{
+		if(TeamId == 1)
+		{
+			Parameters cardparams = new Parameters();
+			cardparams.PutExtra("card", -1);
+			cardparams.PutExtra("cardamount", cardAmount);
+			for(int i=0; i < cardAmount; i++)
+			{
+				int newCardId = Deck.GetCard();
+				cardparams.PutExtra("card_" + i, newCardId);
+			}
+			EventBroadcaster.Instance.PostEvent(EventNames.UI_ADD_CARD_TO_DECK, cardparams);
+		}
+		else
+		{
+			for(int i=0; i < cardAmount; i++)
+			{
+				Deck.GetCard();
+			}
+		}
 	}
 
 	public void SetTurn(int teamNumber)
@@ -55,13 +82,15 @@ public class BoardPlayer : MonoBehaviour
 			int newCardId = Deck.GetCard();
 			if(newCardId >= 0 && TeamId == 1)
 			{
-				Debug.Log("newCardId " + newCardId);
 				// Note a new card was added into the player's deck
 				Parameters cardparams = new Parameters();
 				cardparams.PutExtra("card", newCardId);
 				EventBroadcaster.Instance.PostEvent(EventNames.UI_ADD_CARD_TO_DECK, cardparams);
 			}
 		}
+
+		if(brain != null)
+			brain.SetTurnActive(turnActive);
 	}
 
 }

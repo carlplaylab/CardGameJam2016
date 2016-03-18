@@ -34,11 +34,11 @@ public class GBState
 
 	#region CharacterFunctions
 
-	public virtual void StartDragCardOnBoard (GameBoard board, int charID)
+	public virtual void StartDragCardOnBoard (GameBoard board, int cardId)
 	{
 	}
 
-	public virtual bool EndDragCardOnBoard (GameBoard board, int charID)
+	public virtual bool EndDragCardOnBoard (GameBoard board, int cardId)
 	{
 		return false;
 	}

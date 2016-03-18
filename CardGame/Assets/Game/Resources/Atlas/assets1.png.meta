@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ef18375481f7642b8afbfdd9db713cfe
-timeCreated: 1457611757
+timeCreated: 1458220113
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -675,19 +675,18 @@ TextureImporter:
     - name: ui_black
       rect:
         serializedVersion: 2
-        x: 776
-        y: 119
+        x: 781
+        y: 116
         width: 122
         height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -60, y: 60}
-        - {x: -60, y: -62}
+      - - {x: -61, y: 62}
+        - {x: -61, y: -62}
         - {x: 61, y: -62}
         - {x: 61, y: 62}
-        - {x: -58, y: 62}
     - name: ui_barfiller
       rect:
         serializedVersion: 2
