@@ -15,6 +15,8 @@ public class GameBoard : MonoBehaviour
 	private int currentTeam = 1;
 
 	public Action onPlayerMoveEnded = null;
+	private MoveType previousMoveType = MoveType.NONE;
+
 
 
 	void Awake ()
@@ -52,7 +54,6 @@ public class GameBoard : MonoBehaviour
 		set { cellHandler = value; }
 	}
 
-
 	public CharacterTeam GetTeam(int teamNumber)
 	{
 		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
@@ -89,8 +90,11 @@ public class GameBoard : MonoBehaviour
 		}
 		else
 		{
-			bool actionFinished = ReleaseObject(targetCell);
-			if(actionFinished && onPlayerMoveEnded != null)
+			previousMoveType = ReleaseObject(targetCell);
+
+			if((previousMoveType == MoveType.MOVED || 
+				previousMoveType == MoveType.SPAWN )
+				&& onPlayerMoveEnded != null)
 			{
 				onPlayerMoveEnded();
 			}
@@ -100,7 +104,7 @@ public class GameBoard : MonoBehaviour
 
 	public void HoldObject(Cell targetCell)
 	{
-		if(targetCell == null || selectedObject != null)
+		if(targetCell == null || selectedObject != null || previousMoveType == MoveType.ATTACKED)
 		{
 			return;
 		}
@@ -125,19 +129,19 @@ public class GameBoard : MonoBehaviour
 	}
 
 
-	public bool ReleaseObject(Cell targetCell)
+	public MoveType ReleaseObject(Cell targetCell)
 	{
 		if(selectedObject == null || targetCell == null)
 		{
-			return false;
+			return MoveType.NONE;
 		}
 
 		cellHandler.RemoveHighlights();
 		selectedObject.OnFocus(false);
 
-		bool releaseSuccess = DropObjectOnCell(selectedObject, targetCell);
+		MoveType releaseType = DropObjectOnCell(selectedObject, targetCell);
 		selectedObject = null;
-		return releaseSuccess;
+		return releaseType;
 
 		/*
 		if(!targetCell.IsWalkable())
@@ -163,65 +167,78 @@ public class GameBoard : MonoBehaviour
 	}
 
 
-	public bool DropObjectOnCell(BoardObject bobj, Cell targetCell)
+	public MoveType DropObjectOnCell(BoardObject bobj, Cell targetCell)
 	{
-		bool releaseSuccess = false;
+		MoveType releaseType =  MoveType.NONE;
 		if(!targetCell.IsWalkable())
 		{
-			return releaseSuccess;
+			return MoveType.NONE;
 		}
 		else if(targetCell.IsVacant())
 		{
 
 			Cell previousCell = cellHandler.GetCell( bobj.cellId );
-			releaseSuccess = bobj.TransferCells(targetCell, previousCell);
-			Debug.Log("TransferCells");
-			return releaseSuccess;
+			if(bobj.TransferCells(targetCell, previousCell))
+				releaseType = MoveType.MOVED;
+			return releaseType;
 		}
 		else
 		{
-			releaseSuccess = ProcessEncounter(bobj, targetCell);
-			return releaseSuccess;
+			releaseType = ProcessEncounter(bobj, targetCell);
+			return releaseType;
 		}
 	}
 
 
-	public bool ProcessEncounter (BoardObject selObj, Cell targetCell)
+	public MoveType ProcessEncounter (BoardObject selObj, Cell targetCell)
 	{
-		Debug.Log("ProcessEncounter");
-
 		if(targetCell == null || targetCell.IsVacant() || selObj == null)
-			return false;
+			return MoveType.NONE;
 
 		Cell previousCell = cellHandler.GetCell( selObj.cellId );
 		if(!selObj.AllowMovementOnCell(targetCell, previousCell))
-			return false;
+			return MoveType.NONE;
 
 		if(!selObj.IsCharacter() || !targetCell.ResidingObject.IsCharacter())
-			return false;
+			return MoveType.NONE;
 
 		GameCharacter selectedChar = (GameCharacter)selObj;
 		if(!selectedChar.CheckIfEnemy(targetCell.ResidingObject))
-			return false;
+			return MoveType.NONE;
+
+		selectedChar.PlayAttackFx(targetCell);
+		InputEnable = false;
+
+		return MoveType.ATTACKED;
+	}
+
+
+	public void AttackHit (GameCharacter attacker, Cell targetCell)
+	{
+		previousMoveType = MoveType.NONE;
 
 		GameCharacter targetChar = (GameCharacter)targetCell.ResidingObject;
-		bool targetDies = targetChar.ReceiveAttack( selectedChar.AttackStrength );
-		bool selectedDies = selectedChar.ReceiveAttack( targetChar.AttackStrength );
+		bool targetDies = targetChar.ReceiveAttack( attacker.AttackStrength );
+		bool selectedDies = attacker.ReceiveAttack( targetChar.AttackStrength );
 
 		if(targetDies)
 		{
-			GetOpposingTeam().KillGameCharacter(targetChar);
-
+			GetPlayer(targetChar.Team).Team.KillGameCharacter(targetChar);
 			targetCell.ResidingObject = null;
 		}
 
 		if(selectedDies)
 		{
-			GetCurrentTeam().KillGameCharacter(selectedChar);
+			Cell previousCell = cellHandler.GetCell( attacker.cellId );
+			GetPlayer(attacker.Team).Team.KillGameCharacter(attacker);
 			previousCell.ResidingObject = null;
 		}
 
-		return true;
+		InputEnable = true;
+		if(currentTeam == 1 && onPlayerMoveEnded != null)
+		{
+			onPlayerMoveEnded();
+		}
 	}
 
 

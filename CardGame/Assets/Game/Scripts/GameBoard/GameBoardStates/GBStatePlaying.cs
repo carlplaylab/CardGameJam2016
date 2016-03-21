@@ -114,9 +114,6 @@ public class GBStatePlaying : GBState
 		if(cdata.cardType != CardType.CHARACTER)
 			return false;
 
-		int cardCharacterID = cdata.characterId;
-
-		bool cardConvertSuccess = false;
 		board.BoardCells.RemoveHighlights();
 		playState = PlayState.IDLE;
 
@@ -128,40 +125,19 @@ public class GBStatePlaying : GBState
 				hoveredCell.HighlightCell(false);
 			}
 		}
-
-		CharacterData charData = CharacterDatabase.Instance.GetData(cardCharacterID);
-		if(cardCharacterID != charData.id)
-		{
-			Debug.LogWarning("WRONG DATA charId " + cardCharacterID  + " charData.id " + charData.id );
-		}
 		hoveredCell = newHoveredCell;
 
+		if(hoveredCell == null)
+			return false;
+		
+		if(hoveredCell.row > 2)
+			return false;
+
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
-		bool canAfford = player.IngameData.HasEnoughResource(charData.elementType, charData.spawnCost);
-		if(!canAfford)
-		{
-			Debug.Log("Cant afford character");
-		}
-
-		if(hoveredCell != null && 
-			charData != null &&
-			hoveredCell.IsVacant() && 
-			canAfford )
-		{
-			GameCharacter newCharacter = CharacterHandler.Instance.CreateCharacterOnCell(cardCharacterID, hoveredCell);
-			if(newCharacter != null)
-			{
-				player.IngameData.SpendResource(charData.elementType, charData.spawnCost);
-				player.Team.AddGameCharacter(newCharacter);
-				cardConvertSuccess = true;
-
-				int currentTeam = GameBoardManager.Instance.CurrentTeam;
-				player.Deck.CardUsed(cardId);
-			}
-		}
+		GameCharacter newCharacter = player.CreateCharacter(cardId, hoveredCell);
 		hoveredCell = null;
 
-		return cardConvertSuccess;
+		return (newCharacter != null);
 	}
 
 	#endregion

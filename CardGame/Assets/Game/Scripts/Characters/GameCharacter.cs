@@ -7,6 +7,7 @@ public class GameCharacter : BoardObject
 	[SerializeField] private SpriteRenderer baseSprite; 
 	[SerializeField] private SpriteRenderer baseSupportSprite; 
 	[SerializeField] private GameObject mainBody; 
+	[SerializeField] private AttackEffects effects; 
 
 	private CharacterData characterData;
 	private CharacterStats characterStats;
@@ -17,12 +18,19 @@ public class GameCharacter : BoardObject
 	private int teamIndex;
 	private int characterIndex;
 	private bool allowInteraction;
+	private Cell targetCell;
 
 
 	void Awake ()
 	{
 		infoDisplay = this.GetComponentInChildren<CharacterInfoDisplay>();
 		animator = this.GetComponentInChildren<Animator>();
+	}
+
+
+	void OnDestroy ()
+	{
+		targetCell = null;
 	}
 		
 
@@ -156,9 +164,32 @@ public class GameCharacter : BoardObject
 		animator.Play("idle");
 
 		infoDisplay.Hide();
+		effects.ResetPosition();
 
 		cellId = -1;
 		state = BoardObjectState.INACTIVE;
+	}
+
+	public void PlayAttackFx (Cell cell)
+	{
+		targetCell = cell;
+		effects.onEndAction = OnEndAttackFx;
+		effects.Setup(targetCell.transform.position);
+		effects.Play();
+	}
+
+	public void OnEndAttackFx ()
+	{
+		Invoke("NotifyAttackEnd", 0.5f);
+	}
+
+
+	public void NotifyAttackEnd ()
+	{
+		GameBoardManager.Instance.Board.AttackHit(this, targetCell);
+
+		if(characterStats.life > 0)
+			effects.ResetPosition();
 	}
 
 }

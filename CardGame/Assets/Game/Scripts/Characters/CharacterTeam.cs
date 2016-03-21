@@ -19,6 +19,12 @@ public class CharacterTeam
 	}
 
 
+	public int Count
+	{
+		get { return aliveCharacters.Count; }
+	}
+
+
 	public CharacterTeam (int teamNumber)
 	{
 		team = teamNumber;

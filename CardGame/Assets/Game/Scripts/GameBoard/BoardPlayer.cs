@@ -93,4 +93,49 @@ public class BoardPlayer : MonoBehaviour
 			brain.SetTurnActive(turnActive);
 	}
 
+	public GameCharacter CreateCharacter(int cardId, Cell targetCell)
+	{
+		CardData cdata = CardDatabase.Instance.GetData(cardId);
+		if(	cdata == null || 
+			cdata.cardType != CardType.CHARACTER)
+		{
+			return null;
+		}
+
+		int cardCharacterID = cdata.characterId;
+		if( targetCell == null || 
+			!targetCell.IsVacant() || 
+			!CheckAffordCharacter(cardCharacterID) )
+		{
+			Debug.Log("not vacant " + (!targetCell.IsVacant()) );
+			Debug.Log("can afford " + CheckAffordCharacter(cardCharacterID));
+			return null;
+		}
+
+		GameCharacter newCharacter = CharacterHandler.Instance.CreateCharacterOnCell(cardCharacterID, targetCell);
+		if(newCharacter == null)
+			return null;
+
+		CharacterData charData = CharacterDatabase.Instance.GetData(cardCharacterID);
+		IngameData.SpendResource(charData.elementType, charData.spawnCost);
+		Team.AddGameCharacter(newCharacter);
+
+		newCharacter.SetTeam(TeamId);
+		Deck.CardUsed(cardId);
+
+		return newCharacter;
+
+	}
+
+	public bool CheckAffordCharacter(int cardCharacterID)
+	{
+		CharacterData charData = CharacterDatabase.Instance.GetData(cardCharacterID);
+		if(charData == null)
+		{
+			Debug.Log("no character data");
+			return false;
+		}
+		return IngameData.HasEnoughResource(charData.elementType, charData.spawnCost);
+	}
+
 }

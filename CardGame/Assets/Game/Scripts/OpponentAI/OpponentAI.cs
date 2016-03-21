@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 
+public enum MoveType
+{
+	NONE = 0,
+	MOVED = 1,
+	ATTACKED = 2,
+	SPAWN = 3
+}
 
 public class OpponentAI : MonoBehaviour
 {
@@ -20,6 +27,8 @@ public class OpponentAI : MonoBehaviour
 	private Cell think_TargetCell = null;
 	private float think_timer = 0f;
 	private string think_text;
+	private MoveType previousMove;
+
 
 	public void Setup ()
 	{
@@ -68,7 +77,7 @@ public class OpponentAI : MonoBehaviour
 	{
 		if(logThinkCounter != thinkingCounter)
 		{
-			Debug.Log("UpdateThinking " + thinkingCounter + ", " + think_text);
+			//Debug.Log("UpdateThinking " + thinkingCounter + ", " + think_text);
 			logThinkCounter = thinkingCounter;
 			textmesh.text = think_text;
 		}
@@ -135,7 +144,17 @@ public class OpponentAI : MonoBehaviour
 		if(!canAfford)
 			think_CardId = -1;
 
-		if(think_CardId >= 0)
+		float chanceSpawn = 100;
+		if( player.Team.Count > 2 )
+		{
+			if(previousMove != MoveType.SPAWN)
+			{
+				chanceSpawn = 33;
+			}
+		}
+		int rand = UnityEngine.Random.Range(0, 101);
+
+		if(think_CardId >= 0 && rand < chanceSpawn)
 		{
 			thinkingCounter = 1;
 
@@ -197,6 +216,16 @@ public class OpponentAI : MonoBehaviour
 
 		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
 		Cell randomCell = boardCells.GetRandomVacantCell(targetRect);
+
+		GameCharacter newCharacater = player.CreateCharacter(think_CardId, randomCell);
+		if(newCharacater != null)
+		{
+			think_text += "\ndropping new character";
+			think_timer = 1f;
+			thinkingCounter = 9;
+			return;
+		}
+		/*
 		CardData cdata = CardDatabase.Instance.GetData(think_CardId);
 		CharacterData charData = CharacterDatabase.Instance.GetData(cdata.characterId);
 
@@ -216,9 +245,11 @@ public class OpponentAI : MonoBehaviour
 				return;
 			}
 		}
+		*/
 
 		think_text += "\nCannot drop new character";
 		thinkingCounter = 4;
+		previousMove = MoveType.SPAWN;
 	}
 
 
@@ -281,8 +312,7 @@ public class OpponentAI : MonoBehaviour
 		}
 
 		think_timer = 1f;
-
-		think_text += "\nchose " + soldier.name;
+		think_text += "\nchose " + soldier.name + " and target cell " + think_TargetCell.name;
 	}
 
 
@@ -296,9 +326,10 @@ public class OpponentAI : MonoBehaviour
 			return;
 		}
 
-		bool moveSuccess = GameBoardManager.Instance.Board.DropObjectOnCell(think_MyCell.ResidingObject, think_TargetCell);
-			
-		think_text += "\nmoved to target success: " + moveSuccess;
+		MoveType movetype = GameBoardManager.Instance.Board.DropObjectOnCell(think_MyCell.ResidingObject, think_TargetCell);
+
+		think_text += "\nmoved to target success: " + movetype.ToString();;
 		think_timer = 2f;
+		previousMove = movetype;
 	}
 }
