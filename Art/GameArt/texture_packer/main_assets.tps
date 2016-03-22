@@ -200,6 +200,7 @@
             <filename>../final_art/cell_land.png</filename>
             <filename>../final_art/cell_red.png</filename>
             <filename>../final_art/cell_water.png</filename>
+            <filename>../final_art/main_logo.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
