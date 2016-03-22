@@ -19,12 +19,16 @@ public class CardSelectionView : UIView
 	void Awake ()
 	{
 		EventBroadcaster.Instance.AddObserver(EventNames.UI_ADD_CHARACTER_CARD, AddCard);
+		EventBroadcaster.Instance.AddObserver(EventNames.UI_ADD_CARD_TO_DECK, AddCardToDeck);
+		EventBroadcaster.Instance.AddObserver(EventNames.PLAYER_TURN_TOGGLED, PlayerTurnToggled);
 	}
 
 
 	void OnDestroy ()
 	{
 		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_ADD_CHARACTER_CARD);
+		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_ADD_CARD_TO_DECK);
+		EventBroadcaster.Instance.RemoveObserver(EventNames.PLAYER_TURN_TOGGLED);
 	}
 
 
@@ -47,13 +51,13 @@ public class CardSelectionView : UIView
 			{
 				if(inUI)
 				{
-					bool converted = GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+					bool converted = GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CardId);
 					if(converted)
 						RemoveCard(selectedCard);
 				}
 				else
 				{
-					GameBoardManager.Instance.StartDragCardOnBoard(selectedCard.CharacterID);
+					GameBoardManager.Instance.StartDragCardOnBoard(selectedCard.CardId);
 				}
 			}
 		}
@@ -71,11 +75,12 @@ public class CardSelectionView : UIView
 	{
 		int charID = cardParams.GetIntExtra("character", 1);
 		CharacterData charData = CharacterDatabase.Instance.GetData(charID);
-		AddCard(charData);
+		AddCard(charData, 1);
 	}
 
 
-	public void AddCard(CharacterData charData)
+
+	public void AddCard(CharacterData charData, int cardId)
 	{
 		if(charData == null)
 			return;
@@ -86,7 +91,7 @@ public class CardSelectionView : UIView
 		newObj.transform.localScale = Vector3.one;
 
 		SelectableCardView cardView = newObj.GetComponent<SelectableCardView>();
-		cardView.SetDetails(newId, charData);
+		cardView.SetDetails(newId, charData, cardId);
 
 		RectTransform cardXform = newObj.GetComponent<RectTransform>();
 		float cardWidth = cardXform.rect.size.x;
@@ -97,6 +102,41 @@ public class CardSelectionView : UIView
 		cardXform.anchoredPosition3D = pos;
 
 		cardViewList.Add(cardView);
+	}
+
+	public void AddCardToDeck(Parameters cardParams)
+	{
+		int cardId = cardParams.GetIntExtra("card",-1);
+		int cardAmount = cardParams.GetIntExtra("cardamount", 0);
+
+		if(cardId >= 0)
+		{
+			AddCard(cardId);
+		}
+		if(cardAmount > 0)
+		{
+			for(int i=0; i < cardAmount; i++)
+			{
+				int multiCardId = cardParams.GetIntExtra("card_" + i, -1);
+				if(multiCardId >= 0)
+				{
+					AddCard(multiCardId);
+				}
+			}
+		}
+	}
+
+	private void AddCard(int cardId)
+	{
+		CardData cdata = CardDatabase.Instance.GetData(cardId);
+		if(cdata == null)
+			return;
+
+		if(cdata.cardType == CardType.CHARACTER)
+		{
+			CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.characterId);
+			AddCard(chardata, cardId);
+		}
 	}
 
 
@@ -126,7 +166,7 @@ public class CardSelectionView : UIView
 	{
 		if(selectedCard != null)
 		{
-			bool converted = GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CharacterID);
+			bool converted = GameBoardManager.Instance.EndDragCardOnBoard(selectedCard.CardId);
 			if(converted)
 				RemoveCard(selectedCard);
 		}
@@ -166,8 +206,6 @@ public class CardSelectionView : UIView
 	}
 
 
-
-
 	private void RemoveCard(SelectableCardView card)
 	{
 		cardViewList.Remove(card);
@@ -178,7 +216,30 @@ public class CardSelectionView : UIView
 
 		card.gameObject.SetActive(false);
 		UnityEngine.GameObject.Destroy(card.gameObject);
+		UpdateCardPositions();
+	}
 
+
+	private void UpdateCardPositions ()
+	{
+		for(int i=0; i < cardViewList.Count; i++)
+		{
+			SelectableCardView cardView = cardViewList[i];
+			RectTransform cardXform = cardView.gameObject.GetComponent<RectTransform>();
+			float cardWidth = cardXform.rect.size.x;
+			float cardHeight = cardXform.rect.size.y;
+			Vector3 pos = startPos;
+			pos.x += (i - CARD_LIMIT/2) * cardWidth * 0.75f;
+
+			cardXform.anchoredPosition3D = pos;
+		}
+	}
+
+
+	public void PlayerTurnToggled(Parameters toggledParams)
+	{
+		int currentTeam = toggledParams.GetIntExtra("currentteam", 1);
+		SetActivePosition(currentTeam == 1);
 	}
 
 }

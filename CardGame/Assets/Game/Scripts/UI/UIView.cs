@@ -12,6 +12,9 @@ public enum UIViewState
 
 public class UIView : MonoBehaviour 
 {
+	[SerializeField] protected Vector3 activePosition;
+	[SerializeField] protected Vector3 hiddenPosition;
+
 	protected UIViewState viewState;
 	protected RectTransform rect;
 
@@ -51,7 +54,6 @@ public class UIView : MonoBehaviour
 	{
 	}
 
-
 	public bool CheckTouchInRectangle()
 	{
 		if(rect == null)
@@ -61,4 +63,13 @@ public class UIView : MonoBehaviour
 		return RectTransformUtility.RectangleContainsScreenPoint(rect, screenPt, IngameUIManager.Instance.UiCamera);
 	}
 
+	public void SetActivePosition(bool active)
+	{
+		Vector3 pos = active ? activePosition : hiddenPosition;
+		RectTransform rect = GetComponent<RectTransform>();
+		if(rect != null)
+		{
+			rect.anchoredPosition3D = pos;
+		}
+	}
 }

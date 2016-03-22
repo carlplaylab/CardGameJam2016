@@ -12,9 +12,16 @@ public class CharacterTeam
 
 	private int team;
 
+
 	public int Team
 	{
 		get { return team; }
+	}
+
+
+	public int Count
+	{
+		get { return aliveCharacters.Count; }
 	}
 
 
@@ -71,5 +78,23 @@ public class CharacterTeam
 		deadguy.gameObject.SetActive(true);
 	}
 
+	public GameCharacter GetNearestCharacter(GameCharacter focusCharacter, CellHandler boardCells)
+	{
+		Cell baseCell = boardCells.GetCell(focusCharacter.cellId);
+		GameCharacter nearestChar = null;
+		float minDistance = 9999f;
 
+		for(int i=0; i < aliveCharacters.Count; i++)
+		{
+			Cell otherCell = boardCells.GetCell(aliveCharacters[i].cellId);
+			baseCell.GetDistanceFromCell(otherCell);
+			if(otherCell.PythDistance < minDistance)
+			{
+				minDistance = otherCell.PythDistance;
+				nearestChar = aliveCharacters[i];
+			}
+		}
+
+		return nearestChar;
+	}
 }

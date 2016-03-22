@@ -145,6 +145,7 @@ public class CellHandler : MonoBehaviour
 		SetCellsVisible(true);
 	}
 
+
 	public Cell GetCell(int id)
 	{
 		if(id < cells.Count)
@@ -198,6 +199,50 @@ public class CellHandler : MonoBehaviour
 		{
 			hoveredCell.HighlightCell(true, hoveredCell.IsVacant() );
 		}
+	}
+
+
+	public List<Cell> GetCellsInArea(Rect cellRect)
+	{
+		int minCol = (int)cellRect.xMin;
+		int minrow = (int)cellRect.yMin;
+		int maxCol = (int)cellRect.xMax;
+		int maxRow = (int)cellRect.yMax;
+
+		List<Cell> focusedCells = new List<Cell>();
+		for(int i=0; i < cells.Count; i++)
+		{
+			int row = cells[i].row;
+			int col = cells[i].col;
+
+			if(minrow <= row && row <= maxRow && 
+				minCol <= col && col <= maxCol)
+			{
+				focusedCells.Add(cells[i]);
+			}
+		}
+		return focusedCells;
+	}
+
+	public Cell GetRandomVacantCell(Rect cellRect)
+	{
+		List<Cell> focusedCells = GetCellsInArea(cellRect);
+		List<Cell> randomCells = new List<Cell>(); 
+		for(int i=0; i < focusedCells.Count; i++)
+		{
+			if(focusedCells[i].IsVacant() && focusedCells[i].IsWalkable())
+			{
+				randomCells.Add(focusedCells[i]);
+			}
+		}
+
+		if(randomCells.Count > 0)
+		{
+			int randIdx = UnityEngine.Random.Range(0, randomCells.Count-1);
+			return randomCells[randIdx];
+		}
+
+		return null;
 	}
 
 }

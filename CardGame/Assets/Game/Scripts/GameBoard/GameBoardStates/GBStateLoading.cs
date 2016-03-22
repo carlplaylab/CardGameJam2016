@@ -39,7 +39,11 @@ public class GBStateLoading : GBState
 
 			// Insert loading of character data
 			int dataChars = CharacterDatabase.Instance.Count();
-			//Debug.Log("all characters : " + dataChars);
+			int cards = CardDatabase.Instance.Count();
+
+			board.Setup();
+
+			Debug.Log("all characters : " + dataChars + ", all cards: " + cards);
 		}
 		else if(loadingCount == 2)
 		{
@@ -58,7 +62,8 @@ public class GBStateLoading : GBState
 		}
 		else if(loadingCount == 6)
 		{
-			// Insert creation of characters in team 2
+			board.GetPlayer(1).SetInitialCards(4);
+			board.GetPlayer(2).SetInitialCards(3);
 		}
 		else if(loadingCount == 7)
 		{
@@ -71,8 +76,6 @@ public class GBStateLoading : GBState
 
 	public override void End (GameBoard board)
 	{
-		IngameDataCenter.Instance.Player1.ResourceData.AddResource(ElementType.LAND, 10);
-		IngameDataCenter.Instance.Player2.ResourceData.AddResource(ElementType.LAND, 10);
 
 		IngameDataCenter.Instance.Player1.ResourceData.UpdateUI();
 	}
@@ -120,8 +123,10 @@ public class GBStateLoading : GBState
 			Cell freeCell = board.BoardCells.GetCellAt(row, col);
 			if(freeCell != null)
 			{
-				GameCharacter newChar = CharacterHandler.Instance.CreateCharacterOnCell(i, freeCell);
-				newChar.SetTeam(team);
+				BoardPlayer player = board.GetPlayer(team);
+				GameCharacter newCharacter = CharacterHandler.Instance.CreateCharacterOnCell(i, freeCell);
+				newCharacter.SetTeam(team);
+				player.Team.AddGameCharacter(newCharacter);
 			}
 			else{
 				Debug.Log("null cell");

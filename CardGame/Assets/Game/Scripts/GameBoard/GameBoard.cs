@@ -7,7 +7,7 @@ using System;
 public class GameBoard : MonoBehaviour 
 {
 
-	[SerializeField] private CharacterTeam[] teams;
+	[SerializeField] private BoardPlayer[] players;
 
 	private GameInput input = null;
 	private CellHandler cellHandler = null;
@@ -15,15 +15,23 @@ public class GameBoard : MonoBehaviour
 	private int currentTeam = 1;
 
 	public Action onPlayerMoveEnded = null;
+	private MoveType previousMoveType = MoveType.NONE;
+
 
 
 	void Awake ()
 	{
 		input = GetComponent<GameInput>();
+	}
 
-		teams = new CharacterTeam[2];
-		teams[0] = new CharacterTeam(1);
-		teams[1] = new CharacterTeam(2) ;
+
+	public void Setup ()
+	{
+		int level = GameBoardManager.Instance.Settings.Level;
+		for(int i=0; i < players.Length; i++)
+		{
+			players[i].Setup(i+1, level);
+		}
 	}
 
 
@@ -46,16 +54,15 @@ public class GameBoard : MonoBehaviour
 		set { cellHandler = value; }
 	}
 
-
 	public CharacterTeam GetTeam(int teamNumber)
 	{
-		int teamIdx = Mathf.Clamp(teamNumber-1, 0, teams.Length-1);
-		return teams[teamIdx];
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
+		return players[teamIdx].Team;
 	}
 
 	public CharacterTeam GetOpposingTeam()
 	{
-		return GetTeam( (currentTeam+1)%(teams.Length) );
+		return GetTeam( (currentTeam+1)%(players.Length) );
 	}
 
 	public CharacterTeam GetCurrentTeam()
@@ -63,6 +70,17 @@ public class GameBoard : MonoBehaviour
 		return GetTeam( currentTeam );
 	}
 
+	public CardDeck GetDeck(int teamNumber)
+	{
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
+		return players[teamIdx].Deck;
+	}
+
+	public BoardPlayer GetPlayer(int teamNumber)
+	{
+		int teamIdx = Mathf.Clamp(teamNumber-1, 0, players.Length-1);
+		return players[teamIdx];
+	}
 
 	public void CellClicked(Cell targetCell)
 	{
@@ -72,8 +90,11 @@ public class GameBoard : MonoBehaviour
 		}
 		else
 		{
-			bool actionFinished = ReleaseObject(targetCell);
-			if(actionFinished && onPlayerMoveEnded != null)
+			previousMoveType = ReleaseObject(targetCell);
+
+			if((previousMoveType == MoveType.MOVED || 
+				previousMoveType == MoveType.SPAWN )
+				&& onPlayerMoveEnded != null)
 			{
 				onPlayerMoveEnded();
 			}
@@ -83,7 +104,7 @@ public class GameBoard : MonoBehaviour
 
 	public void HoldObject(Cell targetCell)
 	{
-		if(targetCell == null || selectedObject != null)
+		if(targetCell == null || selectedObject != null || previousMoveType == MoveType.ATTACKED)
 		{
 			return;
 		}
@@ -108,18 +129,21 @@ public class GameBoard : MonoBehaviour
 	}
 
 
-	public bool ReleaseObject(Cell targetCell)
+	public MoveType ReleaseObject(Cell targetCell)
 	{
 		if(selectedObject == null || targetCell == null)
 		{
-			return false;
+			return MoveType.NONE;
 		}
 
 		cellHandler.RemoveHighlights();
 		selectedObject.OnFocus(false);
 
-		bool releaseSuccess = false;
+		MoveType releaseType = DropObjectOnCell(selectedObject, targetCell);
+		selectedObject = null;
+		return releaseType;
 
+		/*
 		if(!targetCell.IsWalkable())
 		{
 			selectedObject = null;
@@ -139,44 +163,82 @@ public class GameBoard : MonoBehaviour
 			selectedObject = null;
 			return releaseSuccess;
 		}
+		*/
 	}
 
 
-	public bool ProcessEncounter (Cell targetCell)
+	public MoveType DropObjectOnCell(BoardObject bobj, Cell targetCell)
 	{
-		if(targetCell == null || targetCell.IsVacant() || selectedObject == null)
-			return false;
+		MoveType releaseType =  MoveType.NONE;
+		if(!targetCell.IsWalkable())
+		{
+			return MoveType.NONE;
+		}
+		else if(targetCell.IsVacant())
+		{
 
-		Cell previousCell = cellHandler.GetCell( selectedObject.cellId );
-		if(!selectedObject.AllowMovementOnCell(targetCell, previousCell))
-			return false;
+			Cell previousCell = cellHandler.GetCell( bobj.cellId );
+			if(bobj.TransferCells(targetCell, previousCell))
+				releaseType = MoveType.MOVED;
+			return releaseType;
+		}
+		else
+		{
+			releaseType = ProcessEncounter(bobj, targetCell);
+			return releaseType;
+		}
+	}
 
-		if(!selectedObject.IsCharacter() || !targetCell.ResidingObject.IsCharacter())
-			return false;
 
-		GameCharacter selectedChar = (GameCharacter)selectedObject;
+	public MoveType ProcessEncounter (BoardObject selObj, Cell targetCell)
+	{
+		if(targetCell == null || targetCell.IsVacant() || selObj == null)
+			return MoveType.NONE;
+
+		Cell previousCell = cellHandler.GetCell( selObj.cellId );
+		if(!selObj.AllowMovementOnCell(targetCell, previousCell))
+			return MoveType.NONE;
+
+		if(!selObj.IsCharacter() || !targetCell.ResidingObject.IsCharacter())
+			return MoveType.NONE;
+
+		GameCharacter selectedChar = (GameCharacter)selObj;
 		if(!selectedChar.CheckIfEnemy(targetCell.ResidingObject))
-			return false;
+			return MoveType.NONE;
+
+		selectedChar.PlayAttackFx(targetCell);
+		InputEnable = false;
+
+		return MoveType.ATTACKED;
+	}
+
+
+	public void AttackHit (GameCharacter attacker, Cell targetCell)
+	{
+		previousMoveType = MoveType.NONE;
 
 		GameCharacter targetChar = (GameCharacter)targetCell.ResidingObject;
-		bool targetDies = targetChar.ReceiveAttack( selectedChar.AttackStrength );
-		bool selectedDies = selectedChar.ReceiveAttack( targetChar.AttackStrength );
+		bool targetDies = targetChar.ReceiveAttack( attacker.AttackStrength );
+		bool selectedDies = attacker.ReceiveAttack( targetChar.AttackStrength );
 
 		if(targetDies)
 		{
-			GetOpposingTeam().KillGameCharacter(targetChar);
-
+			GetPlayer(targetChar.Team).Team.KillGameCharacter(targetChar);
 			targetCell.ResidingObject = null;
 		}
 
 		if(selectedDies)
 		{
-			GetCurrentTeam().KillGameCharacter(selectedChar);
-			selectedObject = null;
+			Cell previousCell = cellHandler.GetCell( attacker.cellId );
+			GetPlayer(attacker.Team).Team.KillGameCharacter(attacker);
 			previousCell.ResidingObject = null;
 		}
 
-		return true;
+		InputEnable = true;
+		if(currentTeam == 1 && onPlayerMoveEnded != null)
+		{
+			onPlayerMoveEnded();
+		}
 	}
 
 
@@ -184,6 +246,11 @@ public class GameBoard : MonoBehaviour
 	{
 		currentTeam = newTeam;
 		CharacterHandler.Instance.SetTeam( newTeam );
+
+		for(int i=0; i < players.Length; i++)
+		{
+			players[i].SetTurn(newTeam);
+		}
 	}
 
 	// instantly checks cell using gameInput
