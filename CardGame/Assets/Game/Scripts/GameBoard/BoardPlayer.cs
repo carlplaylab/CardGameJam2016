@@ -95,6 +95,12 @@ public class BoardPlayer : MonoBehaviour
 
 	public GameCharacter CreateCharacter(int cardId, Cell targetCell)
 	{
+		if( targetCell == null )
+		{
+			Debug.Log("NULL target cell" );
+			return null;
+		}
+		
 		CardData cdata = CardDatabase.Instance.GetData(cardId);
 		if(	cdata == null || 
 			cdata.cardType != CardType.CHARACTER)

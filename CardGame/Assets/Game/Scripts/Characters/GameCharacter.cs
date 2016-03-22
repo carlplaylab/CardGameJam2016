@@ -66,13 +66,16 @@ public class GameCharacter : BoardObject
 		set 
 		{
 			allowInteraction = value;
-			if(allowInteraction)
+			if(state != BoardObjectState.INACTIVE)
 			{
-				animator.Play("character_body_idle");
-			}
-			else
-			{
-				animator.Play("idle");
+				if(allowInteraction)
+				{
+					animator.Play("character_body_idle");
+				}
+				else
+				{
+					animator.Play("idle");
+				}
 			}
 		}
 	}
@@ -161,7 +164,7 @@ public class GameCharacter : BoardObject
 
 	public void TriggerDie ()
 	{
-		animator.Play("idle");
+		Interaction = false;
 
 		infoDisplay.Hide();
 		effects.ResetPosition();

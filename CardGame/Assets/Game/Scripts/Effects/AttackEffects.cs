@@ -71,6 +71,8 @@ public class AttackEffects : Effects
 	{
 		base.Reset();
 
+		EffectsHandler.Instance.PlayEffectsAt(EffectsType.FX_SLASH, this.transform.position);
+
 		float direction = startPos.x < endPos.x ? -1f : 1f;
 		startPos = this.transform.position;
 		endPos.y += bounce.y;

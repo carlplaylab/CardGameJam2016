@@ -158,7 +158,7 @@ public class GameBoardManager : MonoBehaviour
 		bool characterAdded = currentState.EndDragCardOnBoard(gameBoard, cardId);
 		if(characterAdded)
 		{
-			Invoke( "OnPlayerTurnEnd", 0.05f);
+			//Invoke( "OnPlayerTurnEnd", 0.05f);
 			return true;
 		}
 		return false;

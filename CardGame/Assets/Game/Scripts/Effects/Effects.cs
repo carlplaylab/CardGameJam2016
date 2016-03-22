@@ -3,17 +3,31 @@ using System.Collections;
 using System;
 
 
+public enum EffectsType
+{
+	CHARACTER_ATTACK = 0,
+	FX_SLASH = 1
+}
+
 public class Effects : MonoBehaviour 
 {
+	[SerializeField] protected float duration = 0f;
+	[SerializeField] protected EffectsType effectsType;
+
 	protected bool playing = false;
 	protected float timer = 0f;
-	protected float duration = 0f;
 
 	public System.Action onEndAction;
+
 
 	public bool IsPlaying
 	{
 		get { return playing; } 
+	}
+
+	public EffectsType Type
+	{
+		get { return effectsType; }
 	}
 
 	void Update ()
@@ -30,6 +44,13 @@ public class Effects : MonoBehaviour
 
 	public virtual void Play ()
 	{
+		playing = true;
+	}
+
+	public virtual void PlayAt (Vector3 pos)
+	{
+		this.transform.position = pos;
+		Play();
 	}
 
 	public virtual void Stop ()
@@ -58,5 +79,12 @@ public class Effects : MonoBehaviour
 			timer = duration;
 		
 		return Vector3.Lerp(start, end, t);
+	}
+
+	public virtual void DestroyEffect ()
+	{
+		playing = false;
+		this.gameObject.SetActive(false);
+		UnityEngine.GameObject.Destroy(this.gameObject);
 	}
 }

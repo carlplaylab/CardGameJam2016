@@ -222,8 +222,8 @@ public class OpponentAI : MonoBehaviour
 		{
 			think_text += "\ndropping new character";
 			think_timer = 1f;
-			thinkingCounter = 9;
-			return;
+			//thinkingCounter = 9;
+			//return;
 		}
 		/*
 		CardData cdata = CardDatabase.Instance.GetData(think_CardId);
@@ -277,10 +277,11 @@ public class OpponentAI : MonoBehaviour
 			return;
 		}
 
-		int maxRow = Mathf.Min(think_MyCell.row + soldier.GetMovement(), boardCells.Rows);
-		int minRow = Mathf.Max(think_MyCell.row - soldier.GetMovement(), 0);
-		int maxCol = Mathf.Min(think_MyCell.col + soldier.GetMovement(), boardCells.Cols);
-		int minCol = Mathf.Max(think_MyCell.col - soldier.GetMovement(), 0);
+		int movement = soldier.GetMovement();
+		int maxRow = Mathf.Min(think_MyCell.row + movement, boardCells.Rows);
+		int minRow = Mathf.Max(think_MyCell.row - movement, 0);
+		int maxCol = Mathf.Min(think_MyCell.col + movement, boardCells.Cols);
+		int minCol = Mathf.Max(think_MyCell.col - movement, 0);
 		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
 		boardCells.HiglightArea(targetRect);
 
@@ -304,6 +305,10 @@ public class OpponentAI : MonoBehaviour
 			if(target != null)
 			{
 				think_TargetCell = boardCells.GetCell(target.cellId);
+
+				int movableRow = Mathf.Clamp(think_TargetCell.row, minRow, maxRow);
+				int movableCol = Mathf.Clamp(think_TargetCell.col, minCol, maxCol);
+				think_TargetCell = GameBoardManager.Instance.Board.BoardCells.GetCellAt(movableRow, movableCol);
 			}
 			else
 			{
