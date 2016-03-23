@@ -8,10 +8,12 @@ public class PlayerResources
 {
 	public const int MAX_RESOURCES = 1000;
 
+	public int team = 1;
 	private Dictionary<ElementType, int> resourceCounter;
 
-	public PlayerResources ()
+	public PlayerResources (int teamNumber)
 	{
+		team = teamNumber;
 		resourceCounter = new Dictionary<ElementType, int>();
 		resourceCounter.Add(ElementType.VOID, 0);
 		resourceCounter.Add(ElementType.AIR, 0);
@@ -26,6 +28,41 @@ public class PlayerResources
 		{
 			resourceCounter[eType] = Mathf.Clamp(resourceCounter[eType] + additionalResources, 0, MAX_RESOURCES);
 		}
+	}
+
+	public void AddRandomResources(List<ElementType> eTypes,List<int> weights, int totalCount)
+	{
+		List<int> elemCounter = new List<int>();
+		int totalWt = 0;
+		for(int i=0; i < weights.Count; i++)
+		{
+			totalWt += weights[i];
+			elemCounter.Add(0);
+		}
+
+		totalWt = Mathf.Clamp(totalWt,1,totalWt);
+
+		for(int i=0; i < totalCount; i++)
+		{
+			int rand =  UnityEngine.Random.Range(0,totalWt) % totalWt;
+			int sum = 0;
+			for(int e=0; e < weights.Count; e++)
+			{
+				sum += weights[e];
+				if(rand <= sum)
+				{
+					elemCounter[e] += 1;
+					break;
+				}
+			}
+		}
+
+		for(int i=0; i < elemCounter.Count; i++)
+		{
+			AddResource(eTypes[i], elemCounter[i]);
+		}
+
+		UpdateUI();
 	}
 
 
@@ -69,6 +106,7 @@ public class PlayerResources
 	public void UpdateUI()
 	{
 		Parameters elemParams = new Parameters();
+		elemParams.PutExtra("team", team);
 		elemParams.PutExtra("air", AirResources);
 		elemParams.PutExtra("land", LandResources);
 		elemParams.PutExtra("water", WaterResources);

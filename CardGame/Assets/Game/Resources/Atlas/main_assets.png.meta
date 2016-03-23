@@ -14,6 +14,7 @@ TextureImporter:
     21300014: cell_land
     21300016: cell_red
     21300018: cell_water
+    21300020: main_logo
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,10 +38,10 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 4096
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -93,8 +94,8 @@ TextureImporter:
     - name: base
       rect:
         serializedVersion: 2
-        x: 217
-        y: 708
+        x: 432
+        y: 253
         width: 236
         height: 200
       alignment: 0
@@ -120,8 +121,8 @@ TextureImporter:
     - name: base_air
       rect:
         serializedVersion: 2
-        x: 217
-        y: 544
+        x: 432
+        y: 89
         width: 200
         height: 162
       alignment: 0
@@ -141,8 +142,8 @@ TextureImporter:
     - name: base_land
       rect:
         serializedVersion: 2
-        x: 217
-        y: 380
+        x: 634
+        y: 89
         width: 200
         height: 162
       alignment: 0
@@ -162,8 +163,8 @@ TextureImporter:
     - name: base_water
       rect:
         serializedVersion: 2
-        x: 217
-        y: 216
+        x: 670
+        y: 291
         width: 200
         height: 162
       alignment: 0
@@ -184,8 +185,8 @@ TextureImporter:
     - name: cell_green
       rect:
         serializedVersion: 2
-        x: 2
-        y: 270
+        x: 217
+        y: 245
         width: 213
         height: 208
       alignment: 9
@@ -202,15 +203,15 @@ TextureImporter:
         - {x: -104, y: 98}
         - {x: -106, y: 96}
         - {x: -107, y: 93}
-        - {x: -107, y: -87}
-        - {x: 106, y: -87}
+        - {x: -107, y: -85}
+        - {x: 106, y: -85}
         - {x: 106, y: 94}
         - {x: 105, y: 97}
     - name: cell_land
       rect:
         serializedVersion: 2
         x: 2
-        y: 695
+        y: 240
         width: 213
         height: 213
       alignment: 9
@@ -237,8 +238,8 @@ TextureImporter:
     - name: cell_red
       rect:
         serializedVersion: 2
-        x: 2
-        y: 61
+        x: 217
+        y: 36
         width: 213
         height: 207
       alignment: 9
@@ -263,7 +264,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 480
+        y: 25
         width: 213
         height: 213
       alignment: 9
@@ -287,6 +288,108 @@ TextureImporter:
         - {x: 97, y: -105}
         - {x: 105, y: -97}
         - {x: 106, y: -94}
+    - name: main_logo
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 455
+        width: 692
+        height: 453
+      alignment: 9
+      pivot: {x: 0.50578034, y: 0.50441504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 152, y: -210.5}
+        - {x: 145, y: -199.5}
+        - {x: 187, y: -159.5}
+        - {x: 212, y: -159.5}
+        - {x: 208, y: -181.5}
+        - {x: 208, y: -201.5}
+        - {x: 216, y: -205.5}
+        - {x: 237, y: -192.5}
+        - {x: 297, y: -195.5}
+        - {x: 317, y: -185.5}
+        - {x: 329, y: -174.5}
+        - {x: 335, y: -159.5}
+        - {x: 332, y: -104.5}
+        - {x: 331, y: -27.5}
+        - {x: 334, y: 25.5}
+        - {x: 342, y: 93.5}
+        - {x: 342, y: 115.5}
+        - {x: 340, y: 122.5}
+        - {x: 319, y: 136.5}
+        - {x: 310, y: 136.5}
+        - {x: 275, y: 134.5}
+        - {x: 280, y: 142.5}
+        - {x: 329, y: 163.5}
+        - {x: 341, y: 185.5}
+        - {x: 342, y: 188.5}
+        - {x: 342, y: 220.5}
+        - {x: 330, y: 224.5}
+        - {x: 294, y: 224.5}
+        - {x: 254, y: 176.5}
+        - {x: 194, y: 135.5}
+        - {x: 191, y: 139.5}
+        - {x: 155, y: 166.5}
+        - {x: 156, y: 175.5}
+        - {x: 149, y: 187.5}
+        - {x: 133, y: 191.5}
+        - {x: 119, y: 183.5}
+        - {x: 114, y: 163.5}
+        - {x: 118, y: 156.5}
+        - {x: 146, y: 121.5}
+        - {x: 147, y: 109.5}
+        - {x: 111, y: 110.5}
+        - {x: 94, y: 119.5}
+        - {x: 53, y: 129.5}
+        - {x: 19, y: 133.5}
+        - {x: -41, y: 131.5}
+        - {x: -95, y: 116.5}
+        - {x: -142, y: 112.5}
+        - {x: -122, y: 129.5}
+        - {x: -123, y: 144.5}
+        - {x: -138, y: 160.5}
+        - {x: -150, y: 157.5}
+        - {x: -162, y: 149.5}
+        - {x: -190, y: 113.5}
+        - {x: -214, y: 112.5}
+        - {x: -228, y: 124.5}
+        - {x: -268, y: 150.5}
+        - {x: -297, y: 189.5}
+        - {x: -316, y: 195.5}
+        - {x: -348, y: 188.5}
+        - {x: -350, y: 186.5}
+        - {x: -350, y: 148.5}
+        - {x: -345, y: 135.5}
+        - {x: -318, y: 121.5}
+        - {x: -324, y: 114.5}
+        - {x: -326, y: 101.5}
+        - {x: -318, y: 5.5}
+        - {x: -318, y: -68.5}
+        - {x: -324, y: -132.5}
+        - {x: -329, y: -175.5}
+        - {x: -314, y: -190.5}
+        - {x: -301, y: -198.5}
+        - {x: -255, y: -202.5}
+        - {x: -232, y: -199.5}
+        - {x: -224, y: -188.5}
+        - {x: -220, y: -184.5}
+        - {x: -225, y: -153.5}
+        - {x: -214, y: -158.5}
+        - {x: -168, y: -159.5}
+        - {x: -177, y: -177.5}
+        - {x: -182, y: -191.5}
+        - {x: -183, y: -196.5}
+        - {x: -174, y: -200.5}
+        - {x: -131, y: -187.5}
+        - {x: -124, y: -194.5}
+        - {x: -80, y: -216.5}
+        - {x: -50, y: -224.5}
+        - {x: -21, y: -228.5}
+        - {x: 49, y: -228.5}
+        - {x: 78, y: -223.5}
+        - {x: 121, y: -215.5}
+        - {x: 148, y: -220.5}
     outline: []
   spritePackingTag: 
   userData: 

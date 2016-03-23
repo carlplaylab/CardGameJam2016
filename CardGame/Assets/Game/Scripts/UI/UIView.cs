@@ -33,8 +33,7 @@ public class UIView : MonoBehaviour
 		this.gameObject.SetActive(true);
 		SetState(UIViewState.VISIBlE);
 	}
-
-
+		
 	public virtual void Hide ()
 	{
 		if(ViewState == UIViewState.LEAVING || ViewState == UIViewState.HIDDEN)
@@ -43,8 +42,7 @@ public class UIView : MonoBehaviour
 		this.gameObject.SetActive(false);
 		SetState(UIViewState.HIDDEN);
 	}
-
-
+		
 	public virtual void SetState(UIViewState newState)
 	{
 		viewState = newState;

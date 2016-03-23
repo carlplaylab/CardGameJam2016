@@ -23,7 +23,7 @@ public class PlayerIngameData
 	public PlayerIngameData (int teamID)
 	{
 		team = teamID;
-		resourceData = new PlayerResources();
+		resourceData = new PlayerResources(teamID);
 	}
 
 	public string GetStats ()

@@ -12,7 +12,11 @@ public class ElementSource : MonoBehaviour
 	public Action onElementsTaken = null;
 
 	private float timer = 0f;
-	
+
+	public int ResourceCount
+	{
+		get { return cubesList.Length; }
+	}
 
 	public void SetVisible(bool visible)
 	{
