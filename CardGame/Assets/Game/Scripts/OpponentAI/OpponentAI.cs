@@ -28,12 +28,24 @@ public class OpponentAI : MonoBehaviour
 	private float think_timer = 0f;
 	private string think_text;
 	private MoveType previousMove;
-
+	private List<ElementType> addElemTypes;
+	private List<int> addElemWeights;
+	private int addElemCount;
 
 	public void Setup ()
 	{
 		player = GetComponent<BoardPlayer>();
 		team = player.TeamId;
+
+		addElemTypes = new List<ElementType>();
+		addElemTypes.Add(ElementType.WATER);
+		addElemTypes.Add(ElementType.LAND);
+
+		addElemWeights = new List<int>();
+		addElemWeights.Add(33);
+		addElemWeights.Add(100-33);
+
+		addElemCount = GameBoardManager.Instance.ElementUI.ResourceCount;
 	}
 
 	public void SetTurnActive (bool active)
@@ -47,21 +59,16 @@ public class OpponentAI : MonoBehaviour
 			think_MyCell = null;
 			think_TargetCell = null;
 			think_text = "";
+
+			GenerateRandomElements();
 		}
 		activeState = active;
-
-		GenerateRandomElements();
 	}
 
 
 	void GenerateRandomElements ()
 	{
-		for(int i=0; i < 5; i++)
-		{
-			// 60% chance of getting land elements than water elements
-			ElementType randType = (UnityEngine.Random.Range(0, 99) % 3 < 2) ? ElementType.LAND : ElementType.WATER;
-			player.IngameData.ResourceData.AddResource(randType,1);
-		}
+		player.IngameData.ResourceData.AddRandomResources(addElemTypes, addElemWeights, addElemCount);
 	}
 
 	void Update ()

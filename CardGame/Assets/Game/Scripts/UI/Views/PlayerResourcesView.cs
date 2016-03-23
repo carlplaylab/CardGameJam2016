@@ -4,24 +4,17 @@ using System.Collections;
 public class PlayerResourcesView : UIView 
 {
 
-	private ElementCounterDisplay airCounter;
-	private ElementCounterDisplay landCounter;
-	private ElementCounterDisplay waterCounter;
+	[SerializeField] private ElementCounterDisplay airCounter;
+	[SerializeField] private ElementCounterDisplay landCounter;
+	[SerializeField] private ElementCounterDisplay waterCounter;
+
+	[SerializeField] private ElementCounterDisplay airCounter_opponent;
+	[SerializeField] private ElementCounterDisplay landCounter_opponent;
+	[SerializeField] private ElementCounterDisplay waterCounter_opponent;
 
 
 	void Awake ()
 	{
-		ElementCounterDisplay[] childCounters = GetComponentsInChildren<ElementCounterDisplay>();
-		for(int i=0; i < childCounters.Length; i++)
-		{
-			if(childCounters[i].Element == ElementType.AIR)
-				airCounter = childCounters[i];
-			else if(childCounters[i].Element == ElementType.LAND)
-				landCounter = childCounters[i];
-			else if(childCounters[i].Element == ElementType.WATER)
-				waterCounter = childCounters[i];
-		}
-
 		EventBroadcaster.Instance.AddObserver(EventNames.UI_RESOURCE_COUNTERS_UPDATE, UpdateCounters);
 	}
 
@@ -34,18 +27,23 @@ public class PlayerResourcesView : UIView
 
 	public void UpdateCounters(Parameters elementParams)
 	{
+		int team = elementParams.GetIntExtra("team", 1);
 		int air = elementParams.GetIntExtra("air", 0);
 		int land = elementParams.GetIntExtra("land", 0);
 		int water = elementParams.GetIntExtra("water", 0);
 
-		if(airCounter != null)
+		if(team == GameBoard.PLAYER_TEAM)
+		{
 			airCounter.Amount = air;
-
-		if(landCounter != null)
 			landCounter.Amount = land;
-
-		if(waterCounter != null)
 			waterCounter.Amount = water;
+		}
+		else
+		{
+			airCounter_opponent.Amount = air;
+			landCounter_opponent.Amount = land;
+			waterCounter_opponent.Amount = water;
+		}
 	}
 
 }

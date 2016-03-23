@@ -6,6 +6,8 @@ using System;
 
 public class GameBoard : MonoBehaviour 
 {
+	public const int PLAYER_TEAM = 1;
+	public const int OPPONENT_TEAM = 2;
 
 	[SerializeField] private BoardPlayer[] players;
 
@@ -84,6 +86,9 @@ public class GameBoard : MonoBehaviour
 
 	public void CellClicked(Cell targetCell)
 	{
+		if(currentTeam != PLAYER_TEAM)
+			return;
+		
 		if(selectedObject == null)
 		{
 			HoldObject(targetCell);
