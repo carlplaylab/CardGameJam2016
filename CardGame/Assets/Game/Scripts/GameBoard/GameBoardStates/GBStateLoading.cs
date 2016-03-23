@@ -40,10 +40,11 @@ public class GBStateLoading : GBState
 			// Insert loading of character data
 			int dataChars = CharacterDatabase.Instance.Count();
 			int cards = CardDatabase.Instance.Count();
+			int skills = SkillsDatabase.Instance.Count();
 
 			board.Setup();
 
-			Debug.Log("all characters : " + dataChars + ", all cards: " + cards);
+			Debug.Log("all characters : " + dataChars + ", all cards: " + cards + ", skills " + skills);
 		}
 		else if(loadingCount == 2)
 		{
@@ -63,7 +64,7 @@ public class GBStateLoading : GBState
 		else if(loadingCount == 6)
 		{
 			board.GetPlayer(1).SetInitialCards(4);
-			board.GetPlayer(2).SetInitialCards(3);
+			board.GetPlayer(2).SetInitialCards(4);
 		}
 		else if(loadingCount == 7)
 		{
@@ -110,14 +111,14 @@ public class GBStateLoading : GBState
 	{
 		for(int i=1; i <= 6; i ++)
 		{
-			int row = 2;
-			int col = i %3;
+			int row = 0;
+			int col = 1 + i %3;
 			int team = 1;
 
 			if(i > 3)
 			{
 				team = 2;
-				row = 5;
+				row = board.BoardCells.Rows;
 			}
 
 			Cell freeCell = board.BoardCells.GetCellAt(row, col);

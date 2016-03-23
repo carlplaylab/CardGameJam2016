@@ -1,0 +1,91 @@
+﻿{
+	"__Type": "SkillsDatabase, Assembly-CSharp",
+	
+	"skillsList": 
+		[
+			{
+				"__Type": "SkillData, Assembly-CSharp",
+				
+				"id": 1,
+				
+				"name": "MagicSkill",
+				
+				"description": "The magician casts a damaging spell on a 2x2 area.",
+				
+				"visualsName": "skill_magic",
+				
+				"areaRow": 1,
+				
+				"areaCol": 1,
+				
+				"cost": 6,
+				
+				"damage": 2,
+				
+				"elementType": "LAND"
+			},
+			{
+				"__Type": "SkillData, Assembly-CSharp",
+				
+				"id": 2,
+				
+				"name": "ArrowSkill",
+				
+				"description": "Fire an arrow from a distance giving 2 damage.",
+				
+				"visualsName": "skill_arrow",
+				
+				"areaRow": 1,
+				
+				"areaCol": 1,
+				
+				"cost": 3,
+				
+				"damage": 2,
+				
+				"elementType": "LAND"
+			},
+			{
+				"__Type": "SkillData, Assembly-CSharp",
+				
+				"id": 3,
+				
+				"name": "MagicWave",
+				
+				"description": "skill description",
+				
+				"visualsName": "skillprefab",
+				
+				"areaRow": 1,
+				
+				"areaCol": 1,
+				
+				"cost": 5,
+				
+				"damage": 2,
+				
+				"elementType": "WATER"
+			},
+			{
+				"__Type": "SkillData, Assembly-CSharp",
+				
+				"id": 4,
+				
+				"name": "WaterShots",
+				
+				"description": "skill description",
+				
+				"visualsName": "skillprefab",
+				
+				"areaRow": 1,
+				
+				"areaCol": 1,
+				
+				"cost": 5,
+				
+				"damage": 2,
+				
+				"elementType": "WATER"
+			}
+		]
+}

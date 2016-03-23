@@ -79,7 +79,7 @@ public class GBStatePlaying : GBState
 		if(cdata.cardType != CardType.CHARACTER)
 			return ;
 
-		int charId = cdata.characterId;
+		int charId = cdata.dataId;
 
 		CharacterData data = CharacterDatabase.Instance.GetData(charId);
 		if(data == null)

@@ -108,7 +108,7 @@ public class BoardPlayer : MonoBehaviour
 			return null;
 		}
 
-		int cardCharacterID = cdata.characterId;
+		int cardCharacterID = cdata.dataId;
 		if( targetCell == null || 
 			!targetCell.IsVacant() || 
 			!CheckAffordCharacter(cardCharacterID) )

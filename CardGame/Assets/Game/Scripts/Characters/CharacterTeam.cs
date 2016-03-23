@@ -65,7 +65,7 @@ public class CharacterTeam
 		}
 		else
 		{
-			posY = 5.3f - deadCharacters.Count * 0.6f;
+			posY = 4.3f - deadCharacters.Count * 0.6f;
 		}
 
 		deadguy.TriggerDie();

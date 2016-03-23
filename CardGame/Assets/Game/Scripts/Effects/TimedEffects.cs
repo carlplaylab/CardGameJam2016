@@ -7,6 +7,11 @@ public class TimedEffects : Effects
 	[SerializeField] protected float life;
 	[SerializeField] protected bool destroyOnEnd;
 
+	public override void Play ()
+	{
+		timer = life;
+		base.Play();
+	}
 
 	public override void PlayAt (Vector3 pos)
 	{

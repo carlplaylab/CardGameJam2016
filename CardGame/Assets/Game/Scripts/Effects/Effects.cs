@@ -6,7 +6,8 @@ using System;
 public enum EffectsType
 {
 	CHARACTER_ATTACK = 0,
-	FX_SLASH = 1
+	FX_SLASH = 1,
+	SKILL = 2
 }
 
 public class Effects : MonoBehaviour 

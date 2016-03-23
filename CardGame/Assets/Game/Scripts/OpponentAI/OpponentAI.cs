@@ -145,7 +145,7 @@ public class OpponentAI : MonoBehaviour
 	{
 		think_CardId = player.Deck.GetRandomSpawnCard();
 		CardData cdata = CardDatabase.Instance.GetData(think_CardId);
-		CharacterData charData = CharacterDatabase.Instance.GetData(cdata.characterId);
+		CharacterData charData = CharacterDatabase.Instance.GetData(cdata.dataId);
 
 		bool canAfford = player.IngameData.HasEnoughResource(charData.elementType, charData.spawnCost);
 		if(!canAfford)

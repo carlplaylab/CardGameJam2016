@@ -21,6 +21,8 @@ public class CharacterData
 	[SerializeField] public string cardSprite;
 	[SerializeField] public string ingameSprite;
 
+	[SerializeField] public int skills;
+
 	public CharacterData ()
 	{
 		id = 0;
@@ -30,6 +32,8 @@ public class CharacterData
 		atlas = "atlas1";
 		cardSprite = "char_";
 		ingameSprite = "char_";
+		skills = 0;
 	}
+
 }
 

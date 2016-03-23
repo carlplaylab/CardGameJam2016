@@ -134,7 +134,7 @@ public class CardSelectionView : UIView
 
 		if(cdata.cardType == CardType.CHARACTER)
 		{
-			CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.characterId);
+			CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.dataId);
 			AddCard(chardata, cardId);
 		}
 	}
