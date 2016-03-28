@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 [SerializeField]
@@ -108,7 +109,7 @@ public class BoardPlayer : MonoBehaviour
 			return null;
 		}
 
-		int cardCharacterID = cdata.characterId;
+		int cardCharacterID = cdata.dataId;
 		if( targetCell == null || 
 			!targetCell.IsVacant() || 
 			!CheckAffordCharacter(cardCharacterID) )
@@ -143,5 +144,27 @@ public class BoardPlayer : MonoBehaviour
 		}
 		return IngameData.HasEnoughResource(charData.elementType, charData.spawnCost);
 	}
+
+	public bool HighlightAreaAroundCharacters(GameBoard board, int characterId)
+	{
+		bool hasHighlight = false;
+		List<GameCharacter> targets = Team.GetCharacters(characterId);
+		if(targets.Count > 0)
+		{
+			hasHighlight = true;
+			CharacterData charData = CharacterDatabase.Instance.GetData(characterId);
+			int movement = charData.movement;
+			for(int i=0; i < targets.Count; i++)
+			{
+				Cell charCell = board.BoardCells.GetCell(targets[i].cellId);
+				if(charCell != null)
+				{
+					board.BoardCells.HighlightAround(charCell, movement);
+				}
+			}
+		}
+		return hasHighlight;
+	}
+
 
 }

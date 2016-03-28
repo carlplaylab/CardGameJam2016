@@ -8,38 +8,38 @@
 				
 				"id": 1,
 				
-				"name": "WraithKing",
+				"name": "Swordsman",
 				
-				"description": "its a new WraithKing card!",
+				"description": "A strong character able to give and take lots of hits.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "LAND",
 				
-				"cost": 1,
+				"cost": 6,
 				
-				"cardSprite": "",
+				"cardSprite": "char_land_soldier",
 				
-				"characterId": 1
+				"dataId": 1
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
 				
 				"id": 2,
 				
-				"name": "Drow",
+				"name": "Archer",
 				
-				"description": "its a new  Drow card!",
+				"description": "An agile soldier. Able to use the Arrow skill or to attack enemies at a distance.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "LAND",
 				
-				"cost": 1,
+				"cost": 8,
 				
-				"cardSprite": "",
+				"cardSprite": "char_land_range",
 				
-				"characterId": 2
+				"dataId": 2
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
@@ -48,74 +48,112 @@
 				
 				"name": "Warlock",
 				
-				"description": "its a new Warlock card!",
+				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "LAND",
 				
-				"cost": 1,
+				"cost": 10,
 				
-				"cardSprite": "",
+				"cardSprite": "char_land_witch",
 				
-				"characterId": 3
+				"dataId": 3
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
 				
 				"id": 4,
 				
-				"name": "Water melee",
+				"name": "Lochness",
 				
-				"description": "its a new card!",
+				"description": "A slow moving heavy creature from the swamps.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "WATER",
 				
-				"cost": 1,
+				"cost": 8,
 				
-				"cardSprite": "",
+				"cardSprite": "char_water_soldier",
 				
-				"characterId": 4
+				"dataId": 4
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
 				
 				"id": 5,
 				
-				"name": "Water Range",
+				"name": "Nessie",
 				
-				"description": "its a new card!",
+				"description": "A ranged creature from the deep, is able to use the arrow spell.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "WATER",
 				
-				"cost": 1,
+				"cost": 10,
 				
-				"cardSprite": "",
+				"cardSprite": "char_water_range",
 				
-				"characterId": 5
+				"dataId": 5
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
 				
 				"id": 6,
 				
-				"name": "Water magic",
+				"name": "Ice Wizard",
 				
-				"description": "its a new card!",
+				"description": "A water wizard able to use magic.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "WATER",
 				
-				"cost": 1,
+				"cost": 12,
 				
-				"cardSprite": "",
+				"cardSprite": "char_water_witch",
 				
-				"characterId": 6
+				"dataId": 6
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 7,
+				
+				"name": "MagicSkill",
+				
+				"description": "Damages a 2x2 area",
+				
+				"cardType": "SKILL",
+				
+				"elementType": "LAND",
+				
+				"cost": 6,
+				
+				"cardSprite": "spell_magic",
+				
+				"dataId": 1
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 8,
+				
+				"name": "ArrowSkill",
+				
+				"description": "its a new card!",
+				
+				"cardType": "SKILL",
+				
+				"elementType": "LAND",
+				
+				"cost": 3,
+				
+				"cardSprite": "spell_arrow",
+				
+				"dataId": 2
 			}
 		]
 }

@@ -270,4 +270,8 @@ public class GameBoard : MonoBehaviour
 		return null;
 	}
 
+	public void DropCellOnBoard(int cellid, int skillId)
+	{
+	}
+
 }

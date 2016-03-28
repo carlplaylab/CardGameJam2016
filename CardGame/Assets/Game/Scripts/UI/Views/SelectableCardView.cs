@@ -11,7 +11,7 @@ public class SelectableCardView : DraggableUIView
 	[SerializeField] private GameObject[] bgObjects;
 
 	public int CardId = 1;
-	public int CharacterID = 2;
+	public int DataId = 2;
 	public int id = 0;
 
 	private bool onUI = true;
@@ -57,15 +57,15 @@ public class SelectableCardView : DraggableUIView
 
 	#endregion
 
-	public void SetDetails (int id, CharacterData charData, int cardId)
+	public void SetDetails (int id, CardData cardData, int cardId)
 	{
 		CardId = cardId;
-		CharacterID = charData.id;
+		DataId = cardData.id;
 		this.id = id;
 
-		charImage.sprite = IngameSpriteCenter.Instance.GetSprite(charData.cardSprite);
-		elementIcon.sprite = IngameSpriteCenter.Instance.GetButtonSprite(charData.elementType);
-		costText.text = charData.spawnCost.ToString();
+		charImage.sprite = IngameSpriteCenter.Instance.GetSprite(cardData.cardSprite);
+		elementIcon.sprite = IngameSpriteCenter.Instance.GetButtonSprite(cardData.elementType);
+		costText.text = cardData.cost.ToString();
 	}
 		
 

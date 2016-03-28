@@ -7,13 +7,13 @@ using System.Collections.Generic;
 public class CardEditor : AbstractListDataEditorWindow<CardData>  
 {
 
-	[MenuItem ("MyMenu/Do Something with a Shortcut Key %w")]
+	[MenuItem ("MyMenu/Do Something with a Shortcut Key %l")]
 	static void DoSomethingWithAShortcutKey () 
 	{
 		GetWindow();
 	}
 
-	[MenuItem("Card Game Tools/Card Editor %w")]
+	[MenuItem("Card Game Tools/Card Editor %l")]
 	public static void GetWindow()
 	{
 		CardEditor cardEditor = EditorWindow.GetWindow<CardEditor>("Card Database", true);
@@ -150,7 +150,11 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 		data.cardType = (CardType)EditorGUILayout.Popup((int)data.cardType,cardtypes);
 		if(data.cardType == CardType.CHARACTER)
 		{
-			data.characterId = EditorGUILayout.IntField("Character id", data.characterId);
+			data.dataId  = EditorGUILayout.IntField("Character id", data.dataId);
+		}
+		else
+		{
+			data.dataId = EditorGUILayout.IntField("Skill id", data.dataId);
 		}
 	}
 
@@ -168,6 +172,11 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 			}
 			SelectItemID(itemId);
 		}
+		else
+		{
+			SelectItemID(1);
+		}
+		Repaint();
 	}
 
 	public void PreviousItem ()
@@ -181,6 +190,11 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 			}
 			SelectItemID(itemId);
 		}
+		else
+		{
+			SelectItemID(1);
+		}
+		Repaint();
 	}
 
 	private void SelectItemID(int itemId)

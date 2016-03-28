@@ -39,22 +39,34 @@ public class CardView : UIView
 
 	public void ShowCard(Parameters charParams)
 	{
-		int charId = charParams.GetIntExtra("character", 1);
-		CharacterData data = CharacterDatabase.Instance.GetData(charId);
-		if(data != null)
+		int cardid = charParams.GetIntExtra("card", 1);
+		CardData data = CardDatabase.Instance.GetData(cardid);
+		if(data == null)
 		{
-			ShowCharacter(data);
+			return;
 		}
+
+		ShowCardDetails(data);
 	}
 
 
-	public void ShowCharacter (CharacterData data)
+	public void ShowCardDetails (CardData data)
 	{
 		elementView.Element = data.elementType;
-		elementView.Amount = data.spawnCost;
+		elementView.Amount = data.cost;
 
-		Sprite charSprite = IngameSpriteCenter.Instance.GetSprite( data.cardSprite );
-		characterView.SetCharacter(data, charSprite);
+		Sprite cardsprite = IngameSpriteCenter.Instance.GetSprite( data.cardSprite );
+
+		if(data.cardType == CardType.CHARACTER)
+		{
+			CharacterData chdata = CharacterDatabase.Instance.GetData(data.dataId);
+			characterView.SetCharacter(chdata, cardsprite);
+		}
+		else 
+		{
+			SkillData skdata = SkillsDatabase.Instance.GetData(data.dataId);
+			characterView.SetSkill(skdata, cardsprite);
+		}
 
 		Show();
 	}

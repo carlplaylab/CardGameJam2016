@@ -11,15 +11,39 @@ public class CardDeckData
 
 		if(level == 1)
 		{
-			
+			for(int i=0; i < cards.Length; i++)
+			{
+				if(i < 10)
+					cards[i] = 1;
+				else if(i < 20)
+					cards[i] = 4;
+				else
+					cards[i] = 5;
+			}
 		}
 		else if(level == 2)
 		{
-			
+			for(int i=0; i < cards.Length; i++)
+			{
+				if(i < 15)
+					cards[i] = 4;
+				else if(i < 24)
+					cards[i] = 5;
+				else 
+					cards[i] = 6;
+			}
 		}
 		else
 		{
-			
+			for(int i=0; i < cards.Length; i++)
+			{
+				if(i < 15)
+					cards[i] = 1;
+				else if(i < 24)
+					cards[i] = 2;
+				else 
+					cards[i] = 3;
+			}
 		}
 		return cards;
 	}
@@ -32,10 +56,16 @@ public class CardDeckData
 		{
 			for(int i=0; i < cards.Length; i++)
 			{
-				if(i < 20)
+				if(i < 8)
 					cards[i] = 1;
-				else
+				else if(i < 16)
 					cards[i] = 2;
+				else if(i < 20)
+					cards[i] = 3;
+				else if(i < 25)
+					cards[i] = 7;
+				else
+					cards[i] = 8;
 			}
 		}
 		else if(level == 2)

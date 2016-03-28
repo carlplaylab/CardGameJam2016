@@ -9,6 +9,7 @@ using System;
 public class DraggableUIView : UIView
 {
 	[SerializeField] private Vector3 focusedScale;
+	[SerializeField] private float offsetY = 0.5f;
 
 	private bool isFocused = false;
 	private bool isDragged = false;

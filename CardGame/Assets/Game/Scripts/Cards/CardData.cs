@@ -5,7 +5,7 @@ using System.Collections;
 public enum CardType
 {
 	CHARACTER = 0,
-	SPELL = 1
+	SKILL = 1
 }
 
 
@@ -20,7 +20,7 @@ public class CardData
 	public int cost;
 	public string cardSprite;
 
-	public int characterId;
+	public int dataId;
 
 
 	public CardData ()
@@ -32,6 +32,6 @@ public class CardData
 		elementType = ElementType.LAND;
 		cost = 1;
 		cardSprite = "";
-		characterId = 1;
+		dataId = 1;
 	}
 }

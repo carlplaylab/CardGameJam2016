@@ -8,6 +8,7 @@ public class ElementSource : MonoBehaviour
 	[SerializeField] private Vector3 maxPos;
 	[SerializeField] private ElementSourceCubes[] cubesList;
 	[SerializeField] private float showTime = 3f;
+	[SerializeField] private GameObject container;
 
 	public Action onElementsTaken = null;
 
@@ -21,6 +22,7 @@ public class ElementSource : MonoBehaviour
 	public void SetVisible(bool visible)
 	{
 		this.gameObject.SetActive(visible);
+		this.container.SetActive(visible);
 	}
 
 

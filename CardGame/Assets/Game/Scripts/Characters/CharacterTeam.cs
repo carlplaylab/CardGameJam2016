@@ -65,7 +65,7 @@ public class CharacterTeam
 		}
 		else
 		{
-			posY = 5.3f - deadCharacters.Count * 0.6f;
+			posY = 4.3f - deadCharacters.Count * 0.6f;
 		}
 
 		deadguy.TriggerDie();
@@ -96,5 +96,19 @@ public class CharacterTeam
 		}
 
 		return nearestChar;
+	}
+		
+
+	public List<GameCharacter> GetCharacters(int id)
+	{
+		List<GameCharacter> targets = new List<GameCharacter>();
+		for(int i=0; i < aliveCharacters.Count; i++)
+		{
+			if(aliveCharacters[i].CharacterId == id)
+			{
+				targets.Add(aliveCharacters[i]);
+			}
+		}
+		return targets;
 	}
 }

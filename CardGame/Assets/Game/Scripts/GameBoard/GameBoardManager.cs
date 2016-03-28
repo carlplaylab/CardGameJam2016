@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 
 
@@ -119,7 +120,17 @@ public class GameBoardManager : MonoBehaviour
 	void Update ()
 	{
 		if(currentState != null)
+		{
 			currentState.Update(gameBoard);
+
+			if(currentState.GetState() != BoardState.LOADING)
+			{
+				if(Input.GetKeyDown(KeyCode.Escape))
+				{
+					LeaveGameScene();
+				}
+			}
+		}
 	}
 
 
@@ -164,4 +175,9 @@ public class GameBoardManager : MonoBehaviour
 		return false;
 	}
 
+	public void LeaveGameScene ()
+	{
+		currentState = null;
+		SceneManager.LoadScene("MenuScene");
+	}
 }

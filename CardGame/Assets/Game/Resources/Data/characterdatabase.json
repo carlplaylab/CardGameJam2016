@@ -8,9 +8,9 @@
 				
 				"id": 1,
 				
-				"name": "Land Soldier",
+				"name": "Swordsman",
 				
-				"description": "A melee character that has 1 movement",
+				"description": "A strong character able to give and take lots of hits.",
 				
 				"attack": 3,
 				
@@ -28,14 +28,16 @@
 				
 				"cardSprite": "char_land_soldier",
 				
-				"ingameSprite": "char_land_soldier"
+				"ingameSprite": "char_land_soldier",
+				
+				"skills": 0
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
 				"id": 2,
 				
-				"name": "Land Archer",
+				"name": "Archer",
 				
 				"description": "water archer",
 				
@@ -55,16 +57,18 @@
 				
 				"cardSprite": "char_land_range",
 				
-				"ingameSprite": "char_land_range"
+				"ingameSprite": "char_land_range",
+				
+				"skills": 2
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
 				"id": 3,
 				
-				"name": "Land Witch",
+				"name": "Warlock",
 				
-				"description": "water witch",
+				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
 				
 				"attack": 3,
 				
@@ -82,26 +86,28 @@
 				
 				"cardSprite": "char_land_witch",
 				
-				"ingameSprite": "char_land_witch"
+				"ingameSprite": "char_land_witch",
+				
+				"skills": 1
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
 				"id": 4,
 				
-				"name": "Water Solider",
+				"name": "Lochness",
 				
-				"description": "char_water_soldier",
+				"description": "A slow moving heavy creature from the swamps.",
 				
-				"attack": 5,
+				"attack": 3,
 				
 				"movement": 1,
 				
-				"life": 5,
+				"life": 10,
 				
 				"elementType": "WATER",
 				
-				"spawnCost": 7,
+				"spawnCost": 8,
 				
 				"characterPrefab": "character_4",
 				
@@ -109,16 +115,18 @@
 				
 				"cardSprite": "char_water_soldier",
 				
-				"ingameSprite": "char_water_soldier"
+				"ingameSprite": "char_water_soldier",
+				
+				"skills": 0
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
 				"id": 5,
 				
-				"name": "Water Archer",
+				"name": "Nessie",
 				
-				"description": "char_water_soldier",
+				"description": "A ranged creature from the deep, is able to use the arrow spell.",
 				
 				"attack": 3,
 				
@@ -136,16 +144,18 @@
 				
 				"cardSprite": "char_water_range",
 				
-				"ingameSprite": "char_water_range"
+				"ingameSprite": "char_water_range",
+				
+				"skills": 3
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
 				"id": 6,
 				
-				"name": "Water Witch",
+				"name": "Ice Wizard",
 				
-				"description": "char_water_soldier",
+				"description": "A water wizard able to use magic.",
 				
 				"attack": 3,
 				
@@ -163,7 +173,9 @@
 				
 				"cardSprite": "char_water_witch",
 				
-				"ingameSprite": "char_water_witch"
+				"ingameSprite": "char_water_witch",
+				
+				"skills": 4
 			}
 		]
 }

@@ -171,4 +171,18 @@ public class CharacterDatabase
 	}
 
 
+	public List<int> GetCharacterThatUsesSkill(int skillId)
+	{
+		List<int> ids = new List<int>();
+		foreach(int key in characterDictionary.Keys)
+		{
+			CharacterData chdata = characterDictionary[key];
+			if(chdata.skills == skillId)
+			{
+				ids.Add(chdata.id);
+			}
+		}
+		return ids;
+	}
+
 }
