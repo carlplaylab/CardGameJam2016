@@ -97,4 +97,18 @@ public class CharacterTeam
 
 		return nearestChar;
 	}
+		
+
+	public List<GameCharacter> GetCharacters(int id)
+	{
+		List<GameCharacter> targets = new List<GameCharacter>();
+		for(int i=0; i < aliveCharacters.Count; i++)
+		{
+			if(aliveCharacters[i].CharacterId == id)
+			{
+				targets.Add(aliveCharacters[i]);
+			}
+		}
+		return targets;
+	}
 }

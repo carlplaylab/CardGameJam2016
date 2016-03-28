@@ -44,6 +44,12 @@ public class GameCharacter : BoardObject
 		get { return characterIndex; }
 	}
 
+	public int CharacterId
+	{
+		get { return characterData.id; }
+	}
+
+
 	public int TeamIndex	// on overall character list
 	{
 		get { return teamIndex; }

@@ -18,7 +18,6 @@ public class CardSelectionView : UIView
 
 	void Awake ()
 	{
-		EventBroadcaster.Instance.AddObserver(EventNames.UI_ADD_CHARACTER_CARD, AddCard);
 		EventBroadcaster.Instance.AddObserver(EventNames.UI_ADD_CARD_TO_DECK, AddCardToDeck);
 		EventBroadcaster.Instance.AddObserver(EventNames.PLAYER_TURN_TOGGLED, PlayerTurnToggled);
 	}
@@ -26,7 +25,6 @@ public class CardSelectionView : UIView
 
 	void OnDestroy ()
 	{
-		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_ADD_CHARACTER_CARD);
 		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_ADD_CARD_TO_DECK);
 		EventBroadcaster.Instance.RemoveObserver(EventNames.PLAYER_TURN_TOGGLED);
 	}
@@ -70,19 +68,10 @@ public class CardSelectionView : UIView
 		cardViewList = new List<SelectableCardView>();
 	}
 
-	
-	public void AddCard (Parameters cardParams)
+
+	public void AddCard(CardData cardData, int cardId)
 	{
-		int charID = cardParams.GetIntExtra("character", 1);
-		CharacterData charData = CharacterDatabase.Instance.GetData(charID);
-		AddCard(charData, 1);
-	}
-
-
-
-	public void AddCard(CharacterData charData, int cardId)
-	{
-		if(charData == null)
+		if(cardData == null)
 			return;
 
 		int newId = cardViewList.Count;
@@ -91,7 +80,7 @@ public class CardSelectionView : UIView
 		newObj.transform.localScale = Vector3.one;
 
 		SelectableCardView cardView = newObj.GetComponent<SelectableCardView>();
-		cardView.SetDetails(newId, charData, cardId);
+		cardView.SetDetails(newId, cardData, cardId);
 
 		RectTransform cardXform = newObj.GetComponent<RectTransform>();
 		float cardWidth = cardXform.rect.size.x;
@@ -103,6 +92,7 @@ public class CardSelectionView : UIView
 
 		cardViewList.Add(cardView);
 	}
+
 
 	public void AddCardToDeck(Parameters cardParams)
 	{
@@ -132,17 +122,14 @@ public class CardSelectionView : UIView
 		if(cdata == null)
 			return;
 
-		if(cdata.cardType == CardType.CHARACTER)
-		{
-			CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.dataId);
-			AddCard(chardata, cardId);
-		}
+		CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.dataId);
+		AddCard(cdata, cardId);
 	}
 
 
 	public void OnCardSelected(SelectableCardView card)
 	{
-		ShowCard(card.CharacterID);
+		ShowCard(card.id);
 		selectedCard = card;
 	}
 
@@ -172,10 +159,10 @@ public class CardSelectionView : UIView
 		}
 	}
 
-	public void ShowCard(int characterID)
+	public void ShowCard(int cardID)
 	{
 		Parameters charParams = new Parameters();
-		charParams.PutExtra("character", characterID);
+		charParams.PutExtra("card", cardID);
 		EventBroadcaster.Instance.PostEvent(EventNames.UI_SHOW_CHARACTER_CARD, charParams);
 	}
 

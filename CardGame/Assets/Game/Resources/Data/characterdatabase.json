@@ -59,7 +59,7 @@
 				
 				"ingameSprite": "char_land_range",
 				
-				"skills": 0
+				"skills": 2
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -88,7 +88,7 @@
 				
 				"ingameSprite": "char_land_witch",
 				
-				"skills": 0
+				"skills": 1
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -146,7 +146,7 @@
 				
 				"ingameSprite": "char_water_range",
 				
-				"skills": 0
+				"skills": 3
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -175,7 +175,7 @@
 				
 				"ingameSprite": "char_water_witch",
 				
-				"skills": 0
+				"skills": 4
 			}
 		]
 }

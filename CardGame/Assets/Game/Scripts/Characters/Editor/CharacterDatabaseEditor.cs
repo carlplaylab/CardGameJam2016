@@ -138,9 +138,10 @@ public class CharacterDatabaseEditor : AbstractListDataEditorWindow<CharacterDat
 		GUILayout.Label("Stats: ");
 		data.elementType = (ElementType)EditorGUILayout.Popup((int)data.elementType,elements);
 		data.spawnCost = EditorGUILayout.IntField("Spawn Cost", data.spawnCost);
-		data.movement = EditorGUILayout.IntField("Movement", data.movement);
 		data.attack = EditorGUILayout.IntField("Attack", data.attack);
 		data.life = EditorGUILayout.IntField("Life", data.life);
+		data.movement = EditorGUILayout.IntField("Movement", data.movement);
+		data.skills = EditorGUILayout.IntField("Skill", data.skills);
 
 	}
 

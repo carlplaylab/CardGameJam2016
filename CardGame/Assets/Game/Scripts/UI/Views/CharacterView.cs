@@ -20,4 +20,13 @@ public class CharacterView : UIView
 		lifeText.text = data.life.ToString();
 	}
 
+	public void SetSkill(SkillData data, Sprite skillSprite)
+	{
+		if(skillSprite != null)
+			characterImage.sprite = skillSprite;
+
+		descriptionText.text = data.description;
+		attackText.text = data.damage.ToString();
+		lifeText.text = "x";
+	}
 }

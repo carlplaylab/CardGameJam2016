@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public enum PlayState
@@ -35,16 +36,6 @@ public class GBStatePlaying : GBState
 
 	public override void Update (GameBoard board)
 	{
-		if(Input.GetKeyDown(KeyCode.C))
-		{
-			Parameters charParams = new Parameters();
-			charParams.PutExtra("character", charId);
-			EventBroadcaster.Instance.PostEvent(EventNames.UI_ADD_CHARACTER_CARD, charParams);
-			charId ++;
-			if(charId >= CharacterDatabase.Instance.Count())
-				charId = 1;
-		}
-
 		if(playState == PlayState.CARD_DRAG)
 		{
 			Cell newHoveredCell = board.BoardCells.GetHoveredCell();
@@ -76,42 +67,17 @@ public class GBStatePlaying : GBState
 		CardData cdata = CardDatabase.Instance.GetData(cardId);
 		if(cdata == null)
 			return ;
-		if(cdata.cardType != CardType.CHARACTER)
-			return ;
 
-		int charId = cdata.dataId;
-
-		CharacterData data = CharacterDatabase.Instance.GetData(charId);
-		if(data == null)
-			return;
-		
-		int focusedRow = 0;
-		if(GameBoardManager.Instance.CurrentTeam == 2)
-			focusedRow = board.BoardCells.Rows;
-
-		int maxRow = Mathf.Min(focusedRow + 1, board.BoardCells.Rows);
-		int minRow = Mathf.Max(focusedRow - 1, 0);
-
-		int maxCol = board.BoardCells.Cols;
-		int minCol = 0;
-
-		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
-		board.BoardCells.HiglightArea(targetRect);
-
-	    hoveredCell = board.GetHoveredCell();	// instantly checks cell using gameInput
-		if(hoveredCell != null)
-			hoveredCell.HighlightCell(true, hoveredCell.IsVacant() );
-
-		playState = PlayState.CARD_DRAG;
-
+		if(cdata.cardType == CardType.CHARACTER)
+			DragCharacterOnBoard(board, cdata.dataId);
+		else
+			DragSkillOnBoard(board, cdata.dataId);
 	}
 
 	public override bool EndDragCardOnBoard (GameBoard board, int cardId)
 	{
 		CardData cdata = CardDatabase.Instance.GetData(cardId);
 		if(cdata == null)
-			return false;
-		if(cdata.cardType != CardType.CHARACTER)
 			return false;
 
 		board.BoardCells.RemoveHighlights();
@@ -134,13 +100,84 @@ public class GBStatePlaying : GBState
 			return false;
 
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
-		GameCharacter newCharacter = player.CreateCharacter(cardId, hoveredCell);
-		hoveredCell = null;
 
-		return (newCharacter != null);
+
+		if(cdata.cardType == CardType.CHARACTER)
+		{
+			GameCharacter newCharacter = player.CreateCharacter(cardId, hoveredCell);
+			hoveredCell = null;
+
+			return (newCharacter != null);
+		}
+		else
+		{
+			
+			board.DropCellOnBoard(hoveredCell.id, cdata.id);
+			return false;
+		}
 	}
 
 	#endregion
+
+
+	private void DragCharacterOnBoard(GameBoard board, int charId)
+	{
+		CharacterData data = CharacterDatabase.Instance.GetData(charId);
+		if(data == null)
+			return;
+
+		int focusedRow = 0;
+		if(GameBoardManager.Instance.CurrentTeam == 2)
+			focusedRow = board.BoardCells.Rows;
+
+		int maxRow = Mathf.Min(focusedRow + 1, board.BoardCells.Rows);
+		int minRow = Mathf.Max(focusedRow - 1, 0);
+
+		int maxCol = board.BoardCells.Cols;
+		int minCol = 0;
+
+		Rect targetRect = new Rect(minCol, minRow, (maxCol - minCol), (maxRow - minRow));
+		board.BoardCells.HiglightArea(targetRect);
+
+		hoveredCell = board.GetHoveredCell();	// instantly checks cell using gameInput
+		if(hoveredCell != null)
+			hoveredCell.HighlightCell(true, hoveredCell.IsVacant() );
+
+		playState = PlayState.CARD_DRAG;
+	}
+
+
+	private void DragSkillOnBoard(GameBoard board, int skillId)
+	{
+		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
+		SkillData skdata = SkillsDatabase.Instance.GetData(skillId);
+		if(skdata == null)
+			return;
+
+		List<int> skilledCharacters = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skillId);
+		foreach(int charId in skilledCharacters)
+		{
+			Debug.Log("highlight around " + charId);
+			player.HighlightAreaAroundCharacters(board, charId);
+		}
+	}
+
+	// TODO:
+	// - check if cell is within range of characters
+	// - drop skill code
+	// - damage characters
+	// - play FX
+	// - consume card
+	// - consume resources
+	private void ReleaseSkillOnBoard(GameBoard board, Cell targetCell, int skillId)
+	{
+		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
+		SkillData skdata = SkillsDatabase.Instance.GetData(skillId);
+		if(skdata == null)
+			return;
+		
+		List<int> skilledCharacters = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skillId);
+	}
 
 
 	public void ElementsTaken ()

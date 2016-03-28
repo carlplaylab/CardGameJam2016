@@ -56,10 +56,16 @@ public class CardDeckData
 		{
 			for(int i=0; i < cards.Length; i++)
 			{
-				if(i < 20)
+				if(i < 8)
 					cards[i] = 1;
-				else
+				else if(i < 16)
 					cards[i] = 2;
+				else if(i < 20)
+					cards[i] = 3;
+				else if(i < 25)
+					cards[i] = 7;
+				else
+					cards[i] = 8;
 			}
 		}
 		else if(level == 2)
