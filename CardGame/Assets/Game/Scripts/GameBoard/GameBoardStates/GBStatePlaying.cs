@@ -95,26 +95,21 @@ public class GBStatePlaying : GBState
 
 		if(hoveredCell == null)
 			return false;
-		
-		if(hoveredCell.row > 2)
-			return false;
 
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
-
-
-		if(cdata.cardType == CardType.CHARACTER)
+		if(cdata.cardType == CardType.CHARACTER && hoveredCell.row < 2)
 		{
 			GameCharacter newCharacter = player.CreateCharacter(cardId, hoveredCell);
 			hoveredCell = null;
 
 			return (newCharacter != null);
 		}
-		else
+		else if(cdata.cardType == CardType.SKILL)
 		{
-			
-			board.DropCellOnBoard(hoveredCell.id, cdata.id);
-			return false;
+			return ReleaseSkillOnBoard(board, hoveredCell, cdata.dataId);
 		}
+
+		return false;
 	}
 
 	#endregion
@@ -157,7 +152,6 @@ public class GBStatePlaying : GBState
 		List<int> skilledCharacters = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skillId);
 		foreach(int charId in skilledCharacters)
 		{
-			Debug.Log("highlight around " + charId);
 			player.HighlightAreaAroundCharacters(board, charId);
 		}
 	}
@@ -169,14 +163,20 @@ public class GBStatePlaying : GBState
 	// - play FX
 	// - consume card
 	// - consume resources
-	private void ReleaseSkillOnBoard(GameBoard board, Cell targetCell, int skillId)
+	private bool ReleaseSkillOnBoard(GameBoard board, Cell targetCell, int skillId)
 	{
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
 		SkillData skdata = SkillsDatabase.Instance.GetData(skillId);
 		if(skdata == null)
-			return;
-		
-		List<int> skilledCharacters = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skillId);
+			return false;
+
+		if(player.DropSkillOnBoard(board, targetCell, skdata))
+		{
+			BoardPlayer oponent = board.GetPlayer( GameBoardManager.Instance.OpposingTeam );
+			oponent.HitPlayersFromSkill(board, targetCell, skdata);
+			return true;
+		}
+		return false;
 	}
 
 

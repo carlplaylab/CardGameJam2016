@@ -14,8 +14,12 @@ public enum MoveType
 public class OpponentAI : MonoBehaviour
 {
 
+	private const float THINK_TIME = 0.1f;
+	private const float MOVE_TIME = 0.5f;
+
 	[SerializeField] private int team;
 	[SerializeField] private TextMesh textmesh;
+
 
 	private BoardPlayer player;
 
@@ -169,7 +173,7 @@ public class OpponentAI : MonoBehaviour
 		}
 		else
 		{
-			think_timer = UnityEngine.Random.Range(1f, 2f);
+			think_timer = THINK_TIME;
 			thinkingCounter = 4;
 
 			think_text += "No characater to spawn.";
@@ -180,7 +184,7 @@ public class OpponentAI : MonoBehaviour
 
 	void SpawnAvailableCard ()
 	{
-		think_timer = UnityEngine.Random.Range(1f, 2f);
+		think_timer = MOVE_TIME;
 
 		if(think_CardId < 0)
 		{
@@ -228,7 +232,7 @@ public class OpponentAI : MonoBehaviour
 		if(newCharacater != null)
 		{
 			think_text += "\ndropping new character";
-			think_timer = 1f;
+			think_timer = MOVE_TIME;
 			//thinkingCounter = 9;
 			//return;
 		}
@@ -266,7 +270,7 @@ public class OpponentAI : MonoBehaviour
 
 		think_MyCell = null;
 		think_TargetCell = null;
-		think_timer = 0.1f;
+		think_timer = THINK_TIME;
 		thinkingCounter = 6;
 
 		GameCharacter soldier = player.Team.GetRandomCharacter();
@@ -323,14 +327,14 @@ public class OpponentAI : MonoBehaviour
 			}
 		}
 
-		think_timer = 1f;
+		think_timer = MOVE_TIME;
 		think_text += "\nchose " + soldier.name + " and target cell " + think_TargetCell.name;
 	}
 
 
 	void MoveCharacter ()
 	{
-		think_timer = 1f;
+		think_timer = THINK_TIME;
 		thinkingCounter = 9;
 		if(think_MyCell == null || think_TargetCell == null)
 		{
@@ -341,7 +345,7 @@ public class OpponentAI : MonoBehaviour
 		MoveType movetype = GameBoardManager.Instance.Board.DropObjectOnCell(think_MyCell.ResidingObject, think_TargetCell);
 
 		think_text += "\nmoved to target success: " + movetype.ToString();;
-		think_timer = 2f;
+		think_timer = THINK_TIME;
 		previousMove = movetype;
 	}
 }

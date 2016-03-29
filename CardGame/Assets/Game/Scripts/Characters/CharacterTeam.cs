@@ -99,12 +99,25 @@ public class CharacterTeam
 	}
 		
 
-	public List<GameCharacter> GetCharacters(int id)
+	public List<GameCharacter> GetCharactersWithID(int id)
 	{
 		List<GameCharacter> targets = new List<GameCharacter>();
 		for(int i=0; i < aliveCharacters.Count; i++)
 		{
 			if(aliveCharacters[i].CharacterId == id)
+			{
+				targets.Add(aliveCharacters[i]);
+			}
+		}
+		return targets;
+	}
+
+	public List<GameCharacter> GetCharactersInCells(List<int> cells)
+	{
+		List<GameCharacter> targets = new List<GameCharacter>();
+		for(int i=0; i < aliveCharacters.Count; i++)
+		{
+			if( cells.Contains(aliveCharacters[i].cellId) )
 			{
 				targets.Add(aliveCharacters[i]);
 			}

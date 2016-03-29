@@ -34,6 +34,14 @@ public class GameBoardManager : MonoBehaviour
 		get { return currentTeam; }
 	}
 
+	public int OpposingTeam
+	{
+		get 
+		{ 
+			return currentTeam == 1 ? 2 : 1; 
+		}
+	}
+
 
 	public ElementSource ElementUI
 	{

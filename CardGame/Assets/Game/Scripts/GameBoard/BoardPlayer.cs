@@ -148,7 +148,7 @@ public class BoardPlayer : MonoBehaviour
 	public bool HighlightAreaAroundCharacters(GameBoard board, int characterId)
 	{
 		bool hasHighlight = false;
-		List<GameCharacter> targets = Team.GetCharacters(characterId);
+		List<GameCharacter> targets = Team.GetCharactersWithID(characterId);
 		if(targets.Count > 0)
 		{
 			hasHighlight = true;
@@ -166,5 +166,84 @@ public class BoardPlayer : MonoBehaviour
 		return hasHighlight;
 	}
 
+
+	public bool CanAffordSkill(SkillData skill)
+	{
+		int cost = skill.cost;
+		return IngameData.HasEnoughResource(skill.elementType, skill.cost);
+	}
+
+	public bool DropSkillOnBoard(GameBoard board, Cell targetCell, SkillData skill)
+	{
+		if(board == null || skill == null)
+			return false;
+
+		if( !CanAffordSkill(skill) )
+			return false;
+
+		List<int> skilledCharacterIDs = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skill.id);
+		List<GameCharacter> usableCharacters = new List<GameCharacter>();
+		for(int i=0; i < skilledCharacterIDs.Count; i++)
+		{
+			int charID = skilledCharacterIDs[i];
+			List<GameCharacter> foundChars = Team.GetCharactersWithID(charID);
+			for(int f=0; f < foundChars.Count; f++)
+			{
+				usableCharacters.Add( foundChars[f] );
+			}
+		}
+
+		int targetCellId = targetCell.id;
+		GameCharacter focusedCharacter = null;
+		for(int i=0; i < usableCharacters.Count; i++)
+		{
+			GameCharacter gchar = usableCharacters[i];
+			if(board.BoardCells.CheckIfWithinRange(targetCellId, gchar.cellId, gchar.GetMovement()))
+			{
+				focusedCharacter = gchar;
+				break;
+			}
+		}
+
+		if(focusedCharacter == null)
+		{
+			return false; //  skill not released on proper area
+		}
+
+		if(focusedCharacter.cellId == targetCellId && 
+			skill.areaCol == 1 && 
+			skill.areaRow == 1)
+		{
+			return false;	// targetted its own player
+		}
+
+		// Use Skill
+		IngameData.SpendResource(skill.elementType, skill.cost);
+
+		return true;
+	}
+
+
+	public void HitPlayersFromSkill (GameBoard board, Cell targetCell, SkillData skill)
+	{
+		Rect targetRect = new Rect();
+		targetRect.yMin = Mathf.Max( targetCell.row - skill.areaRow, 0);
+		targetRect.yMax = Mathf.Min( targetCell.row + skill.areaRow, board.BoardCells.Rows);
+		targetRect.xMin = Mathf.Max( targetCell.col - skill.areaCol, 0);
+		targetRect.xMax = Mathf.Min( targetCell.col + skill.areaCol, board.BoardCells.Cols);
+
+		List<int> cells = board.BoardCells.GetCellIdsInArea(targetRect);
+		List<GameCharacter> targets = Team.GetCharactersInCells(cells);
+		int damage = skill.damage;
+		for(int i=0; i < targets.Count; i++)
+		{
+			GameCharacter gc = targets[i];
+			if( gc.ReceiveAttack( damage ) )
+			{
+				gc.TriggerDelayedDeath(0.5f);
+			}
+			EffectsHandler.Instance.PlayEffectsAt(EffectsType.FX_SLASH, gc.transform.position);
+		}
+	}
 
 }

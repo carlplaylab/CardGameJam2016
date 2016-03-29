@@ -168,6 +168,15 @@ public class GameCharacter : BoardObject
 	}
 
 
+	public void TriggerDelayedDeath (float delay)
+	{
+		Interaction = false;
+		state = BoardObjectState.INACTIVE;
+
+		Invoke("TriggerDie", delay);
+	}
+
+
 	public void TriggerDie ()
 	{
 		Interaction = false;
