@@ -39,9 +39,15 @@ public class ElementSource : MonoBehaviour
 	{
 		for(int i=0; i < cubesList.Length; i++)
 		{
+			cubesList[i].gameObject.SetActive(false);
+		}
+
+		int rand = UnityEngine.Random.Range(cubesList.Length-1, cubesList.Length+1);
+		for(int i=0; i < rand; i++)
+		{
 			// 60% chance of getting land elements than water elements
-			ElementType randType = (UnityEngine.Random.Range(0, 99) % 3 < 2) ? ElementType.LAND : ElementType.WATER;
-			cubesList[i].Type = randType;
+			//ElementType randType = (UnityEngine.Random.Range(0, 99) % 3 < 2) ? ElementType.LAND : ElementType.WATER;
+			cubesList[i].Type = ElementType.LAND;
 
 			float randX = UnityEngine.Random.Range(minPos.x, maxPos.x);
 			float randY = UnityEngine.Random.Range(minPos.y, maxPos.y);

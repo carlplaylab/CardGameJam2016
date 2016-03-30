@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ef18375481f7642b8afbfdd9db713cfe
-timeCreated: 1458730043
+timeCreated: 1459350333
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -692,40 +692,35 @@ TextureImporter:
     - name: ui_barfiller
       rect:
         serializedVersion: 2
-        x: 803
-        y: 89
+        x: 779
+        y: 73
         width: 164
         height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -82, y: -16.5}
-        - {x: 58, y: -16.5}
-        - {x: 58, y: 1.5}
-        - {x: 56, y: 3.5}
-        - {x: -82, y: 3.5}
       - - {x: -82, y: 16.5}
-        - {x: -82, y: 7.5}
-        - {x: 20, y: 7.5}
-        - {x: 22, y: 9.5}
-        - {x: 22, y: 16.5}
+        - {x: -82, y: -16.5}
+        - {x: 81, y: -16.5}
+        - {x: 82, y: -15.5}
+        - {x: 82, y: 16.5}
     - name: ui_button
       rect:
         serializedVersion: 2
-        x: 798
-        y: 45
+        x: 773
+        y: 29
         width: 176
         height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5042673, y: 0.5174662}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -88, y: 21.5}
-        - {x: -88, y: -21.5}
-        - {x: 60, y: -21.5}
-        - {x: 60, y: 2.5}
-        - {x: 57, y: 21.5}
+      - - {x: -88.75104, y: 20.748955}
+        - {x: -88.75104, y: -22.251045}
+        - {x: 87.24896, y: -22.251045}
+        - {x: 84.24896, y: 17.748955}
+        - {x: 81.24896, y: 20.748955}
     - name: ui_frame
       rect:
         serializedVersion: 2

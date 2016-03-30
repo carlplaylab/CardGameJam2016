@@ -51,8 +51,9 @@ public class BoardPlayer : MonoBehaviour
 			brain.Setup();
 	}
 
-	public void SetInitialCards(int cardAmount)
+	public void SetInitialCards()
 	{
+		int cardAmount = CardDeck.SPAWN_LIMIT;
 		if(TeamId == 1)
 		{
 			Parameters cardparams = new Parameters();
@@ -80,13 +81,27 @@ public class BoardPlayer : MonoBehaviour
 
 		if(turnActive)
 		{
-			int newCardId = Deck.GetCard();
-			if(newCardId >= 0 && TeamId == 1)
+			int cardAmount = Deck.GetCardsNeeded();
+
+			if(TeamId == 1)
 			{
-				// Note a new card was added into the player's deck
 				Parameters cardparams = new Parameters();
-				cardparams.PutExtra("card", newCardId);
+				cardparams.PutExtra("card", -1);
+				cardparams.PutExtra("cardamount", cardAmount);
+
+				for(int i=0; i < cardAmount; i++)
+				{
+					int newCardId = Deck.GetCard();
+					cardparams.PutExtra("card_" + i, newCardId);
+				}
 				EventBroadcaster.Instance.PostEvent(EventNames.UI_ADD_CARD_TO_DECK, cardparams);
+			}
+			else
+			{
+				for(int i=0; i < cardAmount; i++)
+				{
+					int newCardId = Deck.GetCard();
+				}
 			}
 		}
 

@@ -186,6 +186,8 @@ public class GameCharacter : BoardObject
 
 		cellId = -1;
 		state = BoardObjectState.INACTIVE;
+
+		CharacterHandler.Instance.LogCharacterDied(characterData.id);
 	}
 
 	public void PlayAttackFx (Cell cell)

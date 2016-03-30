@@ -8,38 +8,154 @@
 				
 				"id": 1,
 				
-				"name": "Swordsman",
+				"name": "Luffy",
 				
-				"description": "A strong character able to give and take lots of hits.",
+				"description": "A kid lost in the dark world.",
 				
 				"attack": 3,
 				
 				"movement": 1,
 				
-				"life": 5,
+				"life": 20,
 				
 				"elementType": "LAND",
 				
 				"spawnCost": 6,
 				
-				"characterPrefab": "character_1",
+				"characterPrefab": "blankcharacter",
 				
-				"atlas": "assets1",
+				"atlas": "main_assets",
 				
-				"cardSprite": "char_land_soldier",
+				"cardSprite": "char_main",
 				
-				"ingameSprite": "char_land_soldier",
+				"ingameSprite": "char_main",
 				
-				"skills": 0
+				"skills": 1
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
 				"id": 2,
 				
-				"name": "Archer",
+				"name": "Knight",
 				
-				"description": "water archer",
+				"description": "A strong soldier that defends the light.",
+				
+				"attack": 4,
+				
+				"movement": 1,
+				
+				"life": 10,
+				
+				"elementType": "LAND",
+				
+				"spawnCost": 8,
+				
+				"characterPrefab": "blankcharacter",
+				
+				"atlas": "main_assets",
+				
+				"cardSprite": "char_knight",
+				
+				"ingameSprite": "char_knight",
+				
+				"skills": 0
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 3,
+				
+				"name": "Musketeer",
+				
+				"description": "An agile soldier that can quickly hit enemies.",
+				
+				"attack": 2,
+				
+				"movement": 2,
+				
+				"life": 5,
+				
+				"elementType": "LAND",
+				
+				"spawnCost": 3,
+				
+				"characterPrefab": "blankcharacter",
+				
+				"atlas": "main_assets",
+				
+				"cardSprite": "char_girl_musketeer",
+				
+				"ingameSprite": "char_girl_musketeer",
+				
+				"skills": 2
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 4,
+				
+				"name": "Wizard",
+				
+				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
+				
+				"attack": 3,
+				
+				"movement": 3,
+				
+				"life": 3,
+				
+				"elementType": "LAND",
+				
+				"spawnCost": 12,
+				
+				"characterPrefab": "blankcharacter",
+				
+				"atlas": "main_assets",
+				
+				"cardSprite": "char_magic",
+				
+				"ingameSprite": "char_magic",
+				
+				"skills": 1
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 5,
+				
+				"name": "Nightmare",
+				
+				"description": "A dark creature that is able to control monsters from the d ark",
+				
+				"attack": 4,
+				
+				"movement": 1,
+				
+				"life": 20,
+				
+				"elementType": "LAND",
+				
+				"spawnCost": 10,
+				
+				"characterPrefab": "blankcharacter",
+				
+				"atlas": "main_assets",
+				
+				"cardSprite": "char_monster_boss",
+				
+				"ingameSprite": "char_monster_boss",
+				
+				"skills": 3
+			},
+			{
+				"__Type": "CharacterData, Assembly-CSharp",
+				
+				"id": 6,
+				
+				"name": "Night Scout",
+				
+				"description": "A dark creature with quick movement and quick attacks",
 				
 				"attack": 1,
 				
@@ -49,28 +165,28 @@
 				
 				"elementType": "LAND",
 				
-				"spawnCost": 8,
+				"spawnCost": 3,
 				
-				"characterPrefab": "character_2",
+				"characterPrefab": "blankcharacter",
 				
-				"atlas": "assets1",
+				"atlas": "main_assets",
 				
-				"cardSprite": "char_land_range",
+				"cardSprite": "char_monster_2",
 				
-				"ingameSprite": "char_land_range",
+				"ingameSprite": "char_monster_2",
 				
-				"skills": 2
+				"skills": 0
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
-				"id": 3,
+				"id": 7,
 				
-				"name": "Warlock",
+				"name": "Night Spikes",
 				
-				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
+				"description": "A sharp and painful creature able give huge damage.",
 				
-				"attack": 3,
+				"attack": 2,
 				
 				"movement": 2,
 				
@@ -78,104 +194,75 @@
 				
 				"elementType": "LAND",
 				
-				"spawnCost": 10,
+				"spawnCost": 5,
 				
-				"characterPrefab": "character_3",
+				"characterPrefab": "blankcharacter",
 				
-				"atlas": "assets1",
+				"atlas": "main_assets",
 				
-				"cardSprite": "char_land_witch",
+				"cardSprite": "char_monster_1",
 				
-				"ingameSprite": "char_land_witch",
-				
-				"skills": 1
-			},
-			{
-				"__Type": "CharacterData, Assembly-CSharp",
-				
-				"id": 4,
-				
-				"name": "Lochness",
-				
-				"description": "A slow moving heavy creature from the swamps.",
-				
-				"attack": 3,
-				
-				"movement": 1,
-				
-				"life": 10,
-				
-				"elementType": "WATER",
-				
-				"spawnCost": 8,
-				
-				"characterPrefab": "character_4",
-				
-				"atlas": "assets1",
-				
-				"cardSprite": "char_water_soldier",
-				
-				"ingameSprite": "char_water_soldier",
+				"ingameSprite": "char_monster_1",
 				
 				"skills": 0
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
-				"id": 5,
+				"id": 8,
 				
-				"name": "Nessie",
+				"name": "Night Brothers",
 				
-				"description": "A ranged creature from the deep, is able to use the arrow spell.",
+				"description": "A heavy duo of monsters",
 				
 				"attack": 3,
 				
-				"movement": 3,
+				"movement": 1,
 				
-				"life": 3,
+				"life": 8,
 				
-				"elementType": "WATER",
+				"elementType": "LAND",
 				
-				"spawnCost": 10,
+				"spawnCost": 8,
 				
-				"characterPrefab": "character_5",
+				"characterPrefab": "blankcharacter",
 				
-				"atlas": "assets1",
+				"atlas": "main_assets",
 				
-				"cardSprite": "char_water_range",
+				"cardSprite": "char_monster_3",
 				
-				"ingameSprite": "char_water_range",
+				"ingameSprite": "char_monster_3",
 				
-				"skills": 3
+				"skills": 0
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
 				
-				"id": 6,
+				"id": 9,
 				
-				"name": "Ice Wizard",
+				"name": "Night Tank",
 				
-				"description": "A water wizard able to use magic.",
+				"description": "Huge mass of dark flesh",
 				
-				"attack": 3,
+				"attack": 4,
 				
-				"movement": 3,
+				"movement": 1,
 				
-				"life": 3,
+				"life": 12,
 				
-				"elementType": "WATER",
+				"elementType": "LAND",
 				
-				"spawnCost": 12,
+				"spawnCost": 10,
 				
-				"characterPrefab": "character_6",
+				"characterPrefab": "blankcharacter",
 				
-				"atlas": "atlas1",
+				"atlas": "main_assets",
 				
-				"cardSprite": "char_water_witch",
+				"cardSprite": "char_monster_4",
 				
-				"ingameSprite": "char_water_witch",
+				"ingameSprite": "char_monster_4",
 				
-				"skills": 4
+				"skills": 0
 			}
 		]
 }

@@ -171,7 +171,7 @@ public class CellHandler : MonoBehaviour
 
 	public Cell GetCell(int id)
 	{
-		if(id < cells.Count)
+		if(id >= 0 && id < cells.Count)
 			return cells[id];
 		else
 			return null;

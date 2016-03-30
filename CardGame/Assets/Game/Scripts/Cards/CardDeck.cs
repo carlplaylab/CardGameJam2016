@@ -52,6 +52,10 @@ public class CardDeck
 		return card;
 	}
 
+	public int GetCardsNeeded ()
+	{
+		return (SPAWN_LIMIT - spawnCards.Count);
+	}
 
 	public int GetRandomSpawnCard()
 	{

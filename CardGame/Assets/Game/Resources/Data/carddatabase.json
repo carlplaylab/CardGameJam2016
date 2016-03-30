@@ -8,9 +8,9 @@
 				
 				"id": 1,
 				
-				"name": "Swordsman",
+				"name": "Luffy",
 				
-				"description": "A strong character able to give and take lots of hits.",
+				"description": "A kid lost in the dark world.",
 				
 				"cardType": "CHARACTER",
 				
@@ -18,7 +18,7 @@
 				
 				"cost": 6,
 				
-				"cardSprite": "char_land_soldier",
+				"cardSprite": "char_main",
 				
 				"dataId": 1
 			},
@@ -27,9 +27,9 @@
 				
 				"id": 2,
 				
-				"name": "Archer",
+				"name": "Knight",
 				
-				"description": "An agile soldier. Able to use the Arrow skill or to attack enemies at a distance.",
+				"description": "A strong soldier that defends the light.",
 				
 				"cardType": "CHARACTER",
 				
@@ -37,7 +37,7 @@
 				
 				"cost": 8,
 				
-				"cardSprite": "char_land_range",
+				"cardSprite": "char_knight",
 				
 				"dataId": 2
 			},
@@ -46,17 +46,17 @@
 				
 				"id": 3,
 				
-				"name": "Warlock",
+				"name": "Musketeer",
 				
-				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
+				"description": "An agile soldier that can quickly hit enemies.",
 				
 				"cardType": "CHARACTER",
 				
 				"elementType": "LAND",
 				
-				"cost": 10,
+				"cost": 3,
 				
-				"cardSprite": "char_land_witch",
+				"cardSprite": "char_girl_musketeer",
 				
 				"dataId": 3
 			},
@@ -65,17 +65,17 @@
 				
 				"id": 4,
 				
-				"name": "Lochness",
+				"name": "Wizard",
 				
-				"description": "A slow moving heavy creature from the swamps.",
+				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
 				
 				"cardType": "CHARACTER",
 				
-				"elementType": "WATER",
+				"elementType": "LAND",
 				
-				"cost": 8,
+				"cost": 12,
 				
-				"cardSprite": "char_water_soldier",
+				"cardSprite": "char_magic",
 				
 				"dataId": 4
 			},
@@ -84,17 +84,17 @@
 				
 				"id": 5,
 				
-				"name": "Nessie",
+				"name": "Nightmare",
 				
-				"description": "A ranged creature from the deep, is able to use the arrow spell.",
+				"description": "A dark creature that is able to control monsters from the d ark",
 				
 				"cardType": "CHARACTER",
 				
-				"elementType": "WATER",
+				"elementType": "LAND",
 				
 				"cost": 10,
 				
-				"cardSprite": "char_water_range",
+				"cardSprite": "char_monster_boss",
 				
 				"dataId": 5
 			},
@@ -103,17 +103,17 @@
 				
 				"id": 6,
 				
-				"name": "Ice Wizard",
+				"name": "Night Scout",
 				
-				"description": "A water wizard able to use magic.",
+				"description": "A dark creature with quick movement and quick attacks",
 				
 				"cardType": "CHARACTER",
 				
-				"elementType": "WATER",
+				"elementType": "LAND",
 				
-				"cost": 12,
+				"cost": 3,
 				
-				"cardSprite": "char_water_witch",
+				"cardSprite": "char_monster_2",
 				
 				"dataId": 6
 			},
@@ -122,28 +122,85 @@
 				
 				"id": 7,
 				
-				"name": "MagicSkill",
+				"name": "Night Spikes",
 				
-				"description": "Damages a 2x2 area",
+				"description": "A sharp and painful creature able give huge damage.",
 				
-				"cardType": "SKILL",
+				"cardType": "CHARACTER",
 				
 				"elementType": "LAND",
 				
-				"cost": 6,
+				"cost": 5,
 				
-				"cardSprite": "spell_magic",
+				"cardSprite": "char_monster_1",
 				
-				"dataId": 1
+				"dataId": 7
 			},
 			{
 				"__Type": "CardData, Assembly-CSharp",
 				
 				"id": 8,
 				
+				"name": "Night Brothers",
+				
+				"description": "A heavy duo of monsters",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "LAND",
+				
+				"cost": 8,
+				
+				"cardSprite": "char_monster_3",
+				
+				"dataId": 8
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 9,
+				
+				"name": "Night Tank",
+				
+				"description": "Huge mass of dark flesh",
+				
+				"cardType": "CHARACTER",
+				
+				"elementType": "LAND",
+				
+				"cost": 10,
+				
+				"cardSprite": "char_monster_4",
+				
+				"dataId": 9
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 10,
+				
 				"name": "ArrowSkill",
 				
-				"description": "its a new card!",
+				"description": "Fire an arrow from a distance giving 2 damage.",
+				
+				"cardType": "SKILL",
+				
+				"elementType": "LAND",
+				
+				"cost": 2,
+				
+				"cardSprite": "skill_arrow",
+				
+				"dataId": 2
+			},
+			{
+				"__Type": "CardData, Assembly-CSharp",
+				
+				"id": 11,
+				
+				"name": "MagicSkill",
+				
+				"description": "The magician casts a damaging spell on a 2x2 area.",
 				
 				"cardType": "SKILL",
 				
@@ -151,9 +208,9 @@
 				
 				"cost": 3,
 				
-				"cardSprite": "spell_arrow",
+				"cardSprite": "skill_magic",
 				
-				"dataId": 2
+				"dataId": 1
 			}
 		]
 }

@@ -182,7 +182,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">CropKeepPos</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
             <key>pivotPoint</key>
@@ -201,6 +201,17 @@
             <filename>../final_art/cell_red.png</filename>
             <filename>../final_art/cell_water.png</filename>
             <filename>../final_art/main_logo.png</filename>
+            <filename>../final_art/char_girl_musketeer.png</filename>
+            <filename>../final_art/char_knight.png</filename>
+            <filename>../final_art/char_magic.png</filename>
+            <filename>../final_art/char_monster_1.png</filename>
+            <filename>../final_art/char_monster_2.png</filename>
+            <filename>../final_art/char_monster_3.png</filename>
+            <filename>../final_art/char_monster_4.png</filename>
+            <filename>../final_art/char_monster_boss.png</filename>
+            <filename>../final_art/char_main.png</filename>
+            <filename>../final_art/skill_arrow.png</filename>
+            <filename>../final_art/skill_magic.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

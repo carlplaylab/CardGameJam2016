@@ -57,15 +57,17 @@ public class SelectableCardView : DraggableUIView
 
 	#endregion
 
-	public void SetDetails (int id, CardData cardData, int cardId)
+	public void SetDetails (int id, CardData cardData)
 	{
-		CardId = cardId;
-		DataId = cardData.id;
+		CardId = cardData.id;
+		DataId = cardData.dataId;
 		this.id = id;
 
 		charImage.sprite = IngameSpriteCenter.Instance.GetSprite(cardData.cardSprite);
 		elementIcon.sprite = IngameSpriteCenter.Instance.GetButtonSprite(cardData.elementType);
 		costText.text = cardData.cost.ToString();
+
+		//Debug.Log("SetDetails CardId " + CardId + ", DataId " + DataId);
 	}
 		
 

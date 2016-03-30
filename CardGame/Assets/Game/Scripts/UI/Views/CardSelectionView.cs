@@ -69,7 +69,7 @@ public class CardSelectionView : UIView
 	}
 
 
-	public void AddCard(CardData cardData, int cardId)
+	public void AddCard(CardData cardData)
 	{
 		if(cardData == null)
 			return;
@@ -80,7 +80,7 @@ public class CardSelectionView : UIView
 		newObj.transform.localScale = Vector3.one;
 
 		SelectableCardView cardView = newObj.GetComponent<SelectableCardView>();
-		cardView.SetDetails(newId, cardData, cardId);
+		cardView.SetDetails(newId, cardData);
 
 		RectTransform cardXform = newObj.GetComponent<RectTransform>();
 		float cardWidth = cardXform.rect.size.x;
@@ -122,14 +122,13 @@ public class CardSelectionView : UIView
 		if(cdata == null)
 			return;
 
-		CharacterData chardata = CharacterDatabase.Instance.GetData(cdata.dataId);
-		AddCard(cdata, cardId);
+		AddCard(cdata);
 	}
 
 
 	public void OnCardSelected(SelectableCardView card)
 	{
-		ShowCard(card.id);
+		ShowCard(card.CardId);
 		selectedCard = card;
 	}
 
@@ -228,5 +227,6 @@ public class CardSelectionView : UIView
 		int currentTeam = toggledParams.GetIntExtra("currentteam", 1);
 		SetActivePosition(currentTeam == 1);
 	}
+
 
 }
