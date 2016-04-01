@@ -100,7 +100,7 @@ public class CharacterHandler : MonoBehaviour
 
 	public void LogCharacterDied(int characterId)
 	{
-		Debug.Log("LogCharacterDied " + characterId);
+		//Debug.Log("LogCharacterDied " + characterId);
 		if(characterId == 1 || characterId == 5)
 		{
 			bool win = (characterId == 5);

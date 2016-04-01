@@ -7,13 +7,13 @@ public class CardDeckData
 {
 	public static int [] GetOpponentCards(int level)
 	{
-		int[] cards =  GetPlayerCards(level);
+		int[] cards =  new int[100];
 
 		if(level == 1)
 		{
 			for(int i=0; i < cards.Length; i++)
 			{
-				if(i < 20)
+				if(i < 50)
 					cards[i] = 6;
 				else
 					cards[i] = 7;
@@ -23,9 +23,9 @@ public class CardDeckData
 		{
 			for(int i=0; i < cards.Length; i++)
 			{
-				if(i < 15)
+				if(i < 50)
 					cards[i] = 6;
-				else if(i < 24)
+				else if(i < 75)
 					cards[i] = 7;
 				else 
 					cards[i] = 8;
@@ -35,11 +35,11 @@ public class CardDeckData
 		{
 			for(int i=0; i < cards.Length; i++)
 			{
-				if(i < 10)
+				if(i < 40)
 					cards[i] = 6;
-				else if(i < 20)
+				else if(i < 60)
 					cards[i] = 7;
-				else if(i < 25)
+				else if(i < 80)
 					cards[i] = 8;
 				else 
 					cards[i] = 9;
@@ -48,9 +48,9 @@ public class CardDeckData
 		return cards;
 	}
 
-	public static int [] GetPlayerCards(int level)
+	public static int [] GetPlayerCards(int level) 
 	{
-		int[] cards = new int[30];
+		int[] cards = new int[40];
 
 		if(level == 1)
 		{

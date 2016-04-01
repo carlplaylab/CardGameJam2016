@@ -114,12 +114,14 @@ public class GBStateLoading : GBState
 		Cell freeCell1 = board.BoardCells.GetCellAt(0, 3);
 		GameCharacter mainChar = CharacterHandler.Instance.CreateCharacterOnCell(1, freeCell1);
 		mainChar.SetTeam(1);
+		mainChar.mainCharacter = true;
 		player.Team.AddGameCharacter(mainChar);
 
 		BoardPlayer oponent = board.GetPlayer(2);
 		Cell freeCell2 = board.BoardCells.GetCellAt(board.BoardCells.Rows, 3);
 		GameCharacter mainOponent = CharacterHandler.Instance.CreateCharacterOnCell(5, freeCell2);
 		mainOponent.SetTeam(2);
+		mainOponent.mainCharacter = true;
 		oponent.Team.AddGameCharacter(mainOponent);
 
 	}

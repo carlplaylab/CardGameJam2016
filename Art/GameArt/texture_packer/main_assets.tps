@@ -210,8 +210,20 @@
             <filename>../final_art/char_monster_4.png</filename>
             <filename>../final_art/char_monster_boss.png</filename>
             <filename>../final_art/char_main.png</filename>
+            <filename>../final_art/black.png</filename>
+            <filename>../final_art/darkness.png</filename>
             <filename>../final_art/skill_arrow.png</filename>
             <filename>../final_art/skill_magic.png</filename>
+            <filename>../final_art/card_ui.png</filename>
+            <filename>../final_art/card_attack.png</filename>
+            <filename>../final_art/card_life.png</filename>
+            <filename>../final_art/card_metal.png</filename>
+            <filename>../final_art/ui_button.png</filename>
+            <filename>../final_art/ui_panel.png</filename>
+            <filename>../final_art/char_knight_card.png</filename>
+            <filename>../final_art/skill_arrow_card.png</filename>
+            <filename>../final_art/skill_magic_card.png</filename>
+            <filename>../final_art/char_girl_musketeer_card.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

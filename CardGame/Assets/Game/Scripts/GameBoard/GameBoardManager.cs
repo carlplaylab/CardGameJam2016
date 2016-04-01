@@ -43,6 +43,10 @@ public class GameBoardManager : MonoBehaviour
 		}
 	}
 
+	public int TurnCounter
+	{
+		get { return turnCounter; }
+	}
 
 	public ElementSource ElementUI
 	{
@@ -162,7 +166,7 @@ public class GameBoardManager : MonoBehaviour
 			SetState(BoardState.OPONENTS_TURN);
 		}
 
-		//Debug.Log("currentTeam " + currentTeam + ", turnCounter " + turnCounter);
+		//Debug.Log("TOGGLE currentTeam " + currentTeam + ", turnCounter " + turnCounter);
 		Parameters playerTurnParams = new Parameters();
 		playerTurnParams.PutExtra("currentteam", currentTeam);
 		EventBroadcaster.Instance.PostEvent(EventNames.PLAYER_TURN_TOGGLED, playerTurnParams);
@@ -189,6 +193,6 @@ public class GameBoardManager : MonoBehaviour
 	public void LeaveGameScene ()
 	{
 		currentState = null;
-		SceneManager.LoadScene("MenuScene");
+		SceneManager.LoadScene("MapScene");
 	}
 }

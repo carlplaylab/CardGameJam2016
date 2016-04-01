@@ -14,7 +14,8 @@ public enum MoveType
 public class OpponentAI : MonoBehaviour
 {
 
-	private const float THINK_TIME = 0.1f;
+	private const float THINK_TIME = 0.2f;
+	private const float LAST_TIME = 2.5f;
 	private const float MOVE_TIME = 0.5f;
 
 	[SerializeField] private int team;
@@ -35,6 +36,8 @@ public class OpponentAI : MonoBehaviour
 	private List<ElementType> addElemTypes;
 	private List<int> addElemWeights;
 	private int addElemCount;
+	private int spawnedCounter = 0;
+
 
 	public void Setup ()
 	{
@@ -42,12 +45,12 @@ public class OpponentAI : MonoBehaviour
 		team = player.TeamId;
 
 		addElemTypes = new List<ElementType>();
-		addElemTypes.Add(ElementType.WATER);
+		//addElemTypes.Add(ElementType.WATER);
 		addElemTypes.Add(ElementType.LAND);
 
 		addElemWeights = new List<int>();
-		addElemWeights.Add(33);
-		addElemWeights.Add(100-33);
+		//addElemWeights.Add(33);
+		addElemWeights.Add(100);
 
 		addElemCount = GameBoardManager.Instance.ElementUI.ResourceCount;
 	}
@@ -63,8 +66,11 @@ public class OpponentAI : MonoBehaviour
 			think_MyCell = null;
 			think_TargetCell = null;
 			think_text = "";
+			spawnedCounter = 0;
 
 			GenerateRandomElements();
+
+			EffectsHandler.Instance.SetDarkness(1f);
 		}
 		activeState = active;
 	}
@@ -139,6 +145,14 @@ public class OpponentAI : MonoBehaviour
 		}
 		else if(thinkingCounter == 10)
 		{
+			float darknessLevel = 0f;
+			if(player.Team.Count > 3)
+			{
+				 darknessLevel = (float)player.Team.Count/10f;
+			}
+			EffectsHandler.Instance.SetDarkness(darknessLevel);
+
+			thinkingCounter = 0;
 			GameBoardManager.Instance.Board.BoardCells.RemoveHighlights();
 			GameBoardManager.Instance.OnPlayerTurnEnd();
 		}
@@ -155,6 +169,7 @@ public class OpponentAI : MonoBehaviour
 		if(!canAfford)
 			think_CardId = -1;
 
+		/*
 		float chanceSpawn = 100;
 		if( player.Team.Count > 2 )
 		{
@@ -164,18 +179,17 @@ public class OpponentAI : MonoBehaviour
 			}
 		}
 		int rand = UnityEngine.Random.Range(0, 101);
+		*/
 
-		if(think_CardId >= 0 && rand < chanceSpawn)
+		if(think_CardId >= 0  /* && rand < chanceSpawn */)
 		{
 			thinkingCounter = 1;
-
 			think_text += "Planning to spawn " + charData.name;
 		}
 		else
 		{
 			think_timer = THINK_TIME;
 			thinkingCounter = 4;
-
 			think_text += "No characater to spawn.";
 		}
 
@@ -229,38 +243,24 @@ public class OpponentAI : MonoBehaviour
 		Cell randomCell = boardCells.GetRandomVacantCell(targetRect);
 
 		GameCharacter newCharacater = player.CreateCharacter(think_CardId, randomCell);
+		spawnedCounter ++;
 		if(newCharacater != null)
 		{
 			think_text += "\ndropping new character";
 			think_timer = MOVE_TIME;
-			//thinkingCounter = 9;
-			//return;
 		}
-		/*
-		CardData cdata = CardDatabase.Instance.GetData(think_CardId);
-		CharacterData charData = CharacterDatabase.Instance.GetData(cdata.characterId);
 
-		if(randomCell != null && charData != null)
+		if(newCharacater != null && spawnedCounter < 3 && player.IngameData.HasEnoughResource(ElementType.LAND, 10))
 		{
-			GameCharacter newCharacater = CharacterHandler.Instance.CreateCharacterOnCell(cdata.characterId, randomCell);
-			if(newCharacater != null)
-			{
-				newCharacater.SetTeam(team);
-				player.IngameData.SpendResource(charData.elementType, charData.spawnCost);
-				player.Deck.CardUsed(think_CardId);
-
-				think_text += "\ndropping new character";
-				think_timer = 1f;
-				thinkingCounter = 9;
-
-				return;
-			}
+			think_text += "\nLook to add new character";
+			thinkingCounter = 0;
 		}
-		*/
-
-		think_text += "\nCannot drop new character";
-		thinkingCounter = 4;
-		previousMove = MoveType.SPAWN;
+		else
+		{
+			think_text += "\nCannot drop new character";
+			thinkingCounter = 4;
+			previousMove = MoveType.SPAWN;
+		}
 	}
 
 
@@ -273,7 +273,9 @@ public class OpponentAI : MonoBehaviour
 		think_timer = THINK_TIME;
 		thinkingCounter = 6;
 
-		GameCharacter soldier = player.Team.GetRandomCharacter();
+		int turnCount = GameBoardManager.Instance.TurnCounter;
+		bool useBoss = turnCount %2 == 0;
+		GameCharacter soldier = player.Team.GetRandomCharacter(useBoss);
 		if(soldier == null)
 		{
 			think_text += "\nno solider found";
@@ -334,7 +336,7 @@ public class OpponentAI : MonoBehaviour
 
 	void MoveCharacter ()
 	{
-		think_timer = THINK_TIME;
+		think_timer = LAST_TIME;
 		thinkingCounter = 9;
 		if(think_MyCell == null || think_TargetCell == null)
 		{

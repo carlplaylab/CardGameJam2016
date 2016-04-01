@@ -19,6 +19,9 @@ public class GameCharacter : BoardObject
 	private int characterIndex;
 	private bool allowInteraction;
 	private Cell targetCell;
+	private Vector3 finalPos;
+
+	public bool mainCharacter = false;
 
 
 	void Awake ()
@@ -109,6 +112,9 @@ public class GameCharacter : BoardObject
 		teamNumber = team;
 		Color baseColor = CharacterHandler.Instance.GetTeamColor(team);
 		baseSupportSprite.color = baseColor;
+
+		if(teamNumber == 2)
+			baseSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
 	}
 
 
@@ -125,7 +131,9 @@ public class GameCharacter : BoardObject
 
 		Sprite bsprite = IngameSpriteCenter.Instance.GetBaseSprite(data.elementType);
 		if(bsprite != null)
+		{
 			baseSprite.sprite = bsprite;
+		}
 
 		SetTeam(team);
 
@@ -168,30 +176,43 @@ public class GameCharacter : BoardObject
 	}
 
 
-	public void TriggerDelayedDeath (float delay)
+	public void TriggerDelayedDeath (Vector3 deadPos, float delay)
 	{
 		Interaction = false;
 		state = BoardObjectState.INACTIVE;
-
-		Invoke("TriggerDie", delay);
+		finalPos = deadPos;
+		Invoke("FinalizeDeath", delay);
 	}
 
 
-	public void TriggerDie ()
+	public void TriggerDie (Vector3 deadPos )
 	{
+		finalPos = deadPos;
 		Interaction = false;
+		state = BoardObjectState.INACTIVE;
+
+		FinalizeDeath();
+	}
+
+	public void FinalizeDeath ()
+	{
+		this.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+		this.gameObject.transform.position = finalPos;
 
 		infoDisplay.Hide();
 		effects.ResetPosition();
 
 		cellId = -1;
-		state = BoardObjectState.INACTIVE;
 
 		CharacterHandler.Instance.LogCharacterDied(characterData.id);
+
+		this.gameObject.gameObject.SetActive(true);
 	}
 
 	public void PlayAttackFx (Cell cell)
 	{
+		animator.Play("idle");
+
 		targetCell = cell;
 		effects.onEndAction = OnEndAttackFx;
 		effects.Setup(targetCell.transform.position);

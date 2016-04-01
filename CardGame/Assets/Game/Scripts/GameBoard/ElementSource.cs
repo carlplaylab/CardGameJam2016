@@ -58,6 +58,8 @@ public class ElementSource : MonoBehaviour
 
 		SetVisible(true);
 		timer = showTime;
+
+		SoundManager.PlaySound("window_in");
 	}
 
 

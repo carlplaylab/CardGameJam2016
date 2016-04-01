@@ -30,7 +30,7 @@
 				
 				"ingameSprite": "char_main",
 				
-				"skills": 1
+				"skills": 2
 			},
 			{
 				"__Type": "CharacterData, Assembly-CSharp",
@@ -165,7 +165,7 @@
 				
 				"elementType": "LAND",
 				
-				"spawnCost": 3,
+				"spawnCost": 2,
 				
 				"characterPrefab": "blankcharacter",
 				

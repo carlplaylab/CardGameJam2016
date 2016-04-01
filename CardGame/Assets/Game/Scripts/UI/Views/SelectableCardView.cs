@@ -63,8 +63,12 @@ public class SelectableCardView : DraggableUIView
 		DataId = cardData.dataId;
 		this.id = id;
 
-		charImage.sprite = IngameSpriteCenter.Instance.GetSprite(cardData.cardSprite);
-		elementIcon.sprite = IngameSpriteCenter.Instance.GetButtonSprite(cardData.elementType);
+		Sprite cardsprite = IngameSpriteCenter.Instance.GetSprite( cardData.cardSprite + "_card" );
+		if(cardsprite == null)
+			cardsprite = IngameSpriteCenter.Instance.GetSprite( cardData.cardSprite );
+		
+		charImage.sprite = cardsprite;
+		//elementIcon.sprite = IngameSpriteCenter.Instance.GetButtonSprite(cardData.elementType);
 		costText.text = cardData.cost.ToString();
 
 		//Debug.Log("SetDetails CardId " + CardId + ", DataId " + DataId);

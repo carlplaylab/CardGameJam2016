@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ef18375481f7642b8afbfdd9db713cfe
-timeCreated: 1459350333
+timeCreated: 1459513460
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -36,7 +36,7 @@ TextureImporter:
     21300058: ui_woodpiece
     21300060: ui_black
     21300062: ui_barfiller
-    21300064: ui_button
+    21300064: ui_button_purple
     21300066: ui_frame
     21300068: button_rock
     21300070: button_water
@@ -56,8 +56,10 @@ TextureImporter:
     21300098: icon_life
     21300100: button_wood
     21300102: button_metal
-    21300104: spell_magic
-    21300106: spell_arrow
+    21300104: spell_magic2
+    21300106: spell_arrow2
+    21300108: fx_fireball
+    21300110: fx_arrow
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -705,11 +707,11 @@ TextureImporter:
         - {x: 81, y: -16.5}
         - {x: 82, y: -15.5}
         - {x: 82, y: 16.5}
-    - name: ui_button
+    - name: ui_button_purple
       rect:
         serializedVersion: 2
         x: 773
-        y: 29
+        y: 30
         width: 176
         height: 43
       alignment: 9
@@ -718,9 +720,8 @@ TextureImporter:
       outline:
       - - {x: -88.75104, y: 20.748955}
         - {x: -88.75104, y: -22.251045}
-        - {x: 87.24896, y: -22.251045}
-        - {x: 84.24896, y: 17.748955}
-        - {x: 81.24896, y: 20.748955}
+        - {x: 84.24896, y: -22.251045}
+        - {x: 84.24896, y: 20.748955}
     - name: ui_frame
       rect:
         serializedVersion: 2
@@ -1450,7 +1451,7 @@ TextureImporter:
         - {x: 64, y: -96}
         - {x: 74, y: -98}
         - {x: 100, y: -73}
-    - name: spell_magic
+    - name: spell_magic2
       rect:
         serializedVersion: 2
         x: 1394
@@ -1515,7 +1516,7 @@ TextureImporter:
         - {x: 70, y: -210}
         - {x: 99, y: -196}
         - {x: 107, y: -191}
-    - name: spell_arrow
+    - name: spell_arrow2
       rect:
         serializedVersion: 2
         x: 1434
@@ -1560,6 +1561,49 @@ TextureImporter:
         - {x: 29, y: -143}
         - {x: 71, y: -116}
         - {x: 94, y: -93}
+    - name: fx_fireball
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 548
+        width: 135
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 50.5, y: 62}
+        - {x: 37.5, y: 142}
+        - {x: -27.5, y: 142}
+        - {x: -34.5, y: 139}
+        - {x: -63.5, y: 11}
+        - {x: -63.5, y: -120}
+        - {x: -58.5, y: -142}
+        - {x: 22.5, y: -142}
+        - {x: 35.5, y: -140}
+        - {x: 51.5, y: -104}
+        - {x: 57.5, y: -66}
+        - {x: 57.5, y: 16}
+    - name: fx_arrow
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 552
+        width: 79
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.5, y: 138.5}
+        - {x: -24.5, y: 94.5}
+        - {x: -29.5, y: -52.5}
+        - {x: -29.5, y: -104.5}
+        - {x: -7.5, y: -138.5}
+        - {x: 13.5, y: -138.5}
+        - {x: 36.5, y: -103.5}
+        - {x: 36.5, y: -21.5}
+        - {x: 21.5, y: 138.5}
     outline: []
   spritePackingTag: 
   userData: 

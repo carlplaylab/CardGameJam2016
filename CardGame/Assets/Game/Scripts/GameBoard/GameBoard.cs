@@ -181,10 +181,12 @@ public class GameBoard : MonoBehaviour
 		}
 		else if(targetCell.IsVacant())
 		{
-
 			Cell previousCell = cellHandler.GetCell( bobj.cellId );
 			if(bobj.TransferCells(targetCell, previousCell))
+			{
 				releaseType = MoveType.MOVED;
+				SoundManager.PlaySound("drop");
+			}
 			return releaseType;
 		}
 		else
@@ -214,6 +216,8 @@ public class GameBoard : MonoBehaviour
 		selectedChar.PlayAttackFx(targetCell);
 		InputEnable = false;
 
+		SoundManager.PlaySound("arrowshot");
+
 		return MoveType.ATTACKED;
 	}
 
@@ -225,11 +229,15 @@ public class GameBoard : MonoBehaviour
 		GameCharacter targetChar = (GameCharacter)targetCell.ResidingObject;
 		bool targetDies = targetChar.ReceiveAttack( attacker.AttackStrength );
 		bool selectedDies = attacker.ReceiveAttack( targetChar.AttackStrength );
+		int attackingTeam = attacker.Team;
 
 		if(targetDies)
 		{
 			GetPlayer(targetChar.Team).Team.KillGameCharacter(targetChar);
 			targetCell.ResidingObject = null;
+
+			Cell previousCell = BoardCells.GetCell(attacker.cellId);
+			attacker.TransferCells(targetCell, previousCell);
 		}
 
 		if(selectedDies)
@@ -240,10 +248,12 @@ public class GameBoard : MonoBehaviour
 		}
 
 		InputEnable = true;
-		if(currentTeam == 1 && onPlayerMoveEnded != null)
+		if(currentTeam == 1 && attackingTeam == 1 && onPlayerMoveEnded != null)
 		{
 			onPlayerMoveEnded();
 		}
+
+		SoundManager.PlaySound("damage");
 	}
 
 

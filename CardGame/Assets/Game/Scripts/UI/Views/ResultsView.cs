@@ -9,8 +9,13 @@ public class ResultsView : UIView
 
 	public void SetResults(bool win)
 	{
+		GameBoardManager.Instance.Board.InputEnable = false;
+
 		winObj.SetActive(win);
 		loseObj.SetActive(!win);
+
+		string sfx = win ? "success" : "fail";
+		SoundManager.PlaySound(sfx);
 	}
 
 	public void OnButtonClicked ()

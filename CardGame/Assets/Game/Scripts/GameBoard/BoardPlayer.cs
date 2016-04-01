@@ -82,6 +82,7 @@ public class BoardPlayer : MonoBehaviour
 		if(turnActive)
 		{
 			int cardAmount = Deck.GetCardsNeeded();
+			//Debug.Log("TeamId " + TeamId + " GetCardsNeeded " + cardAmount);
 
 			if(TeamId == 1)
 			{
@@ -144,6 +145,8 @@ public class BoardPlayer : MonoBehaviour
 
 		newCharacter.SetTeam(TeamId);
 		Deck.CardUsed(cardId);
+
+		SoundManager.PlaySound("newcharacter");
 
 		return newCharacter;
 
@@ -250,14 +253,29 @@ public class BoardPlayer : MonoBehaviour
 		List<int> cells = board.BoardCells.GetCellIdsInArea(targetRect);
 		List<GameCharacter> targets = Team.GetCharactersInCells(cells);
 		int damage = skill.damage;
+		bool hitSuccess = false;
 		for(int i=0; i < targets.Count; i++)
 		{
 			GameCharacter gc = targets[i];
 			if( gc.ReceiveAttack( damage ) )
 			{
-				gc.TriggerDelayedDeath(0.5f);
+				Cell deadCell = board.BoardCells.GetCell(gc.cellId);
+				if(deadCell != null)
+					deadCell.ResidingObject = null;
+				
+				Team.KillGameCharacter(gc, 0.5f);
+				hitSuccess = true;
 			}
-			EffectsHandler.Instance.PlayEffectsAt(EffectsType.FX_SLASH, gc.transform.position);
+
+			if(skill.id == 2)
+				EffectsHandler.Instance.PlayEffectsAt(EffectsType.FX_ARROW, gc.transform.position);
+			else
+				EffectsHandler.Instance.PlayEffectsAt(EffectsType.FX_FIREBALL, gc.transform.position);
+		}
+
+		if(hitSuccess)
+		{
+			SoundManager.PlaySound("damage");
 		}
 	}
 

@@ -14,6 +14,7 @@ public class EffectsHandler : MonoBehaviour
 	}
 
 	[SerializeField] private GameObject[] referenceEffects;
+	[SerializeField] private DarknessEffects darkness;
 
 	private Dictionary<EffectsType, Effects> effectsList;
 	private int fxCounter = 0;
@@ -63,5 +64,10 @@ public class EffectsHandler : MonoBehaviour
 		return null;
 	}
 
+	public void SetDarkness(float darknessLevel)
+	{
+		darknessLevel = Mathf.Clamp(darknessLevel, 0f, 1f);
+		darkness.SetDarkness(darknessLevel);
+	}
 
 }

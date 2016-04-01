@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 87de841096ca340e081bb367675bd3de
-timeCreated: 1457567768
+timeCreated: 1459512258
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -26,6 +26,18 @@ TextureImporter:
     21300038: char_monster_boss
     21300040: skill_arrow
     21300042: skill_magic
+    21300044: black
+    21300046: darkness
+    21300048: card_attack
+    21300050: card_life
+    21300052: card_metal
+    21300054: card_ui
+    21300056: char_knight_card
+    21300058: ui_button
+    21300060: ui_panel
+    21300062: char_girl_musketeer_card
+    21300064: skill_arrow_card
+    21300066: skill_magic_card
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -105,7 +117,7 @@ TextureImporter:
     - name: base
       rect:
         serializedVersion: 2
-        x: 2
+        x: 608
         y: 15
         width: 236
         height: 200
@@ -132,7 +144,7 @@ TextureImporter:
     - name: base_air
       rect:
         serializedVersion: 2
-        x: 240
+        x: 1016
         y: 53
         width: 200
         height: 162
@@ -153,7 +165,7 @@ TextureImporter:
     - name: base_land
       rect:
         serializedVersion: 2
-        x: 442
+        x: 1218
         y: 53
         width: 200
         height: 162
@@ -174,7 +186,7 @@ TextureImporter:
     - name: base_water
       rect:
         serializedVersion: 2
-        x: 644
+        x: 1420
         y: 53
         width: 200
         height: 162
@@ -193,10 +205,99 @@ TextureImporter:
         - {x: 100, y: -40}
         - {x: 100, y: 32}
         - {x: 95, y: 53}
-    - name: cell_green
+    - name: black
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 217
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -110, y: 110}
+        - {x: -110, y: -110}
+        - {x: 110, y: -110}
+        - {x: 110, y: 110}
+    - name: card_attack
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 1692
+        width: 144
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -58, y: 61.5}
+        - {x: -72, y: 9.5}
+        - {x: -72, y: -61.5}
+        - {x: 72, y: -61.5}
+        - {x: 72, y: -1.5}
+        - {x: 50, y: 61.5}
+    - name: card_life
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 1927
+        width: 118
+        height: 119
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 59.5}
+        - {x: -59, y: 37.5}
+        - {x: -59, y: -34.5}
+        - {x: -21, y: -59.5}
+        - {x: 28, y: -59.5}
+        - {x: 59, y: -15.5}
+        - {x: 59, y: 38.5}
+        - {x: 43, y: 59.5}
+    - name: card_metal
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 49
+        width: 168
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 83}
+        - {x: -84, y: 35}
+        - {x: -84, y: -42}
+        - {x: -70, y: -83}
+        - {x: 63, y: -83}
+        - {x: 84, y: -53}
+        - {x: 84, y: 31}
+        - {x: 22, y: 83}
+    - name: card_ui
       rect:
         serializedVersion: 2
         x: 2
+        y: 102
+        width: 604
+        height: 806
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -302, y: 403}
+        - {x: -302, y: -403}
+        - {x: 302, y: -403}
+        - {x: 302, y: 403}
+      - - {x: -233, y: 332}
+        - {x: 231, y: 332}
+        - {x: 231, y: -90}
+        - {x: -233, y: -90}
+    - name: cell_green
+      rect:
+        serializedVersion: 2
+        x: 830
         y: 217
         width: 220
         height: 220
@@ -222,7 +323,7 @@ TextureImporter:
     - name: cell_land
       rect:
         serializedVersion: 2
-        x: 224
+        x: 1052
         y: 217
         width: 220
         height: 220
@@ -249,7 +350,7 @@ TextureImporter:
     - name: cell_red
       rect:
         serializedVersion: 2
-        x: 446
+        x: 1274
         y: 217
         width: 220
         height: 220
@@ -275,8 +376,8 @@ TextureImporter:
     - name: cell_water
       rect:
         serializedVersion: 2
-        x: 668
-        y: 217
+        x: 1622
+        y: 1595
         width: 220
         height: 220
       alignment: 0
@@ -302,64 +403,102 @@ TextureImporter:
     - name: char_girl_musketeer
       rect:
         serializedVersion: 2
-        x: 752
-        y: 688
+        x: 1358
+        y: 1466
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 47, y: -81}
-        - {x: 47, y: 81}
-        - {x: 33, y: 88}
-        - {x: -19, y: 88}
-        - {x: -39, y: 83}
-        - {x: -39, y: -33}
-        - {x: -35, y: -62}
-        - {x: -4, y: -108}
-        - {x: 9, y: -108}
-        - {x: 11, y: -106}
-        - {x: 16, y: -96}
-        - {x: 15, y: -59}
-        - {x: 36, y: -82}
+      - - {x: 22, y: 92}
+        - {x: -1, y: 68}
+        - {x: -7, y: 58}
+        - {x: -1, y: 74}
+        - {x: 4, y: 97}
+        - {x: 1, y: 98}
+        - {x: -8, y: 98}
+        - {x: -58, y: 82}
+        - {x: -58, y: -16}
+        - {x: -57, y: -23}
+        - {x: -39, y: -19}
+        - {x: -29, y: -4}
+        - {x: -36, y: -16}
+        - {x: -44, y: -74}
+        - {x: 6, y: -101}
+        - {x: 41, y: -101}
+        - {x: 54, y: -72}
+        - {x: 54, y: 33}
+        - {x: 33, y: 86}
+    - name: char_girl_musketeer_card
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 1807
+        width: 118
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35, y: 59}
+        - {x: -59, y: 34}
+        - {x: -59, y: -24}
+        - {x: -56, y: -33}
+        - {x: -35, y: -59}
+        - {x: 50, y: -59}
+        - {x: 59, y: -37}
+        - {x: 59, y: 39}
+        - {x: 27, y: 59}
     - name: char_knight
       rect:
         serializedVersion: 2
-        x: 752
-        y: 466
+        x: 1622
+        y: 1373
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 42, y: -56}
-        - {x: 31, y: -91}
-        - {x: 32, y: -102}
-        - {x: 54, y: -92}
-        - {x: 71, y: -46}
-        - {x: 71, y: 39}
-        - {x: 39, y: 94}
-        - {x: -55, y: 94}
-        - {x: -56, y: 93}
-        - {x: -54, y: 74}
-        - {x: -51, y: 64}
-        - {x: -38, y: 52}
-        - {x: -75, y: 56}
-        - {x: -81, y: 45}
-        - {x: -81, y: -28}
-        - {x: -70, y: -67}
-        - {x: -37, y: -106}
-        - {x: -22, y: -106}
-        - {x: 31, y: -99}
-        - {x: 31, y: -89}
-        - {x: 28, y: -84}
+      - - {x: 76, y: 42}
+        - {x: 72, y: 40}
+        - {x: 69, y: 39}
+        - {x: 61, y: 76}
+        - {x: 50, y: 89}
+        - {x: -52, y: 89}
+        - {x: -91, y: 76}
+        - {x: -91, y: -31}
+        - {x: -57, y: -70}
+        - {x: 32, y: -104}
+        - {x: 78, y: -104}
+        - {x: 80, y: -103}
+        - {x: 87, y: -49}
+        - {x: 87, y: 35}
+    - name: char_knight_card
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 1928
+        width: 118
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: 59}
+        - {x: -31, y: 59}
+        - {x: -59, y: 33}
+        - {x: -59, y: -53}
+        - {x: -37, y: -59}
+        - {x: 44, y: -59}
+        - {x: 59, y: -35}
+        - {x: 59, y: 27}
     - name: char_magic
       rect:
         serializedVersion: 2
-        x: 890
-        y: 244
+        x: 1358
+        y: 1244
         width: 220
         height: 220
       alignment: 0
@@ -377,236 +516,184 @@ TextureImporter:
     - name: char_main
       rect:
         serializedVersion: 2
-        x: 890
-        y: 22
+        x: 1286
+        y: 1022
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 54, y: -100}
-        - {x: 50, y: -97}
-        - {x: 44, y: -95}
-        - {x: 68, y: -91}
-        - {x: 96, y: -16}
-        - {x: 96, y: 57}
-        - {x: 47, y: 76}
-        - {x: -86, y: 76}
-        - {x: -86, y: -107}
-        - {x: -15, y: -107}
-        - {x: -12, y: -99}
-        - {x: 10, y: -107}
-        - {x: 51, y: -107}
+      - - {x: 52, y: -93}
+        - {x: 60, y: -89}
+        - {x: 60, y: 27}
+        - {x: 44, y: 95}
+        - {x: -74, y: 95}
+        - {x: -74, y: -93}
     - name: char_monster_1
       rect:
         serializedVersion: 2
-        x: 974
-        y: 688
+        x: 1622
+        y: 1151
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 70, y: -74}
-        - {x: 67, y: -73}
-        - {x: 84, y: -80}
-        - {x: 89, y: -88}
-        - {x: 95, y: -97}
-        - {x: 100, y: -99}
-        - {x: 100, y: 15}
-        - {x: 31, y: 65}
-        - {x: -84, y: 65}
-        - {x: -84, y: -109}
-        - {x: -83, y: -110}
-        - {x: 90, y: -110}
-        - {x: 84, y: -92}
-        - {x: 76, y: -82}
-      - - {x: -39, y: -110}
-        - {x: -40, y: -107}
-        - {x: -48, y: -107}
-        - {x: -49, y: -110}
-      - - {x: -19, y: -107}
-        - {x: -19, y: -110}
-        - {x: -9, y: -110}
-        - {x: -9, y: -107}
-        - {x: -12, y: -104}
-        - {x: -16, y: -104}
-      - - {x: -5, y: -108}
-        - {x: -5, y: -110}
-        - {x: 4, y: -110}
-        - {x: 4, y: -108}
-        - {x: 1, y: -105}
-        - {x: -2, y: -105}
-      - - {x: 27, y: -100}
-        - {x: 26, y: -102}
-        - {x: 27, y: -110}
-        - {x: 36, y: -110}
-        - {x: 36, y: -101}
-        - {x: 33, y: -100}
-      - - {x: -55, y: -101}
-        - {x: -59, y: -105}
-        - {x: -59, y: -106}
-        - {x: -56, y: -109}
-        - {x: -51, y: -109}
-        - {x: -49, y: -107}
-        - {x: -49, y: -104}
-        - {x: -51, y: -102}
-      - - {x: 48, y: -99}
-        - {x: 45, y: -102}
-        - {x: 45, y: -104}
-        - {x: 48, y: -107}
-        - {x: 57, y: -107}
-        - {x: 59, y: -103}
-        - {x: 59, y: -100}
-        - {x: 56, y: -99}
+      - - {x: 41, y: 90}
+        - {x: 26, y: 97}
+        - {x: -56, y: 97}
+        - {x: -75, y: 81}
+        - {x: -75, y: 29}
+        - {x: -17, y: -73}
+        - {x: 4, y: -73}
+        - {x: 68, y: 30}
+        - {x: 68, y: 75}
+        - {x: 65, y: 80}
+      - - {x: 96, y: 26}
+        - {x: 66, y: 26}
+        - {x: 57, y: 13}
+        - {x: 57, y: -6}
+        - {x: 63, y: -33}
+        - {x: 67, y: -42}
+        - {x: 89, y: -42}
+        - {x: 104, y: -37}
+        - {x: 105, y: -31}
+        - {x: 105, y: 6}
+        - {x: 103, y: 17}
+      - - {x: -92, y: 36}
+        - {x: -96, y: 32}
+        - {x: -96, y: -30}
+        - {x: -74, y: -30}
+        - {x: -51, y: -22}
+        - {x: -51, y: 31}
+        - {x: -68, y: 36}
     - name: char_monster_2
       rect:
         serializedVersion: 2
-        x: 974
-        y: 466
+        x: 1622
+        y: 929
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 37, y: -82}
-        - {x: 51, y: -101}
-        - {x: 59, y: -107}
-        - {x: 59, y: 26}
-        - {x: 26, y: 44}
-        - {x: -26, y: 44}
-        - {x: -52, y: 25}
-        - {x: -56, y: -2}
-        - {x: -56, y: -107}
-        - {x: -50, y: -108}
-        - {x: -47, y: -110}
-        - {x: 46, y: -110}
-        - {x: 41, y: -90}
-        - {x: 39, y: -86}
-        - {x: 37, y: -84}
+      - - {x: -82, y: 96}
+        - {x: -90, y: 67}
+        - {x: -90, y: -86}
+        - {x: -86, y: -99}
+        - {x: 85, y: -99}
+        - {x: 85, y: 96}
     - name: char_monster_3
       rect:
         serializedVersion: 2
-        x: 1112
-        y: 244
+        x: 1358
+        y: 800
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 72, y: 62}
-        - {x: 29, y: 105}
-        - {x: 25, y: 108}
-        - {x: 15, y: 108}
-        - {x: -2, y: 91}
-        - {x: -44, y: 83}
-        - {x: -61, y: 57}
-        - {x: -82, y: -11}
-        - {x: -82, y: -70}
-        - {x: -53, y: -110}
-        - {x: 36, y: -110}
-        - {x: 62, y: -107}
-        - {x: 84, y: -6}
-        - {x: 84, y: 65}
-        - {x: 82, y: 67}
-      - - {x: -12, y: 61}
-        - {x: -11, y: 58}
-        - {x: -8, y: 58}
-        - {x: -6, y: 60}
-        - {x: -7, y: 63}
-        - {x: -10, y: 63}
+      - - {x: -99, y: -32}
+        - {x: -83, y: -82}
+        - {x: -49, y: -79}
+        - {x: -44, y: -58}
+        - {x: -48, y: -51}
+        - {x: -54, y: -46}
+        - {x: -58, y: -45}
+        - {x: -51, y: -43}
+        - {x: -31, y: -74}
+        - {x: -40, y: -109}
+        - {x: 2, y: -109}
+        - {x: 102, y: -70}
+        - {x: 102, y: 51}
+        - {x: 85, y: 78}
+        - {x: -47, y: 78}
+        - {x: -99, y: 17}
+      - - {x: -34, y: -79}
+        - {x: -34, y: -81}
+        - {x: -32, y: -83}
+        - {x: -28, y: -83}
+        - {x: -25, y: -80}
+        - {x: -26, y: -77}
+        - {x: -31, y: -76}
     - name: char_monster_4
       rect:
         serializedVersion: 2
-        x: 1112
-        y: 22
+        x: 1358
+        y: 578
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -84, y: 90}
-        - {x: -84, y: -21}
-        - {x: -78, y: -86}
-        - {x: -46, y: -107}
-        - {x: -11, y: -107}
-        - {x: 15, y: -103}
-        - {x: 17, y: -100}
-        - {x: 15, y: -91}
-        - {x: 2, y: -91}
-        - {x: 35, y: -90}
-        - {x: 21, y: -99}
-        - {x: 23, y: -102}
-        - {x: 36, y: -107}
-        - {x: 75, y: -107}
-        - {x: 89, y: -99}
-        - {x: 89, y: 32}
-        - {x: 55, y: 90}
-      - - {x: -71, y: -28}
-        - {x: -71, y: -29}
-        - {x: -69, y: -31}
-        - {x: -68, y: -31}
-        - {x: -65, y: -28}
-        - {x: -65, y: -26}
-        - {x: -68, y: -25}
+      - - {x: 11, y: 99}
+        - {x: -36, y: 99}
+        - {x: -57, y: 73}
+        - {x: -100, y: -23}
+        - {x: -100, y: -59}
+        - {x: -87, y: -95}
+        - {x: -46, y: -102}
+        - {x: 93, y: -102}
+        - {x: 94, y: -96}
+        - {x: 94, y: 5}
+        - {x: 55, y: 61}
     - name: char_monster_boss
       rect:
         serializedVersion: 2
-        x: 1196
-        y: 688
+        x: 1496
+        y: 356
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 82, y: 87}
-        - {x: 65, y: 99}
-        - {x: 41, y: 99}
-        - {x: 29, y: 95}
-        - {x: 28, y: 75}
-        - {x: 33, y: 69}
-        - {x: 31, y: 70}
-        - {x: 6, y: 88}
-        - {x: -24, y: 99}
-        - {x: -88, y: 99}
-        - {x: -101, y: 93}
-        - {x: -105, y: 85}
-        - {x: -105, y: 74}
-        - {x: -100, y: 60}
-        - {x: -86, y: 63}
-        - {x: -81, y: 67}
-        - {x: -77, y: 71}
-        - {x: -78, y: 82}
-        - {x: -75, y: 74}
-        - {x: -87, y: 56}
-        - {x: -103, y: 44}
-        - {x: -105, y: 25}
-        - {x: -105, y: -108}
-        - {x: -79, y: -108}
-        - {x: -60, y: -98}
-        - {x: -32, y: -46}
-        - {x: -31, y: -43}
-        - {x: -31, y: -36}
-        - {x: -29, y: -24}
-        - {x: -30, y: -16}
-        - {x: -26, y: -24}
-        - {x: -31, y: -35}
-        - {x: -31, y: -47}
-        - {x: -45, y: -91}
-        - {x: -41, y: -108}
-        - {x: 62, y: -108}
-        - {x: 85, y: -84}
-        - {x: 85, y: 25}
+      - - {x: 101, y: 19}
+        - {x: 59, y: 25}
+        - {x: 51, y: -8}
+        - {x: 60, y: -20}
+        - {x: 43, y: -2}
+        - {x: 63, y: 71}
+        - {x: 67, y: 101}
+        - {x: 53, y: 110}
+        - {x: -32, y: 110}
+        - {x: -65, y: 18}
+        - {x: -64, y: 15}
+        - {x: -60, y: 9}
+        - {x: -71, y: 17}
+        - {x: -77, y: 21}
+        - {x: -88, y: 22}
+        - {x: -88, y: -87}
+        - {x: -72, y: -100}
+        - {x: 101, y: -100}
+    - name: darkness
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 707
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 110}
+        - {x: 18, y: 110}
+        - {x: -74, y: 63}
+        - {x: -74, y: -110}
+        - {x: 93, y: -110}
+        - {x: 96, y: -97}
+        - {x: 96, y: -29}
+        - {x: 44, y: 91}
     - name: main_logo
       rect:
         serializedVersion: 2
-        x: 2
+        x: 608
         y: 439
         width: 748
         height: 469
@@ -709,50 +796,153 @@ TextureImporter:
     - name: skill_arrow
       rect:
         serializedVersion: 2
-        x: 1196
-        y: 466
+        x: 1718
+        y: 485
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 75, y: 110}
-        - {x: -79, y: 8}
-        - {x: -79, y: -53}
-        - {x: -67, y: -89}
-        - {x: -57, y: -90}
-        - {x: 11, y: -90}
-        - {x: 35, y: -73}
-        - {x: 104, y: 91}
-        - {x: 104, y: 110}
-      - - {x: -8, y: 110}
-        - {x: -8, y: 107}
-        - {x: -5, y: 103}
-        - {x: -3, y: 103}
-        - {x: 7, y: 108}
-        - {x: 7, y: 110}
+      - - {x: 20, y: -74}
+        - {x: 16, y: -87}
+        - {x: 6, y: -88}
+        - {x: 4, y: -90}
+        - {x: 5, y: -93}
+        - {x: 36, y: -93}
+        - {x: 93, y: -61}
+        - {x: 93, y: 58}
+        - {x: 91, y: 70}
+        - {x: 43, y: 88}
+        - {x: 28, y: 90}
+        - {x: 1, y: 90}
+        - {x: 1, y: 88}
+        - {x: 2, y: 85}
+        - {x: 45, y: 73}
+        - {x: 56, y: 66}
+        - {x: 81, y: 30}
+        - {x: 65, y: 26}
+        - {x: 49, y: 18}
+        - {x: 27, y: 5}
+        - {x: 21, y: 5}
+        - {x: 22, y: 4}
+        - {x: 31, y: 12}
+        - {x: 41, y: 20}
+        - {x: 63, y: 40}
+        - {x: 66, y: 46}
+        - {x: 57, y: 65}
+        - {x: 55, y: 67}
+        - {x: 52, y: 69}
+        - {x: 5, y: 84}
+        - {x: -18, y: 81}
+        - {x: -21, y: 80}
+        - {x: -31, y: 78}
+        - {x: -3, y: 85}
+        - {x: -1, y: 87}
+        - {x: -2, y: 90}
+        - {x: -24, y: 90}
+        - {x: -40, y: 83}
+        - {x: -87, y: 77}
+        - {x: -93, y: 51}
+        - {x: -93, y: -58}
+        - {x: -72, y: -84}
+        - {x: -36, y: -93}
+        - {x: -1, y: -93}
+        - {x: -2, y: -91}
+        - {x: -3, y: -88}
+        - {x: 11, y: -87}
+    - name: skill_arrow_card
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 1808
+        width: 118
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 59}
+        - {x: -59, y: 33}
+        - {x: -59, y: -31}
+        - {x: -34, y: -59}
+        - {x: 40, y: -59}
+        - {x: 59, y: -42}
+        - {x: 59, y: 28}
+        - {x: 39, y: 59}
     - name: skill_magic
       rect:
         serializedVersion: 2
-        x: 1334
-        y: 244
+        x: 1718
+        y: 263
         width: 220
         height: 220
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 52, y: 82}
-        - {x: -55, y: 82}
-        - {x: -59, y: 81}
-        - {x: -91, y: 32}
-        - {x: -91, y: -60}
-        - {x: -44, y: -92}
-        - {x: 44, y: -92}
-        - {x: 47, y: -91}
-        - {x: 92, y: -52}
-        - {x: 92, y: 58}
+      - - {x: 74, y: 89}
+        - {x: 43, y: 102}
+        - {x: -30, y: 102}
+        - {x: -60, y: 83}
+        - {x: -76, y: 65}
+        - {x: -95, y: 33}
+        - {x: -95, y: -25}
+        - {x: -86, y: -54}
+        - {x: -52, y: -95}
+        - {x: -28, y: -98}
+        - {x: 54, y: -98}
+        - {x: 103, y: -57}
+        - {x: 105, y: -44}
+        - {x: 105, y: 40}
+    - name: skill_magic_card
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 1688
+        width: 118
+        height: 118
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: 59}
+        - {x: -43, y: 57}
+        - {x: -59, y: 25}
+        - {x: -59, y: -59}
+        - {x: 59, y: -59}
+        - {x: 59, y: 41}
+        - {x: 47, y: 59}
+    - name: ui_button
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1817
+        width: 312
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -156, y: 51}
+        - {x: -156, y: -51}
+        - {x: 156, y: -51}
+        - {x: 156, y: 51}
+    - name: ui_panel
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 1921
+        width: 333
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 34, y: 20, z: 34, w: 25}
+      outline:
+      - - {x: -166.5, y: 62.5}
+        - {x: -166.5, y: -62.5}
+        - {x: 166.5, y: -62.5}
+        - {x: 166.5, y: 62.5}
     outline: []
   spritePackingTag: 
   userData: 

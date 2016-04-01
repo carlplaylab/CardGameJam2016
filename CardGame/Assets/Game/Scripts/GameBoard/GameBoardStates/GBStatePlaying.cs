@@ -102,11 +102,18 @@ public class GBStatePlaying : GBState
 			GameCharacter newCharacter = player.CreateCharacter(cardId, hoveredCell);
 			hoveredCell = null;
 
+			if(newCharacter == null)
+				SoundManager.PlaySound("negative");
+
 			return (newCharacter != null);
 		}
 		else if(cdata.cardType == CardType.SKILL)
 		{
-			return ReleaseSkillOnBoard(board, hoveredCell, cdata.dataId);
+			bool skillResult =  ReleaseSkillOnBoard(board, hoveredCell, cdata);
+			if(!skillResult)
+				SoundManager.PlaySound("negative");
+			
+			return skillResult;
 		}
 
 		return false;
@@ -163,8 +170,9 @@ public class GBStatePlaying : GBState
 	// - play FX
 	// - consume card
 	// - consume resources
-	private bool ReleaseSkillOnBoard(GameBoard board, Cell targetCell, int skillId)
+	private bool ReleaseSkillOnBoard(GameBoard board, Cell targetCell, CardData cdata)
 	{
+		int skillId = cdata.dataId;
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
 		SkillData skdata = SkillsDatabase.Instance.GetData(skillId);
 		if(skdata == null)
@@ -172,8 +180,12 @@ public class GBStatePlaying : GBState
 
 		if(player.DropSkillOnBoard(board, targetCell, skdata))
 		{
+			SoundManager.PlaySound("arrowshot");
 			BoardPlayer oponent = board.GetPlayer( GameBoardManager.Instance.OpposingTeam );
 			oponent.HitPlayersFromSkill(board, targetCell, skdata);
+
+			player.Deck.CardUsed(cdata.id);
+
 			return true;
 		}
 		return false;

@@ -5,28 +5,40 @@
 # http://www.codeandweb.com/texturepacker/unity
 #
 # Sprite sheet: main_assets.png (2048 x 2048)
-# $TexturePacker:SmartUpdate:ed8724659bf3dcdf65380d3f22c7a3ce:b1d1df89731cb9e8d985720572e839eb:0cce08a4ec2a91d49a2716383fa1928f$
+# $TexturePacker:SmartUpdate:095ac89f780df8838eed630b7f769192:0b0ffa81c7d844b8b8b2eb4cbdd0c02b:0cce08a4ec2a91d49a2716383fa1928f$
 #
 
 background_1;2;910;640;1136;0.5;0.5
 background_2;644;910;640;1136;0.5;0.5
-base;2;15;236;200;0.5;0.5
-base_air;240;53;200;162;0.5;0.5
-base_land;442;53;200;162;0.5;0.5
-base_water;644;53;200;162;0.5;0.5
-cell_green;2;217;220;220;0.5;0.5
-cell_land;224;217;220;220;0.5;0.5
-cell_red;446;217;220;220;0.5;0.5
-cell_water;668;217;220;220;0.5;0.5
-char_girl_musketeer;752;688;220;220;0.5;0.5
-char_knight;752;466;220;220;0.5;0.5
-char_magic;890;244;220;220;0.5;0.5
-char_main;890;22;220;220;0.5;0.5
-char_monster_1;974;688;220;220;0.5;0.5
-char_monster_2;974;466;220;220;0.5;0.5
-char_monster_3;1112;244;220;220;0.5;0.5
-char_monster_4;1112;22;220;220;0.5;0.5
-char_monster_boss;1196;688;220;220;0.5;0.5
-main_logo;2;439;748;469;0.5;0.5
-skill_arrow;1196;466;220;220;0.5;0.5
-skill_magic;1334;244;220;220;0.5;0.5
+base;608;15;236;200;0.5;0.5
+base_air;1016;53;200;162;0.5;0.5
+base_land;1218;53;200;162;0.5;0.5
+base_water;1420;53;200;162;0.5;0.5
+black;608;217;220;220;0.5;0.5
+card_attack;1844;1692;144;123;0.5;0.5
+card_life;1496;1927;118;119;0.5;0.5
+card_metal;846;49;168;166;0.5;0.5
+card_ui;2;102;604;806;0.5;0.5
+cell_green;830;217;220;220;0.5;0.5
+cell_land;1052;217;220;220;0.5;0.5
+cell_red;1274;217;220;220;0.5;0.5
+cell_water;1622;1595;220;220;0.5;0.5
+char_girl_musketeer;1358;1466;220;220;0.5;0.5
+char_girl_musketeer_card;1496;1807;118;118;0.5;0.5
+char_knight;1622;1373;220;220;0.5;0.5
+char_knight_card;1358;1928;118;118;0.5;0.5
+char_magic;1358;1244;220;220;0.5;0.5
+char_main;1286;1022;220;220;0.5;0.5
+char_monster_1;1622;1151;220;220;0.5;0.5
+char_monster_2;1622;929;220;220;0.5;0.5
+char_monster_3;1358;800;220;220;0.5;0.5
+char_monster_4;1358;578;220;220;0.5;0.5
+char_monster_boss;1496;356;220;220;0.5;0.5
+darkness;1718;707;220;220;0.5;0.5
+main_logo;608;439;748;469;0.5;0.5
+skill_arrow;1718;485;220;220;0.5;0.5
+skill_arrow_card;1358;1808;118;118;0.5;0.5
+skill_magic;1718;263;220;220;0.5;0.5
+skill_magic_card;1358;1688;118;118;0.5;0.5
+ui_button;1622;1817;312;102;0.5;0.5
+ui_panel;1622;1921;333;125;0.5;0.5
