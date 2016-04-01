@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class SkillVisuals : MonoBehaviour 
+public class SkillVisuals : Effects 
 {
 
 	[SerializeField] private GameObject hoverobj;

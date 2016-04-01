@@ -7,7 +7,10 @@ public enum EffectsType
 {
 	CHARACTER_ATTACK = 0,
 	FX_SLASH = 1,
-	SKILL = 2
+	SKILL = 2,
+	FX_ARROW = 3,
+	FX_FIREBALL = 4,
+	DARKNESS = 5
 }
 
 public class Effects : MonoBehaviour 

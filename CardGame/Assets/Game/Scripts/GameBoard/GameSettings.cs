@@ -4,7 +4,7 @@ using System.Collections;
 public class GameSettings : MonoBehaviour 
 {
 
-	public const string PREFS_CELL_ID_KEY = "selected_cell_id";
+	public const string PREFS_CELL_ID_KEY = "level";
 
 	[SerializeField] bool testMode = true;
 	[SerializeField] int cellAreaId = 1;

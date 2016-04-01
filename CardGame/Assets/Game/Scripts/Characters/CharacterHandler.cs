@@ -97,4 +97,16 @@ public class CharacterHandler : MonoBehaviour
 			characterList[i].Interaction = (characterList[i].Team == focusedTeam) ;
 		}
 	}
+
+	public void LogCharacterDied(int characterId)
+	{
+		//Debug.Log("LogCharacterDied " + characterId);
+		if(characterId == 1 || characterId == 5)
+		{
+			bool win = (characterId == 5);
+			Parameters winparams = new Parameters();
+			winparams.PutExtra("result", win);
+			EventBroadcaster.Instance.PostEvent(EventNames.UI_SHOW_RESULTS, winparams);
+		}
+	}
 }

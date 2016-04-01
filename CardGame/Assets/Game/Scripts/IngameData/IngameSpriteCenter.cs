@@ -101,7 +101,7 @@ public class IngameSpriteCenter
 			sprName = "button_air";
 			break;
 		case ElementType.LAND: 
-			sprName = "button_wood";
+			sprName ="button_metal"; // "button_wood";
 			break;
 		case ElementType.WATER: 
 			sprName = "button_water";

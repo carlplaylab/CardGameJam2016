@@ -11,6 +11,7 @@ public class IngameUIManager : MonoBehaviour
 	}
 
 	[SerializeField] private GameObject[] uiToLoad;
+	[SerializeField] private GameObject refResult;
 
 	private Camera uiCamera;
 	private RectTransform uiRect;
@@ -30,12 +31,15 @@ public class IngameUIManager : MonoBehaviour
 
 		uiCamera = GetComponent<Canvas>().worldCamera;
 		uiRect = GetComponent<RectTransform>();
+
+		EventBroadcaster.Instance.AddObserver(EventNames.UI_SHOW_RESULTS, ShowResults);
 	}
 
 
 	void OnDestroy ()
 	{
 		instance = null;
+		EventBroadcaster.Instance.RemoveObserver(EventNames.UI_SHOW_RESULTS);
 	}
 
 
@@ -73,4 +77,19 @@ public class IngameUIManager : MonoBehaviour
 	}
 
 
+	public void ShowResults (Parameters results)
+	{
+		GameObject newUI = GameObject.Instantiate(refResult) as GameObject;
+		newUI.transform.SetParent(this.transform);
+		newUI.transform.localScale = Vector3.one;
+		RectTransform rectXform = refResult.GetComponent<RectTransform>();
+		RectTransform newRectXform = newUI.GetComponent<RectTransform>();
+		newRectXform.localPosition = Vector3.zero;
+		newRectXform.anchoredPosition = rectXform.anchoredPosition;
+
+		bool win = results.GetBoolExtra("result", false);
+		ResultsView resView = newUI.GetComponent<ResultsView>();
+		resView.SetResults(win);
+		resView.Show();
+	}
 }

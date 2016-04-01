@@ -9,7 +9,7 @@ using System;
 public class DraggableUIView : UIView
 {
 	[SerializeField] private Vector3 focusedScale;
-	[SerializeField] private float offsetY = 0.5f;
+	[SerializeField] private float offsetY = 0.05f;
 
 	private bool isFocused = false;
 	private bool isDragged = false;
@@ -101,7 +101,7 @@ public class DraggableUIView : UIView
 		Vector3 mgrPos = IngameUIManager.Instance.GetMousePosition();
 		Vector3 currentPosition = rect.position;
 		currentPosition.x = mgrPos.x;
-		currentPosition.y = mgrPos.y;
+		currentPosition.y = mgrPos.y + offsetY;
 		rect.position = currentPosition;
 	}
 

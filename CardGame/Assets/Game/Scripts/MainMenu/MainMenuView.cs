@@ -14,5 +14,7 @@ public class MainMenuView : UIView
 	{
 		this.Hide();
 		mapView.Show();
+
+		SoundManager.PlaySound("click");
 	}
 }

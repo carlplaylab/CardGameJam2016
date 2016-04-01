@@ -150,15 +150,53 @@ public class CardEditor : AbstractListDataEditorWindow<CardData>
 		data.cardType = (CardType)EditorGUILayout.Popup((int)data.cardType,cardtypes);
 		if(data.cardType == CardType.CHARACTER)
 		{
-			data.dataId  = EditorGUILayout.IntField("Character id", data.dataId);
+			int newCharID = EditorGUILayout.IntField("Character id", data.dataId);
+			if(newCharID != data.dataId)
+			{
+				data.dataId = newCharID;
+				SyncDataWithCharacter(ref data, newCharID);
+			}
 		}
 		else
 		{
-			data.dataId = EditorGUILayout.IntField("Skill id", data.dataId);
+			int newSkillID = EditorGUILayout.IntField("Skill id", data.dataId);
+			if(newSkillID != data.dataId)
+			{
+				data.dataId = newSkillID;
+				SyncDataWithSkill(ref data, newSkillID);
+			}
 		}
 	}
 
 	#endregion
+
+	private void SyncDataWithCharacter(ref CardData data, int characterID)
+	{
+		data.dataId = characterID;
+		CharacterData chData = CharacterDatabase.Instance.GetData(characterID);
+		if(chData != null)
+		{
+			data.name = chData.name;
+			data.description = chData.description;
+			data.elementType = chData.elementType;
+			data.cost = chData.spawnCost;
+			data.cardSprite = chData.cardSprite;
+		}
+	}
+
+	private void SyncDataWithSkill(ref CardData data, int skillID)
+	{
+		data.dataId = skillID;
+		SkillData skData = SkillsDatabase.Instance.GetData(skillID);
+		if(skData != null)
+		{
+			data.name = skData.name;
+			data.description = skData.description;
+			data.elementType = skData.elementType;
+			data.cost = skData.cost;
+			data.cardSprite = skData.cardSprite;
+		}
+	}
 
 
 	public void NextItem ()

@@ -134,6 +134,7 @@ public class SkillsEditor : AbstractListDataEditorWindow<SkillData>
 		data.description = EditorGUILayout.TextArea(data.description, GUILayout.Height(40f));
 		EditorGUILayout.EndHorizontal();
 		data.visualsName = EditorGUILayout.TextField("Skill Visual Prefab", data.visualsName);
+		data.cardSprite = EditorGUILayout.TextField("Skill Card Sprite", data.cardSprite);
 
 		GUILayout.Space(10f);
 		GUILayout.Label("Stats: ");

@@ -146,9 +146,32 @@ public class CellHandler : MonoBehaviour
 	}
 
 
+	public List<int> GetCellIdsInArea(Rect cellRect)
+	{
+		List<int> cellsList = new List<int>();
+		int minCol = (int)cellRect.xMin;
+		int minrow = (int)cellRect.yMin;
+		int maxCol = (int)cellRect.xMax;
+		int maxRow = (int)cellRect.yMax;
+
+		for(int i=0; i < cells.Count; i++)
+		{
+			int row = cells[i].row;
+			int col = cells[i].col;
+
+			if(minrow <= row && row <= maxRow && 
+				minCol <= col && col <= maxCol)
+			{
+				cellsList.Add( cells[i].id );
+			}
+		}
+		return cellsList;
+	}
+
+
 	public Cell GetCell(int id)
 	{
-		if(id < cells.Count)
+		if(id >= 0 && id < cells.Count)
 			return cells[id];
 		else
 			return null;
@@ -244,5 +267,20 @@ public class CellHandler : MonoBehaviour
 
 		return null;
 	}
+
+	#region UTILS
+
+	public bool CheckIfWithinRange(int cell1, int cell2, int range)
+	{
+		Cell c1 = GetCell(cell1);
+		Cell c2 = GetCell(cell2);
+
+		int diffRow = Mathf.Abs(c1.row - c2.row);
+		int diffCol = Mathf.Abs(c1.col - c2.col);
+
+		return (diffRow <= range && diffCol <= range);
+	}
+
+	#endregion
 
 }

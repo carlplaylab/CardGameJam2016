@@ -34,12 +34,16 @@ public class CharacterTeam
 		deadCharacters = new List<GameCharacter>();
 	}
 		
-	public GameCharacter GetRandomCharacter ()
+	public GameCharacter GetRandomCharacter (bool includeMain)
 	{
 		if(aliveCharacters == null || aliveCharacters.Count <= 0)
 			return null;
-		
-		int rand = UnityEngine.Random.Range(0, aliveCharacters.Count-1);
+
+		if(aliveCharacters.Count == 1)
+			return aliveCharacters[0];
+
+		int min = includeMain ? 0 : 1;
+		int rand = UnityEngine.Random.Range(min, aliveCharacters.Count-1);
 		return aliveCharacters[rand];
 	}
 
@@ -53,11 +57,11 @@ public class CharacterTeam
 		aliveCharacters.Add(newCharacter);
 	}
 
-	public void KillGameCharacter (GameCharacter deadguy)
+	public void KillGameCharacter (GameCharacter deadguy, float deathDelay = 0f)
 	{
 		if(deadguy.Team != Team)
 			return;
-
+		// additional
 		float posY = 0f;
 		if(Team == 1)
 		{
@@ -68,14 +72,17 @@ public class CharacterTeam
 			posY = 4.3f - deadCharacters.Count * 0.6f;
 		}
 
-		deadguy.TriggerDie();
+		Vector3 deadPos = new Vector3(3f, posY, 0f);
+
+		if(deathDelay <= 0f)
+			deadguy.TriggerDie(deadPos);
+		else
+			deadguy.TriggerDelayedDeath(deadPos, deathDelay);
+		
 		aliveCharacters.Remove(deadguy);
 		deadCharacters.Add(deadguy);
 
-		// additional
-		deadguy.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
-		deadguy.transform.position = new Vector3(3f, posY, 0f);
-		deadguy.gameObject.SetActive(true);
+
 	}
 
 	public GameCharacter GetNearestCharacter(GameCharacter focusCharacter, CellHandler boardCells)
@@ -99,12 +106,25 @@ public class CharacterTeam
 	}
 		
 
-	public List<GameCharacter> GetCharacters(int id)
+	public List<GameCharacter> GetCharactersWithID(int id)
 	{
 		List<GameCharacter> targets = new List<GameCharacter>();
 		for(int i=0; i < aliveCharacters.Count; i++)
 		{
 			if(aliveCharacters[i].CharacterId == id)
+			{
+				targets.Add(aliveCharacters[i]);
+			}
+		}
+		return targets;
+	}
+
+	public List<GameCharacter> GetCharactersInCells(List<int> cells)
+	{
+		List<GameCharacter> targets = new List<GameCharacter>();
+		for(int i=0; i < aliveCharacters.Count; i++)
+		{
+			if( cells.Contains(aliveCharacters[i].cellId) )
 			{
 				targets.Add(aliveCharacters[i]);
 			}

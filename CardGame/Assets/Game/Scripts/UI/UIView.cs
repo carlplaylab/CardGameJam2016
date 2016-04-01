@@ -32,6 +32,8 @@ public class UIView : MonoBehaviour
 
 		this.gameObject.SetActive(true);
 		SetState(UIViewState.VISIBlE);
+
+		SoundManager.PlaySound("window_in");
 	}
 		
 	public virtual void Hide ()
@@ -41,6 +43,8 @@ public class UIView : MonoBehaviour
 
 		this.gameObject.SetActive(false);
 		SetState(UIViewState.HIDDEN);
+
+		SoundManager.PlaySound("click");
 	}
 		
 	public virtual void SetState(UIViewState newState)

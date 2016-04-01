@@ -95,26 +95,28 @@ public class GBStatePlaying : GBState
 
 		if(hoveredCell == null)
 			return false;
-		
-		if(hoveredCell.row > 2)
-			return false;
 
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
-
-
-		if(cdata.cardType == CardType.CHARACTER)
+		if(cdata.cardType == CardType.CHARACTER && hoveredCell.row < 2)
 		{
 			GameCharacter newCharacter = player.CreateCharacter(cardId, hoveredCell);
 			hoveredCell = null;
 
+			if(newCharacter == null)
+				SoundManager.PlaySound("negative");
+
 			return (newCharacter != null);
 		}
-		else
+		else if(cdata.cardType == CardType.SKILL)
 		{
+			bool skillResult =  ReleaseSkillOnBoard(board, hoveredCell, cdata);
+			if(!skillResult)
+				SoundManager.PlaySound("negative");
 			
-			board.DropCellOnBoard(hoveredCell.id, cdata.id);
-			return false;
+			return skillResult;
 		}
+
+		return false;
 	}
 
 	#endregion
@@ -157,7 +159,6 @@ public class GBStatePlaying : GBState
 		List<int> skilledCharacters = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skillId);
 		foreach(int charId in skilledCharacters)
 		{
-			Debug.Log("highlight around " + charId);
 			player.HighlightAreaAroundCharacters(board, charId);
 		}
 	}
@@ -169,14 +170,25 @@ public class GBStatePlaying : GBState
 	// - play FX
 	// - consume card
 	// - consume resources
-	private void ReleaseSkillOnBoard(GameBoard board, Cell targetCell, int skillId)
+	private bool ReleaseSkillOnBoard(GameBoard board, Cell targetCell, CardData cdata)
 	{
+		int skillId = cdata.dataId;
 		BoardPlayer player = board.GetPlayer( GameBoardManager.Instance.CurrentTeam );
 		SkillData skdata = SkillsDatabase.Instance.GetData(skillId);
 		if(skdata == null)
-			return;
-		
-		List<int> skilledCharacters = CharacterDatabase.Instance.GetCharacterThatUsesSkill(skillId);
+			return false;
+
+		if(player.DropSkillOnBoard(board, targetCell, skdata))
+		{
+			SoundManager.PlaySound("arrowshot");
+			BoardPlayer oponent = board.GetPlayer( GameBoardManager.Instance.OpposingTeam );
+			oponent.HitPlayersFromSkill(board, targetCell, skdata);
+
+			player.Deck.CardUsed(cdata.id);
+
+			return true;
+		}
+		return false;
 	}
 
 

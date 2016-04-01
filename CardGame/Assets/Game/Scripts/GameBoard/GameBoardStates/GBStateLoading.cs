@@ -63,8 +63,8 @@ public class GBStateLoading : GBState
 		}
 		else if(loadingCount == 6)
 		{
-			board.GetPlayer(1).SetInitialCards(4);
-			board.GetPlayer(2).SetInitialCards(4);
+			board.GetPlayer(1).SetInitialCards( );
+			board.GetPlayer(2).SetInitialCards( );
 		}
 		else if(loadingCount == 7)
 		{
@@ -109,30 +109,21 @@ public class GBStateLoading : GBState
 
 	private void LoadCharacters (GameBoard board)
 	{
-		for(int i=1; i <= 6; i ++)
-		{
-			int row = 0;
-			int col = 1 + i %3;
-			int team = 1;
 
-			if(i > 3)
-			{
-				team = 2;
-				row = board.BoardCells.Rows;
-			}
+		BoardPlayer player = board.GetPlayer(1);
+		Cell freeCell1 = board.BoardCells.GetCellAt(0, 3);
+		GameCharacter mainChar = CharacterHandler.Instance.CreateCharacterOnCell(1, freeCell1);
+		mainChar.SetTeam(1);
+		mainChar.mainCharacter = true;
+		player.Team.AddGameCharacter(mainChar);
 
-			Cell freeCell = board.BoardCells.GetCellAt(row, col);
-			if(freeCell != null)
-			{
-				BoardPlayer player = board.GetPlayer(team);
-				GameCharacter newCharacter = CharacterHandler.Instance.CreateCharacterOnCell(i, freeCell);
-				newCharacter.SetTeam(team);
-				player.Team.AddGameCharacter(newCharacter);
-			}
-			else{
-				Debug.Log("null cell");
-			}
-		}
+		BoardPlayer oponent = board.GetPlayer(2);
+		Cell freeCell2 = board.BoardCells.GetCellAt(board.BoardCells.Rows, 3);
+		GameCharacter mainOponent = CharacterHandler.Instance.CreateCharacterOnCell(5, freeCell2);
+		mainOponent.SetTeam(2);
+		mainOponent.mainCharacter = true;
+		oponent.Team.AddGameCharacter(mainOponent);
+
 	}
 
 

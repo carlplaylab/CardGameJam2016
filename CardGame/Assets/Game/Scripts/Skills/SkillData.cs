@@ -11,6 +11,7 @@ public class SkillData
 	public string name = "skill";
 	public string description = "skill description";
 	public string visualsName = "skillprefab";
+	public string cardSprite = "skillprefab";
 	public int areaRow = 1;
 	public int areaCol = 1;
 	public int cost = 5;

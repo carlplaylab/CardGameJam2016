@@ -42,6 +42,7 @@ public class MapView : UIView
 
 	private void GoToGame ()
 	{
+		SoundManager.PlaySound("click");
 		SceneManager.LoadScene("GameScene");
 	}
 
