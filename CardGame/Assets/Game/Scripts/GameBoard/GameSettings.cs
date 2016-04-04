@@ -11,6 +11,16 @@ public class GameSettings : MonoBehaviour
 	[SerializeField] int level = 1;
 
 
+
+	void Awake ()
+	{
+		if(!TestMode || !Debug.isDebugBuild || !Application.isEditor)
+		{
+			level = PlayerPrefs.GetInt(PREFS_CELL_ID_KEY, 1);
+			cellAreaId = level;
+		}
+	}
+
 	public bool TestMode
 	{
 		get { return testMode; }
@@ -21,18 +31,16 @@ public class GameSettings : MonoBehaviour
 	{
 		get 
 		{ 
-			int cellId = cellAreaId;
-			if(!TestMode)
-			{
-				cellId = PlayerPrefs.GetInt(PREFS_CELL_ID_KEY, 1);
-			}
-			return cellId;
+			return cellAreaId;
 		}
 	}
 
 	public int Level
 	{
-		get { return level; }
+		get 
+		{ 
+			return level;
+		}
 	}
 
 }

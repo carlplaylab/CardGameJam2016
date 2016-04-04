@@ -16,9 +16,9 @@
 				
 				"cardSprite": "skill_arrow",
 				
-				"areaRow": 2,
+				"areaRow": 1,
 				
-				"areaCol": 2,
+				"areaCol": 1,
 				
 				"cost": 3,
 				
@@ -39,9 +39,9 @@
 				
 				"cardSprite": "skill_arrow",
 				
-				"areaRow": 1,
+				"areaRow": 0,
 				
-				"areaCol": 1,
+				"areaCol": 0,
 				
 				"cost": 2,
 				
