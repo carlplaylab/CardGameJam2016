@@ -32,7 +32,7 @@ public class GameBoard : MonoBehaviour
 		int level = GameBoardManager.Instance.Settings.Level;
 		for(int i=0; i < players.Length; i++)
 		{
-			players[i].Setup(i+1, level);
+			players[i].Setup(i+1, level, level * 4);
 		}
 	}
 

@@ -177,7 +177,7 @@ public class CharacterDatabase
 		foreach(int key in characterDictionary.Keys)
 		{
 			CharacterData chdata = characterDictionary[key];
-			if(chdata.skills == skillId)
+			if(chdata.skills == skillId || chdata.id == 1)
 			{
 				ids.Add(chdata.id);
 			}

@@ -274,7 +274,9 @@ public class OpponentAI : MonoBehaviour
 		thinkingCounter = 6;
 
 		int turnCount = GameBoardManager.Instance.TurnCounter;
-		bool useBoss = turnCount %2 == 0;
+		bool useBoss = turnCount %3 == 0;
+		if(player.Team.Count <3)
+			useBoss = true;
 		GameCharacter soldier = player.Team.GetRandomCharacter(useBoss);
 		if(soldier == null)
 		{

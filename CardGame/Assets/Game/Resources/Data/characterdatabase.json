@@ -39,7 +39,7 @@
 				
 				"name": "Knight",
 				
-				"description": "A strong soldier that defends the light.",
+				"description": "A strong soldier capable of taking lots of hits.",
 				
 				"attack": 4,
 				
@@ -68,7 +68,7 @@
 				
 				"name": "Musketeer",
 				
-				"description": "An agile soldier that can quickly hit enemies.",
+				"description": "A warrior that uses speed and range.",
 				
 				"attack": 2,
 				
@@ -97,7 +97,7 @@
 				
 				"name": "Wizard",
 				
-				"description": "An ancient mage able to use the magic skill that damages multiple enemies.",
+				"description": "A warrior that uses speed and range. He is able to use the arrow skill.",
 				
 				"attack": 3,
 				

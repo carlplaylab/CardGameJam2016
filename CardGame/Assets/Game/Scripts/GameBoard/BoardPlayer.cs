@@ -39,7 +39,7 @@ public class BoardPlayer : MonoBehaviour
 		get { return IngameDataCenter.Instance.GetPlayerData(TeamId); }
 	}
 
-	public void Setup(int teamNumber, int level)
+	public void Setup(int teamNumber, int level, int resourceCount)
 	{
 		team = teamNumber;
 		characterTeam = new CharacterTeam(teamNumber);
@@ -49,6 +49,8 @@ public class BoardPlayer : MonoBehaviour
 		brain = GetComponent<OpponentAI>();
 		if(brain != null)
 			brain.Setup();
+
+		IngameData.ResourceData.AddResource(ElementType.LAND, resourceCount);
 	}
 
 	public void SetInitialCards()

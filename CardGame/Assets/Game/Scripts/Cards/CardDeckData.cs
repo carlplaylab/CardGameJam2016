@@ -52,6 +52,7 @@ public class CardDeckData
 	{
 		int[] cards = new int[40];
 
+		Debug.Log("GetPlayerCards level " + level);
 		if(level == 1)
 		{
 			for(int i=0; i < cards.Length; i++)
