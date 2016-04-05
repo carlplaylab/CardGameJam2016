@@ -28,6 +28,7 @@ public class GBStateLoading : GBState
 		{
 			IngameSpriteCenter.Instance.AddAtlas("assets1");
 			IngameSpriteCenter.Instance.AddAtlas("main_assets");
+			IngameSpriteCenter.Instance.AddAtlas("main_assets2");
 			
 			// Insert loading of cells
 			LoadCells(board);
@@ -68,6 +69,8 @@ public class GBStateLoading : GBState
 		}
 		else if(loadingCount == 7)
 		{
+			SoundManager.PlaySound("bgm", true);
+
 			// End loading
 			GameBoardManager.Instance.SetState(BoardState.RESOURCE_ADDING);
 		}

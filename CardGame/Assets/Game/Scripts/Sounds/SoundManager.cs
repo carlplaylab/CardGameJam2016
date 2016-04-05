@@ -24,11 +24,19 @@ public class SoundManager : MonoBehaviour
 	void OnDestroy ()
 	{
 		instance = null;
+		if(soundList != null)
+		{
+			foreach(string key in soundList.Keys)
+			{
+				soundList[key].gameObject.SetActive(false);
+				GameObject.Destroy( soundList[key].gameObject );
+			}
+		}
 		soundList.Clear();
 		soundList = null;
 	}
 
-	public static void PlaySound(string soundName)
+	public static void PlaySound(string soundName, bool loop = false)
 	{
 		if(Instance == null)
 			return;
@@ -43,11 +51,14 @@ public class SoundManager : MonoBehaviour
 			Instance.soundList.Add(soundName, audio);
 
 			audio.volume = Instance.volume;
+			audio.loop = loop;
 			audio.Play();
+
 		}
 		else
 		{
 			AudioSource source = Instance.soundList[soundName];
+			source.loop = loop;
 			source.Play();
 		}
 	}

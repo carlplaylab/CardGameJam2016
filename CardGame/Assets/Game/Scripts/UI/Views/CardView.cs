@@ -55,7 +55,9 @@ public class CardView : UIView
 		elementView.Element = data.elementType;
 		elementView.Amount = data.cost;
 
-		Sprite cardsprite = IngameSpriteCenter.Instance.GetSprite( data.cardSprite + "_card" );
+		Sprite cardsprite = IngameSpriteCenter.Instance.GetSprite( data.cardSprite + "_square" );
+		if(cardsprite == null)
+			cardsprite = IngameSpriteCenter.Instance.GetSprite( data.cardSprite + "_card" );
 		if(cardsprite == null)
 			cardsprite = IngameSpriteCenter.Instance.GetSprite( data.cardSprite );
 		

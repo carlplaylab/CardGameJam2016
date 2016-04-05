@@ -5,7 +5,7 @@
 # http://www.codeandweb.com/texturepacker/unity
 #
 # Sprite sheet: main_assets.png (2048 x 2048)
-# $TexturePacker:SmartUpdate:095ac89f780df8838eed630b7f769192:0b0ffa81c7d844b8b8b2eb4cbdd0c02b:0cce08a4ec2a91d49a2716383fa1928f$
+# $TexturePacker:SmartUpdate:5fd18048836e7ff40129d5cc16d8cbca:b13425b66eba6f6dba342f0d75bd77b0:0cce08a4ec2a91d49a2716383fa1928f$
 #
 
 background_1;2;910;640;1136;0.5;0.5
@@ -23,22 +23,23 @@ cell_green;830;217;220;220;0.5;0.5
 cell_land;1052;217;220;220;0.5;0.5
 cell_red;1274;217;220;220;0.5;0.5
 cell_water;1622;1595;220;220;0.5;0.5
-char_girl_musketeer;1358;1466;220;220;0.5;0.5
+char_girl_musketeer;1358;1465;220;220;0.5;0.5
 char_girl_musketeer_card;1496;1807;118;118;0.5;0.5
 char_knight;1622;1373;220;220;0.5;0.5
 char_knight_card;1358;1928;118;118;0.5;0.5
-char_magic;1358;1244;220;220;0.5;0.5
-char_main;1286;1022;220;220;0.5;0.5
+char_magic;1358;1243;220;220;0.5;0.5
+char_magic_card;1358;1808;118;118;0.5;0.5
+char_main;1286;1021;220;220;0.5;0.5
 char_monster_1;1622;1151;220;220;0.5;0.5
 char_monster_2;1622;929;220;220;0.5;0.5
-char_monster_3;1358;800;220;220;0.5;0.5
-char_monster_4;1358;578;220;220;0.5;0.5
-char_monster_boss;1496;356;220;220;0.5;0.5
+char_monster_3;1358;799;220;220;0.5;0.5
+char_monster_4;1358;577;220;220;0.5;0.5
+char_monster_boss;1496;355;220;220;0.5;0.5
 darkness;1718;707;220;220;0.5;0.5
 main_logo;608;439;748;469;0.5;0.5
 skill_arrow;1718;485;220;220;0.5;0.5
-skill_arrow_card;1358;1808;118;118;0.5;0.5
+skill_arrow_card;1358;1688;118;118;0.5;0.5
 skill_magic;1718;263;220;220;0.5;0.5
-skill_magic_card;1358;1688;118;118;0.5;0.5
+skill_magic_card;1496;1687;118;118;0.5;0.5
 ui_button;1622;1817;312;102;0.5;0.5
 ui_panel;1622;1921;333;125;0.5;0.5

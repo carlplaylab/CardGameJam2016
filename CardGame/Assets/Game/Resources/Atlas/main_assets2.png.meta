@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 64c56e3b99f5d4c768b17a6008bf606c
+timeCreated: 1459816857
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: char_girl_musketeer_square
+    21300002: char_knight_square
+    21300004: char_magic_square
+    21300006: result_lose
+    21300008: result_win
+    21300010: skill_arrow_square
+    21300012: skill_fireball_square
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: char_girl_musketeer_square
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 380
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -128}
+        - {x: 128, y: -128}
+        - {x: 128, y: 128}
+    - name: char_knight_square
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 122
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -128}
+        - {x: 128, y: -128}
+        - {x: 128, y: 128}
+    - name: char_magic_square
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 380
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -128}
+        - {x: 128, y: -128}
+        - {x: 128, y: 128}
+    - name: result_lose
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 638
+        width: 433
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5127021, y: 0.4934896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 206.99998, y: 124.5}
+        - {x: 210.99998, y: 124.5}
+        - {x: 210.99998, y: 194.5}
+        - {x: -222.00002, y: 194.5}
+        - {x: -222.00002, y: 125.5}
+        - {x: -221.00002, y: 124.5}
+        - {x: -206.00002, y: 124.5}
+        - {x: -206.00002, y: -119.5}
+        - {x: -221.00002, y: -119.5}
+        - {x: -222.00002, y: -120.5}
+        - {x: -222.00002, y: -189.5}
+        - {x: 210.99998, y: -189.5}
+        - {x: 210.99998, y: -119.5}
+        - {x: 206.99998, y: -119.5}
+    - name: result_win
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 638
+        width: 432
+        height: 384
+      alignment: 9
+      pivot: {x: 0.5115741, y: 0.4934896}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 210, y: -116.5}
+        - {x: 208, y: -113.5}
+        - {x: 208, y: -110.5}
+        - {x: 207, y: -109.5}
+        - {x: 207, y: 124.5}
+        - {x: 211, y: 124.5}
+        - {x: 211, y: 194.5}
+        - {x: -221, y: 194.5}
+        - {x: -221, y: 124.5}
+        - {x: -206, y: 124.5}
+        - {x: -206, y: -119.5}
+        - {x: -221, y: -119.5}
+        - {x: -221, y: -189.5}
+        - {x: 211, y: -189.5}
+        - {x: 211, y: -119.5}
+        - {x: 210, y: -118.5}
+    - name: skill_arrow_square
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 122
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -128}
+        - {x: 128, y: -128}
+        - {x: 128, y: 128}
+    - name: skill_fireball_square
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 380
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 128}
+        - {x: -128, y: -128}
+        - {x: 128, y: -128}
+        - {x: 128, y: 128}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

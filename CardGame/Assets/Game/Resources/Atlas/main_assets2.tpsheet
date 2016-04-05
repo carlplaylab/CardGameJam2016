@@ -1,0 +1,17 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: main_assets2.png (1024 x 1024)
+# $TexturePacker:SmartUpdate:2d4a9b554cfc2299708a2cf055a6b08a:2f21aed2e0c3daefbb9175254e83191a:a5609a7d2885dd2f8b1a5e24170d9853$
+#
+
+char_girl_musketeer_square;2;380;256;256;0.5;0.5
+char_knight_square;2;122;256;256;0.5;0.5
+char_magic_square;260;380;256;256;0.5;0.5
+result_lose;2;638;433;384;0.5127020785219399;0.49348958333333337
+result_win;437;638;432;384;0.5115740740740741;0.49348958333333337
+skill_arrow_square;260;122;256;256;0.5;0.5
+skill_fireball_square;518;380;256;256;0.5;0.5
