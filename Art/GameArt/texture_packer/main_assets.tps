@@ -224,6 +224,7 @@
             <filename>../final_art/skill_arrow_card.png</filename>
             <filename>../final_art/skill_magic_card.png</filename>
             <filename>../final_art/char_girl_musketeer_card.png</filename>
+            <filename>../final_art/char_magic_card.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

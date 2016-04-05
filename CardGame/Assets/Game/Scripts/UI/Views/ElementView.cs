@@ -42,7 +42,7 @@ public class ElementView : UIView
 			int elementNumber = (int)elementType;
 			if(elementNumber < buttonSprites.Length)
 			{
-				buttonImage.sprite = buttonSprites[elementNumber];
+				//buttonImage.sprite = buttonSprites[elementNumber];
 			}
 			if(elementNumber < iconSprites.Length)
 			{
